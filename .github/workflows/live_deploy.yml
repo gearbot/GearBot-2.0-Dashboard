@@ -29,9 +29,9 @@ jobs:
           CI: false
           GENERATE_SOURCEMAP: false
       - name: Zip Project
-          run: zip -r ./Dashboard.zip ./build
+        run: zip -r ./Dashboard.zip ./build
       - name: upload artifact
-          uses: actions/upload-artifact@v1
-          with:
-            name: GearBot
-            path: Dashboard.zip
+        uses: actions/upload-artifact@v1
+        with:
+          name: GearBot
+          path: Dashboard.zip
