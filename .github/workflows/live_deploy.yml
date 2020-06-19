@@ -4,8 +4,7 @@ on:
       - '*'
   push:
     branches:
-      - '*'
-      - '!live'
+      - 'live'
 
 name: Test
 
