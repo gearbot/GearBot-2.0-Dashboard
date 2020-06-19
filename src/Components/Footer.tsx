@@ -2,8 +2,9 @@
 
 import React from "react";
 import { getSVGPath } from "../Other/Utils";
-import { navBarMobileThreshold } from "../Other/Constants";
+import { navBarMobileThreshold, supportServerInvite } from "../Other/Constants";
 import { getString } from "../Language/LanguageHandler";
+import { Grid } from "./Grid";
 
 type FooterDesktopProps = {};
 
@@ -35,9 +36,26 @@ export class FooterDesktop extends React.Component<
             <span className="name">{getString("gearbot_team")}</span>
           </div>
         </div>
-        <div>
-          <img src={getSVGPath("icon")} width="80px" height="80px" />
-        </div>
+        <Grid style={{ gridTemplateRows: "1fr auto" }}>
+          <img
+            src={getSVGPath("icon")}
+            alt="gearbot logo"
+            width="80px"
+            height="80px"
+          />
+          <a
+            href={supportServerInvite}
+            target="_blank noreferrer"
+            style={{ display: "flex" }}
+          >
+            <img
+              alt="Discord Support Server"
+              src={getSVGPath("Discord-Logo-White")}
+              style={{ marginLeft: "auto" }}
+              width={25}
+            />
+          </a>
+        </Grid>
       </div>
     );
   }

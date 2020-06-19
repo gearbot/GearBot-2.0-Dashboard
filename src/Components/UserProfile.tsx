@@ -36,13 +36,21 @@ export class UserProfile extends React.Component<
             })
           }
         >
-          <img className="avatar" src={getProfilePicture(this.props.user)} />
+          <img
+            className="avatar"
+            alt=""
+            src={getProfilePicture(this.props.user)}
+          />
           <span className="username">{this.props.user.username}</span>
           <span className="discriminator">
             #{this.props.user.discriminator}
           </span>
           {this.props.withDropdown === true && (
-            <img className="dropdown-icon" src={getSVGPath("dropdown")} />
+            <img
+              className="dropdown-icon"
+              alt="dropdown"
+              src={getSVGPath("dropdown")}
+            />
           )}
         </div>
         {this.state.dropdownOpen && (

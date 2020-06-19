@@ -3,10 +3,15 @@
 import React from "react";
 import { GridRow } from "./GridRow";
 import { UserProfile } from "./UserProfile";
-import { navBarMobileThreshold } from "../Other/Constants";
+import {
+  navBarMobileThreshold,
+  botInvite,
+  supportServerInvite,
+} from "../Other/Constants";
 import { getSVGPath } from "../Other/Utils";
 import { Link } from "react-router-dom";
 import { getString } from "../Language/LanguageHandler";
+import { DiscordUser } from "../Other/Types";
 
 type NavBarTab = {
   name: string;
@@ -19,27 +24,18 @@ const navBarTabs: NavBarTab[] = [
   {
     name: getString("add_gearbot"),
     external: true,
-    href: "/",
+    href: botInvite,
   },
   {
-    name: getString("commands"),
+    name: getString("documentation"),
     external: false,
-    href: "/commands",
-  },
-  {
-    name: getString("faq"),
-    external: false,
-    href: "/faq",
-  },
-  {
-    name: getString("admin"),
-    external: false,
-    admin_only: true,
-    href: "/admin",
+    href: "/docs",
   },
 ];
 
-type DesktopNavBarProps = {};
+type DesktopNavBarProps = {
+  user?: DiscordUser;
+};
 
 type DesktopNavBarState = {};
 
@@ -62,26 +58,51 @@ export class DesktopNavBar extends React.Component<
           cell_override={"auto ".repeat(navBarTabs.length + 1) + "1fr"}
         >
           <Link to="/" className="header-logo">
-            <img src={getSVGPath("icon")} draggable={false} />
+            <img
+              alt="gearbot logo"
+              src={getSVGPath("icon")}
+              draggable={false}
+            />
             <span className="gear">GEAR</span>
             <span className="bot">BOT</span>
           </Link>
           {navBarTabs.map((tab: NavBarTab, index: number) => {
-            return (
+            return !tab.external ? (
               <Link to={tab.href} key={"tab-" + index} className="navbar-tab">
                 <span>{tab.name}</span>
               </Link>
+            ) : (
+              <a
+                key={index}
+                href={tab.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="navbar-tab"
+              >
+                <span>{tab.name}</span>
+              </a>
             );
           })}
-          <UserProfile
-            withDropdown={true}
-            user={{
-              username: "JohnyTheCarrot",
-              discriminator: "0001",
-              id: "132819036282159104",
-              avatar: "cd1027e339b0e0a1001fd84cf7e3be13",
-            }}
-          />
+          {this.props.user ? (
+            <UserProfile withDropdown={true} user={this.props.user} />
+          ) : (
+            <a
+              className="login-with-discord"
+              href={supportServerInvite}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="login-content">
+                <img
+                  className="logo"
+                  alt=""
+                  src={getSVGPath("Discord-Logo-White")}
+                  width={32}
+                />
+                <span className="text">{getString("join_support_server")}</span>
+              </div>
+            </a>
+          )}
         </GridRow>
       </div>
     );
@@ -113,7 +134,7 @@ export class MobileNavBar extends React.Component<
         </div>
         <div className="content">
           <div className="header-logo">
-            <img src={getSVGPath("icon")} />
+            <img src={getSVGPath("icon")} alt="gearbot logo" />
             <span className="gear">GEAR</span>
             <span className="bot">BOT</span>
           </div>
@@ -125,6 +146,7 @@ export class MobileNavBar extends React.Component<
 
 type NavBarProps = {
   pageWidth: number;
+  user?: DiscordUser;
 };
 
 type NavBarState = {};
@@ -139,7 +161,7 @@ export class NavBar extends React.Component<NavBarProps, NavBarState> {
     return (
       <div className="page-header">
         {this.props.pageWidth > navBarMobileThreshold ? (
-          <DesktopNavBar />
+          <DesktopNavBar user={this.props.user} />
         ) : (
           <MobileNavBar />
         )}

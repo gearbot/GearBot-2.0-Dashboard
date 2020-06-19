@@ -30,6 +30,16 @@ body,
   outline: none;
 }
 
+pre {
+  padding: 10px;
+  background: $darker;
+  border-radius: 10px;
+}
+
+a {
+  color: $accent;
+}
+
 .main-scroller {
   overflow: auto;
   height: 100%;
@@ -87,6 +97,24 @@ body {
   }
   .content-desktop {
     min-width: $footer-and-navbar-content-width;
+  }
+}
+
+.login-with-discord {
+  $size: 32px;
+  font-weight: 500;
+  user-select: none;
+  position: relative;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+  .login-content {
+    cursor: pointer;
+    color: $white;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
   }
 }
 
@@ -195,6 +223,36 @@ body {
   }
 }
 
+.page-docs {
+  width: 100%;
+  display: flex;
+  .center {
+    width: 50%;
+    margin: auto;
+    min-width: 255px;
+  }
+  .title {
+    margin-top: 0;
+    width: 100%;
+  }
+  .doc-section {
+    color: $white;
+    text-decoration: none;
+    display: block;
+    background: $darker;
+    padding: 10px;
+    border-radius: 9px;
+    cursor: pointer;
+  }
+  .doc-section:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.title {
+  text-align: center;
+}
+
 .hamburger {
   width: $navbar-height;
   height: $navbar-height;
@@ -246,7 +304,8 @@ body {
   color: $alert;
 }
 
-button {
+button,
+.button {
   border-radius: 5px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   border: none;
@@ -262,6 +321,12 @@ button {
     background: #fecb4d;
     color: $darker;
   }
+}
+
+a.button {
+  display: flex;
+  place-content: center;
+  text-decoration: none;
 }
 
 ::-webkit-scrollbar {

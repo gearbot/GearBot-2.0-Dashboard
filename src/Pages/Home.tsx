@@ -4,7 +4,8 @@ import React from "react";
 import { getSVGPath } from "../Other/Utils";
 import { GridRow } from "../Components/GridRow";
 import { getString } from "../Language/LanguageHandler";
-import { navBarMobileThreshold } from "../Other/Constants";
+import { navBarMobileThreshold, botInvite } from "../Other/Constants";
+import { Link } from "react-router-dom";
 
 type ShowOffDesktopProps = {};
 
@@ -33,15 +34,20 @@ export class ShowOffDesktop extends React.Component<
               <GridRow
                 gap={20}
                 cells={2}
+                full_width={false}
                 style={{ width: "fit-content", marginTop: 20 }}
               >
-                <button className="primary">{getString("add_gearbot")}</button>
-                <button>View Commands</button>
+                <a className="button primary" href={botInvite}>
+                  <span>{getString("add_gearbot")}</span>
+                </a>
+                <Link to="/docs/commands" className="button">
+                  <span>View Commands</span>
+                </Link>
               </GridRow>
             </div>
           </div>
           <div className="bg">
-            <img src={getSVGPath("home-showoff-bg")} />
+            <img src={getSVGPath("home-showoff-bg")} alt="" />
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 {
   "add_gearbot": "Add GearBot",
+  "documentation": "Documentation",
   "commands": "Commands",
   "faq": "FAQ",
   "admin": "Admin",
@@ -7,5 +8,6 @@
   "gearbot_team": "GearBot Team",
   "profile_dropdown_report_bug": "Report Bug",
   "profile_dropdown_feedback": "Feedback",
-  "profile_dropdown_log_out": "Log Out"
+  "profile_dropdown_log_out": "Log Out",
+  "join_support_server": "Join the Support Server"
 }

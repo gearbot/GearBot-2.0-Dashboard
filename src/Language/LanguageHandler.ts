@@ -13,9 +13,15 @@ export function getString(
   else language = getLanguage();
   let str = language[key];
   if (!str) {
-    if ((lang ?? getCurrentLanguage()) !== "en_US")
+    if ((lang ?? getCurrentLanguage()) !== "en_US") {
+      console.log(`${key} was not found on ${language}, trying English..`);
       str = getString(key, placeholderReplacements, "en_US");
-    else str = "LANG_ERR";
+    } else {
+      console.log(
+        `${key} was not found on English, and now everything is on fire.`
+      );
+      str = "LANG_ERR";
+    }
   }
   if (placeholderReplacements)
     Object.keys(placeholderReplacements).forEach(
