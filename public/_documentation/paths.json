@@ -1,0 +1,15 @@
+{
+  "Setup": [
+    "Adding GearBot",
+    "Configuring the Prefix",
+    "Permissions Introduction",
+    "Setting a Language",
+    "Configuring Roles",
+    "Reconfiguring Command Requirements",
+    "Configuring Logging",
+    "Censoring",
+    "Custom Commands",
+    "Ignoring Channels"
+  ],
+  "Guides": ["Archiving", "Infractions"]
+}
