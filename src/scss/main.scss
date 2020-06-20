@@ -6,6 +6,10 @@ $footer-and-navbar-content-width: 60%;
 $footer-height: 280px;
 $scrollbar-width: 5px;
 $hamburger-menu-width: 300px;
+$log-entry-height: 80px;
+$log-entry-icon-size: 40px;
+
+$user-small-avatar-size: 16px;
 
 // colors
 $accent: #fecb4d;
@@ -14,9 +18,12 @@ $background: #2c2f36;
 $darker: #191b1f;
 $not-quite-black: #0f1012;
 $alert: #fe4d4d;
+$grey: #2c2f36;
+$grey-text: #767b85;
 
 // etc
 $table-radius: 5px;
+$box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 
 * {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -186,7 +193,7 @@ body {
   border-radius: 5px;
   display: grid;
   grid-gap: 20px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: $box-shadow;
   div {
     cursor: pointer;
     * {
@@ -323,7 +330,7 @@ body {
   bottom: 0;
   width: $hamburger-menu-width;
   background: $not-quite-black;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: $box-shadow;
   .burger-content {
     padding: 10px;
     display: flex;
@@ -425,7 +432,7 @@ table {
 button,
 .button {
   border-radius: 5px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: $box-shadow;
   border: none;
   min-width: 180px;
   min-height: 40px;
@@ -466,4 +473,90 @@ a.button {
   width: $scrollbar-width;
   background: lighten($darker, 20%);
   border-radius: 45px;
+}
+
+.page-development {
+  height: 100%;
+  width: 100%;
+}
+
+.log-entry {
+  background: $darker;
+  padding: 20px;
+  box-shadow: $box-shadow;
+  display: inline-flex;
+  cursor: pointer;
+  border-radius: 5px;
+  &.expanded {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .icon {
+    width: $log-entry-icon-size;
+    height: $log-entry-icon-size;
+    background: $grey;
+    border-radius: 5px;
+    display: flex;
+    place-content: center;
+    img {
+      $size: 70%;
+      margin: auto;
+      width: $size;
+      height: $size;
+      transform: rotate(45deg);
+    }
+  }
+  .action {
+    line-height: $user-small-avatar-size;
+    font-size: 14px;
+    display: flex;
+    .name {
+      margin: 0 5px;
+    }
+  }
+  .reason {
+    color: rgba(218, 218, 218, 0.8);
+  }
+  .log-hamburger {
+    margin: auto;
+    margin-right: 13px;
+  }
+}
+
+.log-entry-information {
+  padding: 20px 80px;
+  background: rgba($darker, 0.5);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  .item-name {
+    color: $grey-text;
+    margin-right: 8px;
+  }
+  .item {
+    color: $white;
+  }
+}
+
+.user {
+  &.small {
+    display: inline-flex;
+    color: $white;
+    .avatar {
+      width: $user-small-avatar-size;
+      height: $user-small-avatar-size;
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    .username,
+    .discriminator {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: $user-small-avatar-size;
+    }
+    .username {
+      margin-left: 4px;
+    }
+  }
 }

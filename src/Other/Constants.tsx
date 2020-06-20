@@ -3,6 +3,7 @@
 import { GearRoute, FooterLink } from "./Types";
 import Home from "../Pages/Home";
 import Commands from "../Pages/Commands";
+import Development from "../Pages/Development";
 import { Documentation } from "../Pages/Documentation";
 import { getString } from "../Language/LanguageHandler";
 
@@ -48,6 +49,11 @@ export const routes: GearRoute[] = [
     path: "/commands",
     exact: true,
     component: Commands,
+  },
+  {
+    path: "/__development",
+    exact: true,
+    component: Development,
   },
 ];
 

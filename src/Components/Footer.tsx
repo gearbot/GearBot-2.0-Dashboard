@@ -8,7 +8,7 @@ import {
   footerLinks,
 } from "../Other/Constants";
 import { getString } from "../Language/LanguageHandler";
-import { Grid } from "./Grid";
+import Grid from "./Grid";
 import { FooterLink } from "../Other/Types";
 import { Link } from "react-router-dom";
 

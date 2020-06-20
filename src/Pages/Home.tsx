@@ -4,7 +4,7 @@ import { GridRow } from "../Components/GridRow";
 import { getString } from "../Language/LanguageHandler";
 import { navBarMobileThreshold, botInvite } from "../Other/Constants";
 import { Link } from "react-router-dom";
-import { Grid } from "../Components/Grid";
+import Grid from "../Components/Grid";
 
 type ShowOffDesktopProps = {};
 

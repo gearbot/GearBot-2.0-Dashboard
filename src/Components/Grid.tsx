@@ -9,7 +9,7 @@ type GridProps = {
   full_width?: boolean;
 };
 
-export class Grid extends React.Component<GridProps, {}> {
+export default class Grid extends React.Component<GridProps, {}> {
   render() {
     let style = this.props.style ?? {};
     style.gridGap = this.props.gap;

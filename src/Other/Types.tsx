@@ -28,3 +28,13 @@ export type Command = {
   example: string;
   subcommands: { [key: string]: Command };
 };
+
+export type LogType = "BAN" | "KICK";
+
+export type LogEntry = {
+  logType: LogType;
+  author: DiscordUser;
+  target: DiscordUser;
+  duration?: number;
+  reason: string;
+};
