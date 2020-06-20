@@ -1,4 +1,8 @@
 {
+  "Initial setup": [
+    "Adding GearBot",
+    "Configuring permissions"
+  ],
   "Setup": [
     "Adding GearBot",
     "Configuring the Prefix",
