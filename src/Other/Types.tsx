@@ -9,6 +9,13 @@ export type DiscordUser = {
   avatar: string;
 };
 
+export type DiscordGuild = {
+  name: string;
+  owner: DiscordUser;
+  id: string;
+  icon?: string;
+};
+
 export type GearRoute = {
   exact: boolean;
   path: string;

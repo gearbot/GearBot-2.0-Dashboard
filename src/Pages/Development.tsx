@@ -7,7 +7,9 @@
 import Grid from "../Components/Grid";
 import LogEntryComponent from "../Components/LogEntryComponent";
 import React from "react";
-import { LogEntry, DiscordUser } from "../Other/Types";
+import { LogEntry, DiscordUser, DiscordGuild } from "../Other/Types";
+import Guild from "../Components/Guild";
+import { GridRow } from "../Components/GridRow";
 
 const dummyUsers: DiscordUser[] = [
   {
@@ -23,6 +25,19 @@ const dummyUsers: DiscordUser[] = [
     avatar: "a_830b0d2082e9b84d00816eae9324d29e",
   },
 ];
+
+const dummyGuild: DiscordGuild = {
+  name: "The Gearbox",
+  owner: dummyUsers[1],
+  id: "365498559174410241",
+  icon: "a_8b7ebc6c35b4830c9645a7dc5a18c498",
+};
+
+const dummyGuild2: DiscordGuild = {
+  name: "Johny's Development Server",
+  owner: dummyUsers[0],
+  id: "123",
+};
 
 const dummyLogEntries: LogEntry[] = [
   {
@@ -56,6 +71,17 @@ export default class Development extends React.Component<
             return <LogEntryComponent key={index} logEntry={logEntry} />;
           })}
         </Grid>
+        <div style={{ display: "flex", placeContent: "center" }}>
+          <GridRow
+            cells={2}
+            full_width={false}
+            style={{ marginTop: 20 }}
+            gap={20}
+          >
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+          </GridRow>
+        </div>
       </div>
     );
   }
