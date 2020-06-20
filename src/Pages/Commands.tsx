@@ -6,7 +6,7 @@ import { getString, getCommandDescription } from "../Language/LanguageHandler";
 
 function renderCommand(commandName: string, command: Command) {
   return (
-    <tr style={{ width: "100%" }}>
+    <tr style={{ width: "100%" }} key={"command-" + commandName}>
       <td>{commandName}</td>
       <td>
         {command.aliases.length > 0
@@ -29,7 +29,7 @@ function renderCommands(commands: { [key: string]: Command }) {
     (commandName: string, commandIndex: number) => {
       let command = commands[commandName];
       return (
-        <>
+        <React.Fragment key={commandName + "-" + commandIndex}>
           {renderCommand(commandName, command)}
           {Object.keys(command.subcommands).map(
             (subCommandName: string, subCommandIndex: number) => {
@@ -40,7 +40,7 @@ function renderCommands(commands: { [key: string]: Command }) {
               );
             }
           )}
-        </>
+        </React.Fragment>
       );
     }
   );
@@ -66,7 +66,7 @@ export default class Commands extends React.Component<
         {Object.keys(commandData).map((section: string, index: number) => {
           let commands = commandData[section] as { [key: string]: Command };
           return (
-            <>
+            <React.Fragment key={"table-" + index}>
               <h2>{section}</h2>
               <div className="commands-table-container">
                 <table>
@@ -82,7 +82,7 @@ export default class Commands extends React.Component<
                   <tbody>{renderCommands(commands)}</tbody>
                 </table>
               </div>
-            </>
+            </React.Fragment>
           );
         })}
       </div>
