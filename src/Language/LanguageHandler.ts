@@ -37,7 +37,7 @@ export function getString(
 
 export function getCommandDescription(key: string) {
   // TODO: Implement
-  return key;
+  return key ? getString(key): "";
 }
 
 export function getCurrentLanguage() {

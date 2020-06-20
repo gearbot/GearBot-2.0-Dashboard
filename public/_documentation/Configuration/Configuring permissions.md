@@ -18,6 +18,15 @@ For example: all commands in the basic cog have a default permission requirement
 # Default detections
 Anyone with a role that has ``BAN MEMBERS`` is considered to be at level 2, ``ADMINISTRATOR`` grants level 3.
 
+# Marking roles as Trusted/Mod/Admin
+If a role should be considered as Mod/Admin you but does not have the discord permission for it, you can manually mark it as mod/admin role. Trusted roles do not have any permission associated so will always need to be marked.
+
+To add a role to the moderator role list:
+```
+!configure mod_roles add <role>
+```
+> You can remove a role again by using ``remove`` instead of ``add``, similarly you can also use ``admin_roles`` and ``trusted_roles`` for the admin and trusted role lists respectively.
+
 # Reconfiguring command requirements
 
 **Note:** While this is possible it is not required to do so on all servers, if the defaults work for you, there is no need to add any overrides.
