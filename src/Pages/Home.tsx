@@ -1,17 +1,16 @@
-/** @format */
-
 import React from "react";
 import { getSVGPath } from "../Other/Utils";
 import { GridRow } from "../Components/GridRow";
 import { getString } from "../Language/LanguageHandler";
 import { navBarMobileThreshold, botInvite } from "../Other/Constants";
 import { Link } from "react-router-dom";
+import { Grid } from "../Components/Grid";
 
 type ShowOffDesktopProps = {};
 
 type ShowOffDesktopState = {};
 
-export class ShowOffDesktop extends React.Component<
+class ShowOffDesktop extends React.Component<
   ShowOffDesktopProps,
   ShowOffDesktopState
 > {
@@ -22,34 +21,60 @@ export class ShowOffDesktop extends React.Component<
 
   render() {
     return (
-      <div>
-        <div className="show-off">
-          <div className="content">
-            <div>
-              <h1>Moderation for your Discord, easily managed.</h1>
-              <p>
-                Configure the best bot for your Discord server and easily setup
-                custom commands, filters, and much more!
-              </p>
-              <GridRow
-                gap={20}
-                cells={2}
-                full_width={false}
-                style={{ width: "fit-content", marginTop: 20 }}
-              >
-                <a className="button primary" href={botInvite}>
-                  <span>{getString("add_gearbot")}</span>
-                </a>
-                <Link to="/docs/commands" className="button">
-                  <span>View Commands</span>
-                </Link>
-              </GridRow>
-            </div>
-          </div>
-          <div className="bg">
-            <img src={getSVGPath("home-showoff-bg")} alt="" />
+      <div className="show-off">
+        <div className="content">
+          <div>
+            <h1>{getString("showoff_title")}</h1>
+            <p>{getString("showoff_text")}</p>
+            <GridRow
+              gap={20}
+              cells={2}
+              full_width={false}
+              style={{ width: "fit-content", marginTop: 20 }}
+            >
+              <a className="button primary" href={botInvite}>
+                <span>{getString("add_gearbot")}</span>
+              </a>
+              <Link to="/docs/commands" className="button">
+                <span>{getString("view_commands")}</span>
+              </Link>
+            </GridRow>
           </div>
         </div>
+        <div className="bg">
+          <img src={getSVGPath("home-showoff-bg")} alt="" />
+        </div>
+      </div>
+    );
+  }
+}
+
+type ShowOffMobileProps = {};
+
+type ShowOffMobileState = {};
+
+class ShowOffMobile extends React.Component<
+  ShowOffMobileProps,
+  ShowOffMobileState
+> {
+  constructor(props: ShowOffDesktopProps) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{getString("showoff_title")}</h1>
+        <p>{getString("showoff_text")}</p>
+        <Grid gap={10}>
+          <a className="button primary" href={botInvite}>
+            <span>{getString("add_gearbot")}</span>
+          </a>
+          <Link to="/docs/commands" className="button">
+            <span>{getString("view_commands")}</span>
+          </Link>
+        </Grid>
       </div>
     );
   }
@@ -73,7 +98,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
         {this.props.pageWidth > navBarMobileThreshold ? (
           <ShowOffDesktop />
         ) : (
-          <div>S M O L</div>
+          <ShowOffMobile />
         )}
       </div>
     );

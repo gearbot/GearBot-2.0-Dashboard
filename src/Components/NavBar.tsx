@@ -111,7 +111,9 @@ export class DesktopNavBar extends React.Component<
 
 type MobileNavBarProps = {};
 
-type MobileNavBarState = {};
+type MobileNavBarState = {
+  burgerOpened: boolean;
+};
 
 export class MobileNavBar extends React.Component<
   MobileNavBarProps,
@@ -119,14 +121,68 @@ export class MobileNavBar extends React.Component<
 > {
   constructor(props: MobileNavBarProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      burgerOpened: false,
+    };
   }
 
   render() {
     return (
       <>
+        {this.state.burgerOpened && (
+          <>
+            <div
+              className="burger-bg"
+              onClick={() => this.setState({ burgerOpened: false })}
+            />
+            <div className="burger-menu">
+              <div
+                className="hamburger"
+                onClick={() => this.setState({ burgerOpened: false })}
+              >
+                <img src={getSVGPath("cross")} style={{ color: "red" }} />
+              </div>
+              <div className="burger-content">
+                <Link
+                  onClick={() => this.setState({ burgerOpened: false })}
+                  to="/"
+                  key="tab-home"
+                  className="navbar-tab"
+                >
+                  <span>{getString("home")}</span>
+                </Link>
+                {navBarTabs.map((tab: NavBarTab, index: number) => {
+                  return !tab.external ? (
+                    <Link
+                      onClick={() => this.setState({ burgerOpened: false })}
+                      to={tab.href}
+                      key={"tab-" + index}
+                      className="navbar-tab"
+                    >
+                      <span>{tab.name}</span>
+                    </Link>
+                  ) : (
+                    <a
+                      onClick={() => this.setState({ burgerOpened: false })}
+                      key={index}
+                      href={tab.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="navbar-tab"
+                    >
+                      <span>{tab.name}</span>
+                    </a>
+                  );
+                })}
+                <a href={supportServerInvite} className="navbar-tab">
+                  {getString("join_support_server")}
+                </a>
+              </div>
+            </div>
+          </>
+        )}
         <div className="hamburger">
-          <div>
+          <div onClick={() => this.setState({ burgerOpened: true })}>
             <span></span>
             <span></span>
             <span></span>

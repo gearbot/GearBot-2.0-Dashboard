@@ -124,18 +124,39 @@ export class Documentation extends React.Component<
             <SectionsSelector paths={this.state.paths} />
           </div>
         ) : this.props.match.params.subsection ? (
-          <div>
-            <ReactMarkdown source={this.state.markdown} />
-          </div>
+          this.state.markdown && (
+            <div style={{ maxWidth: "100%" }}>
+              <ReactMarkdown source={this.state.markdown} />
+              <div style={{ width: "fit-content" }}>
+                <Link
+                  to={`/docs/${this.props.match.params.section}`}
+                  className="button primary"
+                  style={{ marginBottom: 30 }}
+                >
+                  <span style={{ margin: "auto" }}>Back</span>
+                </Link>
+              </div>
+            </div>
+          )
         ) : (
-          <div className="center">
-            <h1 className="title full-width">
+          <div
+            className="center"
+            style={{ display: "flex", flexDirection: "column" }}
+          >
+            <h1 className="title full-width" style={{ marginTop: 30 }}>
               {this.props.match.params.section}
             </h1>
             <SubsectionSelector
               paths={this.state.paths}
               selectedSection={this.props.match.params.section}
             />
+            <Link
+              to={`/docs`}
+              className="button"
+              style={{ margin: "auto", marginBottom: 30 }}
+            >
+              <span style={{ margin: "auto" }}>Back</span>
+            </Link>
           </div>
         )}
       </div>

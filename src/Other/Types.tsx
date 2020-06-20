@@ -14,3 +14,9 @@ export type GearRoute = {
   path: string;
   component: typeof React.Component;
 };
+
+export type FooterLink = {
+  external: boolean;
+  href: string;
+  name: string;
+};

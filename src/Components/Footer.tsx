@@ -2,9 +2,15 @@
 
 import React from "react";
 import { getSVGPath } from "../Other/Utils";
-import { navBarMobileThreshold, supportServerInvite } from "../Other/Constants";
+import {
+  navBarMobileThreshold,
+  supportServerInvite,
+  footerLinks,
+} from "../Other/Constants";
 import { getString } from "../Language/LanguageHandler";
 import { Grid } from "./Grid";
+import { FooterLink } from "../Other/Types";
+import { Link } from "react-router-dom";
 
 type FooterDesktopProps = {};
 
@@ -24,9 +30,28 @@ export class FooterDesktop extends React.Component<
       <div className="footer-content">
         <div>
           <p className="footer-title">GearBot</p>
-          <p>{getString("add_gearbot")}</p>
-          <p>{getString("commands")}</p>
-          <p>{getString("faq")}</p>
+          <div className="footer-links">
+            {footerLinks.map((footerLink: FooterLink, index: number) => {
+              return footerLink.external ? (
+                <a
+                  key={"footer-link-" + index}
+                  href={footerLink.href}
+                  rel="noopener noreferrer"
+                  className="footer-link"
+                >
+                  {footerLink.name}
+                </a>
+              ) : (
+                <Link
+                  key={"footer-link-" + index}
+                  className="footer-link"
+                  to={footerLink.href}
+                >
+                  {footerLink.name}
+                </Link>
+              );
+            })}
+          </div>
           <div className="copyright-notice" style={{ marginTop: 40 }}>
             <span>
               {getString("copyright_notice", {
@@ -76,8 +101,40 @@ export class FooterMobile extends React.Component<
 
   render() {
     return (
-      <div>
-        <p>smol</p>
+      <div className="footer-content">
+        <div>
+          <p className="footer-title">GearBot</p>
+          <div className="footer-links">
+            {footerLinks.map((footerLink: FooterLink, index: number) => {
+              return footerLink.external ? (
+                <a
+                  key={"footer-link-" + index}
+                  href={footerLink.href}
+                  rel="noopener noreferrer"
+                  className="footer-link"
+                >
+                  {footerLink.name}
+                </a>
+              ) : (
+                <Link
+                  key={"footer-link-" + index}
+                  className="footer-link"
+                  to={footerLink.href}
+                >
+                  {footerLink.name}
+                </Link>
+              );
+            })}
+          </div>
+          <div className="copyright-notice" style={{ marginTop: 40 }}>
+            <span>
+              {getString("copyright_notice", {
+                year: new Date().getFullYear(),
+              })}
+            </span>
+            <span className="name">{getString("gearbot_team")}</span>
+          </div>
+        </div>
       </div>
     );
   }

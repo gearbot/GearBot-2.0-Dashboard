@@ -1,9 +1,10 @@
 /** @format */
 
-import { GearRoute } from "./Types";
+import { GearRoute, FooterLink } from "./Types";
 import Home from "../Pages/Home";
 import Commands from "../Pages/Commands";
 import { Documentation } from "../Pages/Documentation";
+import { getString } from "../Language/LanguageHandler";
 
 export const navBarMobileThreshold = 1100;
 
@@ -20,7 +21,7 @@ export const routes: GearRoute[] = [
   },
   {
     path: "/docs/:section/:subsection",
-    exact: false,
+    exact: true,
     component: Documentation,
   },
   {
@@ -37,5 +38,28 @@ export const routes: GearRoute[] = [
     path: "/docs/commands",
     exact: true,
     component: Commands,
+  },
+];
+
+export const footerLinks: FooterLink[] = [
+  {
+    external: false,
+    href: "/",
+    name: getString("home"),
+  },
+  {
+    external: true,
+    href: botInvite,
+    name: getString("add_gearbot"),
+  },
+  {
+    external: false,
+    href: "/commands",
+    name: getString("commands"),
+  },
+  {
+    external: false,
+    href: "/docs",
+    name: getString("documentation"),
   },
 ];
