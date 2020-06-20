@@ -53,6 +53,8 @@ export class SubsectionSelector extends React.Component<
 
   render() {
     if (this.props.paths === undefined) return <></>;
+    if (!this.props.paths[this.props.selectedSection])
+      return <h1>Doc section not found</h1>;
     return this.props.paths[this.props.selectedSection].map(
       (subsection: string, index: number) => {
         return (
@@ -103,18 +105,19 @@ export class Documentation extends React.Component<
             markdown: markdown,
           })
         );
-    } else {
-      fetch("/_documentation/paths.json")
-        .then((res) => res.json())
-        .then((json) => {
-          this.setState({
-            paths: json,
-          });
-        });
     }
+    fetch("/_documentation/paths.json")
+      .then((res) => res.json())
+      .then((json) => {
+        this.setState({
+          paths: json,
+        });
+      });
   }
 
   render() {
+    // sorry for the mess
+    // TODO: clean up
     return (
       <div className="page-docs">
         {!this.props.match?.params.section &&
@@ -126,16 +129,29 @@ export class Documentation extends React.Component<
         ) : this.props.match.params.subsection ? (
           this.state.markdown && (
             <div style={{ maxWidth: "100%" }}>
-              <ReactMarkdown source={this.state.markdown} />
-              <div style={{ width: "fit-content" }}>
-                <Link
-                  to={`/docs/${this.props.match.params.section}`}
-                  className="button primary"
-                  style={{ marginBottom: 30 }}
-                >
-                  <span style={{ margin: "auto" }}>Back</span>
-                </Link>
-              </div>
+              {this.state.paths &&
+              this.state.paths[this.props.match.params.section] ? (
+                this.state.paths[this.props.match.params.section].includes(
+                  this.props.match.params.subsection
+                ) ? (
+                  <>
+                    <ReactMarkdown source={this.state.markdown} />
+                    <div style={{ width: "fit-content" }}>
+                      <Link
+                        to={`/docs/${this.props.match.params.section}`}
+                        className="button primary"
+                        style={{ marginBottom: 30 }}
+                      >
+                        <span style={{ margin: "auto" }}>Back</span>
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <h1>Doc not found.</h1>
+                )
+              ) : (
+                <h1>Doc section not found</h1>
+              )}
             </div>
           )
         ) : (
