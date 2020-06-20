@@ -1,11 +1,12 @@
 {
   "Initial setup": [
     "Adding GearBot",
-    "Configuring permissions"
+    "Configuring the prefix",
+    "Configuring permissions",
+    "Setting up logging"
   ],
   "Setup": [
     "Adding GearBot",
-    "Configuring the Prefix",
     "Permissions Introduction",
     "Setting a Language",
     "Configuring Roles",

@@ -9,7 +9,7 @@ Anyways, here's the command, just replace `<prefix>` with what you want GearBot 
 !configure prefix <prefix>
 ```
 
-If you changed GearBots prefix please replace `!` with the new prefix in further commands, for this guide all of the commands will be using my default prefix.
+If you changed GearBots prefix please replace `!` with the new prefix in further commands, for this guide all the commands will be using my default prefix.
 
 Don't remember GearBot's prefix? No problem, he can tell you what it is if you don't give him a new one:
 
