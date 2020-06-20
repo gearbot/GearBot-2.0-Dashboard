@@ -31,6 +31,11 @@ const navBarTabs: NavBarTab[] = [
     external: false,
     href: "/docs",
   },
+  {
+    name: getString("commands"),
+    external: false,
+    href: "/commands",
+  },
 ];
 
 type DesktopNavBarProps = {
@@ -140,7 +145,11 @@ export class MobileNavBar extends React.Component<
                 className="hamburger"
                 onClick={() => this.setState({ burgerOpened: false })}
               >
-                <img src={getSVGPath("cross")} style={{ color: "red" }} />
+                <img
+                  src={getSVGPath("cross")}
+                  alt="close"
+                  style={{ color: "red" }}
+                />
               </div>
               <div className="burger-content">
                 <Link

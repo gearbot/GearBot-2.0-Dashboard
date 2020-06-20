@@ -15,6 +15,9 @@ $darker: #191b1f;
 $not-quite-black: #0f1012;
 $alert: #fe4d4d;
 
+// etc
+$table-radius: 5px;
+
 * {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
@@ -377,6 +380,13 @@ body {
   color: $alert;
 }
 
+li {
+  margin: 5px 0;
+  p {
+    margin: 0;
+  }
+}
+
 table,
 th,
 td {
@@ -384,10 +394,17 @@ td {
   border-spacing: 0;
 }
 
+.commands-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: $table-radius;
+}
+
 table {
+  overflow-x: auto;
   width: 100%;
   background: $darker;
-  border-radius: 5px;
+  border-radius: $table-radius;
   thead {
     tr {
       border-spacing: 0;

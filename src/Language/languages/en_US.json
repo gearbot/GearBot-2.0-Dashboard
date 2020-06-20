@@ -13,5 +13,11 @@
   "profile_dropdown_report_bug": "Report Bug",
   "profile_dropdown_feedback": "Feedback",
   "profile_dropdown_log_out": "Log Out",
-  "join_support_server": "Join the Support Server"
+  "join_support_server": "Join the Support Server",
+  "command": "Command",
+  "aliases": "Aliases",
+  "permission_level": "Permission Level",
+  "description": "Description",
+  "example": "Example",
+  "no_aliases": "No aliases"
 }

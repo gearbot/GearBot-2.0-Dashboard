@@ -13,6 +13,16 @@ export const botInvite =
 
 export const supportServerInvite = "https://discord.gg/EKautd5";
 
+export const permissionLevels: string[] = [
+  "Public",
+  "Trusted",
+  "Mod",
+  "Admin",
+  "Specific People",
+  "Server Owner",
+  "Disabled",
+];
+
 export const routes: GearRoute[] = [
   {
     path: "/",
@@ -35,7 +45,7 @@ export const routes: GearRoute[] = [
     component: Documentation,
   },
   {
-    path: "/docs/commands",
+    path: "/commands",
     exact: true,
     component: Commands,
   },

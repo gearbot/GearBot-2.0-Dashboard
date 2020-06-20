@@ -35,6 +35,11 @@ export function getString(
   return str;
 }
 
+export function getCommandDescription(key: string) {
+  // TODO: Implement
+  return key;
+}
+
 export function getCurrentLanguage() {
   return window.localStorage.getItem("language") ?? "en_US";
 }

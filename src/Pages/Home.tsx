@@ -35,7 +35,7 @@ class ShowOffDesktop extends React.Component<
               <a className="button primary" href={botInvite}>
                 <span>{getString("add_gearbot")}</span>
               </a>
-              <Link to="/docs/commands" className="button">
+              <Link to="/commands" className="button">
                 <span>{getString("view_commands")}</span>
               </Link>
             </GridRow>
@@ -71,7 +71,7 @@ class ShowOffMobile extends React.Component<
           <a className="button primary" href={botInvite}>
             <span>{getString("add_gearbot")}</span>
           </a>
-          <Link to="/docs/commands" className="button">
+          <Link to="/commands" className="button">
             <span>{getString("view_commands")}</span>
           </Link>
         </Grid>

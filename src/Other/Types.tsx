@@ -20,3 +20,11 @@ export type FooterLink = {
   href: string;
   name: string;
 };
+
+export type Command = {
+  aliases: string[];
+  commandlevel: number;
+  description: string;
+  example: string;
+  subcommands: { [key: string]: Command };
+};
