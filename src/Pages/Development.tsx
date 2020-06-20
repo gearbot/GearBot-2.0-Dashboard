@@ -9,6 +9,7 @@ import LogEntryComponent from "../Components/LogEntryComponent";
 import React from "react";
 import { LogEntry, DiscordUser, DiscordGuild } from "../Other/Types";
 import Guild from "../Components/Guild";
+import GuildSelector from "../Components/GuildSelector";
 import { GridRow } from "../Components/GridRow";
 
 const dummyUsers: DiscordUser[] = [
@@ -54,7 +55,9 @@ const dummyLogEntries: LogEntry[] = [
   },
 ];
 
-type DevelopmentProps = {};
+type DevelopmentProps = {
+  pageWidth: number;
+};
 
 type DevelopmentState = {};
 
@@ -82,6 +85,32 @@ export default class Development extends React.Component<
             <Guild guild={dummyGuild2} />
           </GridRow>
         </div>
+        <Grid gap={20} style={{ marginTop: 20 }}>
+          <GuildSelector title="Title Test" pageWidth={this.props.pageWidth}>
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+          </GuildSelector>
+          <GuildSelector title="Title Test 2" pageWidth={this.props.pageWidth}>
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+            <Guild guild={dummyGuild} />
+            <Guild guild={dummyGuild2} />
+          </GuildSelector>
+        </Grid>
       </div>
     );
   }

@@ -2,6 +2,7 @@
 
 // sizes
 $navbar-height: 70px;
+// WARNING: do not change value without changing the value in GuildSelector.tsx, too!
 $footer-and-navbar-content-width: 60%;
 $footer-height: 280px;
 $scrollbar-width: 5px;
@@ -10,6 +11,7 @@ $log-entry-height: 80px;
 $log-entry-icon-size: 40px;
 
 $user-small-avatar-size: 16px;
+$guild-height: 166px;
 
 // colors
 $accent: #fecb4d;
@@ -480,6 +482,70 @@ a.button {
   width: 100%;
   margin-bottom: 30px;
 }
+.guild-selector {
+  width: 100%;
+  .selector-title {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .selector-control {
+    background: $darker;
+    border-radius: 5px;
+    box-shadow: $box-shadow;
+    display: flex;
+    place-content: center;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .guilds {
+    $gap: 20px;
+    width: 100%;
+    height: $guild-height;
+    position: relative;
+    display: inline-flex;
+    &.non-zero-index {
+      .guild:not(:nth-child(2)) {
+        // WARNING: do not change value without changing the value in GuildSelector.tsx, too!
+        margin-left: $gap;
+      }
+    }
+    &:not(.non-zero-index) {
+      .guild:not(:first-child) {
+        // WARNING: do not change value without changing the value in GuildSelector.tsx, too!
+        margin-left: $gap;
+      }
+    }
+    .faded-guild {
+      $width: 65px;
+      position: relative;
+      &.f1 {
+        div {
+          right: $gap;
+          background: linear-gradient(-270deg, #2c2f36 0%, #191b1f 100%);
+        }
+      }
+      &.f2 {
+        margin-left: $gap;
+        div {
+          background: linear-gradient(270deg, #2c2f36 0%, #191b1f 100%);
+        }
+      }
+      div {
+        position: absolute;
+        height: 100%;
+        background: $darker;
+        border-radius: 5px;
+        box-shadow: $box-shadow;
+        width: $width;
+      }
+    }
+  }
+}
 
 .log-entry {
   background: $darker;
@@ -566,18 +632,19 @@ a.button {
   background: $darker;
   border-radius: 5px;
   box-shadow: $box-shadow;
+  // WARNING: do not change value without changing the value in GuildSelector.tsx, too!
   width: 182px;
-  height: 166px;
+  height: $guild-height;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   place-content: center;
   align-items: center;
   flex-direction: column;
-  transition: 0.2s;
   cursor: pointer;
   user-select: none;
   &:hover {
+    transition: 0.2s;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
     transform: translateY(-10px);
   }
