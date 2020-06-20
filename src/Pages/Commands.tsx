@@ -17,7 +17,7 @@ function renderCommand(commandName: string, command: Command) {
         {permissionLevels[command.commandlevel]} ({command.commandlevel})
       </td>
       <td style={{ wordWrap: "break-word", maxWidth: "30em" }}>
-        <p>{getCommandDescription(command.description)}</p>
+        {getCommandDescription(command.description)}
       </td>
       <td>{command.example}</td>
     </tr>
