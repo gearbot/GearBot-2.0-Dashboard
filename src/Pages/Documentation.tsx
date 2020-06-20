@@ -3,6 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { getString } from "../Language/LanguageHandler";
 
 type SectionsSelectorProps = {
   paths?: { [key: string]: string[] };
@@ -123,7 +124,7 @@ export class Documentation extends React.Component<
         {!this.props.match?.params.section &&
         !this.props.match?.params.subsection ? (
           <div className="center">
-            <h1 className="title full-width">Documentation</h1>
+            <h1 className="title full-width">{getString("documentation")}</h1>
             <SectionsSelector paths={this.state.paths} />
           </div>
         ) : this.props.match.params.subsection ? (
@@ -142,15 +143,17 @@ export class Documentation extends React.Component<
                         className="button primary"
                         style={{ marginBottom: 30 }}
                       >
-                        <span style={{ margin: "auto" }}>Back</span>
+                        <span style={{ margin: "auto" }}>
+                          {getString("back")}
+                        </span>
                       </Link>
                     </div>
                   </>
                 ) : (
-                  <h1>Doc not found.</h1>
+                  <h1>{getString("doc_not_found")}</h1>
                 )
               ) : (
-                <h1>Doc section not found</h1>
+                <h1>{getString("doc_section_not_found")}</h1>
               )}
             </div>
           )
@@ -171,7 +174,7 @@ export class Documentation extends React.Component<
               className="button"
               style={{ margin: "auto", marginBottom: 30 }}
             >
-              <span style={{ margin: "auto" }}>Back</span>
+              <span style={{ margin: "auto" }}>{getString("back")}</span>
             </Link>
           </div>
         )}

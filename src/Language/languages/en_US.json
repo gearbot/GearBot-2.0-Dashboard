@@ -20,6 +20,9 @@
   "description": "Description",
   "example": "Example",
   "no_aliases": "No aliases",
+  "back": "Back",
+  "doc_not_found": "Doc not found",
+  "doc_section_not_found": "Doc section not found",
 
   "ping_help": "See if the bot is still online.",
   "quote_help": "Quotes the requested message.",
