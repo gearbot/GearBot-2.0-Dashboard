@@ -48,6 +48,45 @@
         "twitter": "TristanAtFarkas",
         "personalSite": "https://www.tristanfarkas.se/"
       }
+    },
+    "267025484028706816": {
+      "username": "Vanished",
+      "discriminator": "2555",
+      "id": "267025484028706816",
+      "avatar": "1f027ab8b4285508074fe1a3cdfe545b",
+      "socials": {
+        "github": "vanishedvan",
+        "twitter": "vanishedvan"
+      }
+    },
+    "182226567043219456": {
+      "username": "Tarek",
+      "discriminator": "1337",
+      "id": "182226567043219456",
+      "avatar": "cc97d72d834660ab1b1dcd62945b3da0",
+      "socials": {
+        "github": "Taarek",
+        "twitter": "Tarek1337_"
+      }
+    },
+    "298618155281154058": {
+      "username": "Ghoul",
+      "discriminator": "0009",
+      "id": "298618155281154058",
+      "avatar": "a_b6ec7e38f89bd0c9f763fc1f604a4a11",
+      "socials": {
+        "github": "Kitty-Therapist"
+      }
+    },
+    "117791909786812423": {
+      "username": "mrkirby153",
+      "discriminator": "7840",
+      "id": "117791909786812423",
+      "avatar": "8fb9cda785e9dde40895b896fb8f4959",
+      "socials": {
+        "github": "mrkirby153",
+        "twitter": "mrkirby153"
+      }
     }
   },
   "teams": {
@@ -61,7 +100,10 @@
     "Contributors": {
       "description": "These people helped to make GearBot even better.",
       "members": [
-        "128181551472050176"
+        "128181551472050176",
+        "182226567043219456",
+        "298618155281154058",
+        "117791909786812423"
       ]
     },
     "Website Team": {
@@ -74,6 +116,12 @@
       "description": "Made the amazing design for this website.",
       "members": [
         "82993510503944192"
+      ]
+    },
+    "Emoji Design": {
+      "description": "People who made the amazing emoji GearBot uses.",
+      "members": [
+        "267025484028706816"
       ]
     }
   }
