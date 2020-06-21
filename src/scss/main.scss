@@ -555,6 +555,7 @@ a.button {
   display: inline-flex;
   cursor: pointer;
   border-radius: 5px;
+  user-select: none;
   &.expanded {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -578,8 +579,12 @@ a.button {
     line-height: $user-small-avatar-size;
     font-size: 14px;
     display: flex;
-    .name {
-      margin: 0 5px;
+    $text-margin: 5px;
+    .text:not(:first-child) {
+      margin-left: $text-margin;
+    }
+    .text {
+      margin-right: $text-margin;
     }
   }
   .reason {
@@ -599,6 +604,7 @@ a.button {
   .item-name {
     color: $grey-text;
     margin-right: 8px;
+    user-select: none;
   }
   .item {
     color: $white;

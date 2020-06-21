@@ -1,9 +1,10 @@
 import React from "react";
 import { LogEntry } from "../Other/Types";
-import { getSVGPath } from "../Other/Utils";
+import { getSVGPath, formatWithElements } from "../Other/Utils";
 import SmallUser from "./SmallUser";
 import Grid from "./Grid";
 import { GridRow } from "./GridRow";
+import { getString } from "../Language/LanguageHandler";
 
 type LogEntryInformationProps = {
   tagName: string;
@@ -17,7 +18,12 @@ class LogEntryInformation extends React.Component<
   render() {
     return (
       <div>
-        <img alt="" style={{ marginRight: 20 }} src={getSVGPath("arrow")} />
+        <img
+          alt=""
+          style={{ marginRight: 20, userSelect: "none" }}
+          src={getSVGPath("arrow")}
+          draggable={false}
+        />
         <span className="item-name">{this.props.tagName}</span>
         <span className="item">{this.props.tag}</span>
       </div>
@@ -73,9 +79,15 @@ export default class LogEntryComponent extends React.Component<
                 gap={4}
               >
                 <div className="action">
-                  <SmallUser user={this.props.logEntry.author} />
-                  <span className="name"> banned </span>
-                  <SmallUser user={this.props.logEntry.target} />
+                  {formatWithElements(
+                    {
+                      author: <SmallUser user={this.props.logEntry.author} />,
+                      target: <SmallUser user={this.props.logEntry.target} />,
+                    },
+                    getString(
+                      `action_${this.props.logEntry.logType.toLowerCase()}`
+                    )
+                  )}
                 </div>
                 <div className="reason">
                   <span>{this.props.logEntry.reason}</span>
@@ -85,6 +97,7 @@ export default class LogEntryComponent extends React.Component<
             <img
               alt={!this.state.expanded ? "open" : "close"}
               className="log-hamburger"
+              draggable={false}
               src={getSVGPath(!this.state.expanded ? "hamburger" : "collapse")}
             />
           </GridRow>
