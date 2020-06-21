@@ -43,7 +43,11 @@ export default class UserCard extends React.Component<
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img className="social" src={getSVGPath("github")} />
+                <img
+                  className="social"
+                  src={getSVGPath("github")}
+                  draggable={false}
+                />
               </a>
             )}
             {this.props.user.socials.twitter && (
@@ -52,7 +56,11 @@ export default class UserCard extends React.Component<
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img className="social" src={getSVGPath("twitter")} />
+                <img
+                  className="social"
+                  src={getSVGPath("twitter")}
+                  draggable={false}
+                />
               </a>
             )}
             {this.props.user.socials.personalSite && (
@@ -61,7 +69,11 @@ export default class UserCard extends React.Component<
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img className="social" src={getSVGPath("globe")} />
+                <img
+                  className="social"
+                  src={getSVGPath("globe")}
+                  draggable={false}
+                />
               </a>
             )}
           </GridRow>
