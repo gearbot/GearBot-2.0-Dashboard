@@ -1,5 +1,4 @@
 import React from "react";
-import { DiscordGuild } from "../Other/Types";
 import Grid from "./Grid";
 import { GridRow } from "./GridRow";
 import { getSVGPath } from "../Other/Utils";
@@ -17,6 +16,7 @@ type GuildSelectorState = {
 const guildGap = 20;
 const guildWidth = 182;
 const pageWidthPercentage = 60;
+const fadedGuildWidth = 60;
 
 export default class GuildSelector extends React.Component<
   GuildSelectorProps,
@@ -31,10 +31,22 @@ export default class GuildSelector extends React.Component<
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
   }
+  // I am SO terribly sorry for this code. Improvements are welcome.
   calculateMaxGuildsOnScreen() {
-    return Math.floor(
+    let calculationWithoutFaders =
       ((pageWidthPercentage / 100) * this.props.pageWidth) /
-        (guildGap + guildWidth)
+      (guildGap + guildWidth);
+    let isSecondFaderVisible =
+      React.Children.count(this.props.children) - calculationWithoutFaders !==
+      this.state.index;
+    let fadedGuildFactor: number;
+    if (this.state.index > 0 && isSecondFaderVisible) fadedGuildFactor = 2;
+    else fadedGuildFactor = 1;
+    return Math.floor(
+      ((pageWidthPercentage / 100) * this.props.pageWidth +
+        (fadedGuildWidth + guildGap) * fadedGuildFactor) /
+        (guildGap + guildWidth) -
+        1
     );
   }
   showSlice() {
@@ -67,25 +79,38 @@ export default class GuildSelector extends React.Component<
     });
   }
   render() {
-    console.log(
+    let hasNext =
       React.Children.count(this.props.children) -
-        this.calculateMaxGuildsOnScreen()
-    );
-    console.log("i", this.state.index);
+        this.calculateMaxGuildsOnScreen() !==
+      this.state.index;
     return (
       <Grid gap={8} className="guild-selector">
         <GridRow cell_override="1fr auto">
           <h3 className="selector-title">{this.props.title}</h3>
           <GridRow cells={2} gap={8}>
-            <div className="selector-control" onClick={this.previous}>
-              <img src={getSVGPath("previous")} draggable={false} />
+            <div
+              className="selector-control"
+              onClick={this.previous}
+              style={{
+                cursor: this.state.index === 0 ? "not-allowed" : undefined,
+              }}
+            >
+              <img
+                src={getSVGPath(
+                  "previous" + (this.state.index === 0 ? "-disabled" : "")
+                )}
+                draggable={false}
+              />
             </div>
             <div
               className="selector-control"
               draggable={false}
               onClick={this.next}
+              style={{
+                cursor: !hasNext ? "not-allowed" : undefined,
+              }}
             >
-              <img src={getSVGPath("next")} />
+              <img src={getSVGPath("next" + (!hasNext ? "-disabled" : ""))} />
             </div>
           </GridRow>
         </GridRow>
@@ -98,9 +123,7 @@ export default class GuildSelector extends React.Component<
             </div>
           )}
           {this.showSlice()}
-          {React.Children.count(this.props.children) -
-            this.calculateMaxGuildsOnScreen() !==
-            this.state.index && (
+          {hasNext && (
             <div className="faded-guild f2">
               <div />
             </div>

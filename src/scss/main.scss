@@ -503,6 +503,7 @@ a.button {
     user-select: none;
   }
   .guilds {
+    // WARNING: do not change value without changing the value in GuildSelector.tsx, too!
     $gap: 20px;
     width: 100%;
     height: $guild-height;
@@ -510,29 +511,29 @@ a.button {
     display: inline-flex;
     &.non-zero-index {
       .guild:not(:nth-child(2)) {
-        // WARNING: do not change value without changing the value in GuildSelector.tsx, too!
         margin-left: $gap;
       }
     }
     &:not(.non-zero-index) {
       .guild:not(:first-child) {
-        // WARNING: do not change value without changing the value in GuildSelector.tsx, too!
         margin-left: $gap;
       }
     }
     .faded-guild {
-      $width: 65px;
+      // WARNING: do not change value without changing the value in GuildSelector.tsx, too!
+      $faded-guild-width: 60px;
+      width: $faded-guild-width;
       position: relative;
       &.f1 {
         div {
           right: $gap;
-          background: linear-gradient(-270deg, #2c2f36 0%, #191b1f 100%);
+          background: linear-gradient(-270deg, #00000000 0%, $darker 100%);
         }
       }
       &.f2 {
         margin-left: $gap;
         div {
-          background: linear-gradient(270deg, #2c2f36 0%, #191b1f 100%);
+          background: linear-gradient(270deg, #00000000 0%, $darker 100%);
         }
       }
       div {
@@ -541,7 +542,7 @@ a.button {
         background: $darker;
         border-radius: 5px;
         box-shadow: $box-shadow;
-        width: $width;
+        width: $faded-guild-width;
       }
     }
   }
