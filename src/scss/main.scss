@@ -37,6 +37,7 @@ body,
 #root,
 .main {
   height: 100%;
+  overflow-y: hidden;
 }
 
 * {
@@ -74,8 +75,11 @@ a {
 }
 
 .main-scroller {
+  position: absolute;
+  top: $navbar-height;
+  width: 100%;
   overflow: auto;
-  height: 100%;
+  height: calc(100% - #{$navbar-height});
 }
 
 body {
@@ -214,8 +218,8 @@ body {
   width: $footer-and-navbar-content-width;
   margin-left: auto;
   margin-right: auto;
-  min-height: calc(100% - #{$footer-height} - #{$navbar-height});
-  margin-top: $navbar-height;
+  min-height: calc(100% - #{$footer-height});
+  //margin-top: $navbar-height;
   display: flex;
 }
 
