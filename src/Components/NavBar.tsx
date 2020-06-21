@@ -7,36 +7,12 @@ import {
   navBarMobileThreshold,
   botInvite,
   supportServerInvite,
+  navBarTabs,
 } from "../Other/Constants";
 import { getSVGPath } from "../Other/Utils";
 import { Link } from "react-router-dom";
 import { getString } from "../Language/LanguageHandler";
-import { DiscordUser } from "../Other/Types";
-
-type NavBarTab = {
-  name: string;
-  external?: boolean;
-  admin_only?: boolean;
-  href: string;
-};
-
-const navBarTabs: NavBarTab[] = [
-  {
-    name: getString("add_gearbot"),
-    external: true,
-    href: botInvite,
-  },
-  {
-    name: getString("documentation"),
-    external: false,
-    href: "/docs",
-  },
-  {
-    name: getString("commands"),
-    external: false,
-    href: "/commands",
-  },
-];
+import { DiscordUser, NavBarTab } from "../Other/Types";
 
 type DesktopNavBarProps = {
   user?: DiscordUser;

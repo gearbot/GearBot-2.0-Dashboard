@@ -9,7 +9,7 @@ import LogEntryComponent from "../Components/LogEntryComponent";
 import React from "react";
 import { LogEntry, DiscordUser, DiscordGuild } from "../Other/Types";
 import Guild from "../Components/Guild";
-import GuildSelector from "../Components/GuildSelector";
+import Selector from "../Components/Selector";
 import { GridRow } from "../Components/GridRow";
 
 const dummyUsers: DiscordUser[] = [
@@ -86,7 +86,7 @@ export default class Development extends React.Component<
           </GridRow>
         </div>
         <Grid gap={20} style={{ marginTop: 20 }}>
-          <GuildSelector title="Title Test" pageWidth={this.props.pageWidth}>
+          <Selector title="Title Test" pageWidth={this.props.pageWidth}>
             <Guild guild={dummyGuild} />
             <Guild guild={dummyGuild2} />
             <Guild guild={dummyGuild} />
@@ -97,8 +97,8 @@ export default class Development extends React.Component<
             <Guild guild={dummyGuild2} />
             <Guild guild={dummyGuild} />
             <Guild guild={dummyGuild2} />
-          </GuildSelector>
-          <GuildSelector title="Title Test 2" pageWidth={this.props.pageWidth}>
+          </Selector>
+          <Selector title="Title Test 2" pageWidth={this.props.pageWidth}>
             <Guild guild={dummyGuild} />
             <Guild guild={dummyGuild2} />
             <Guild guild={dummyGuild} />
@@ -109,7 +109,7 @@ export default class Development extends React.Component<
             <Guild guild={dummyGuild2} />
             <Guild guild={dummyGuild} />
             <Guild guild={dummyGuild2} />
-          </GuildSelector>
+          </Selector>
         </Grid>
       </div>
     );

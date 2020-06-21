@@ -1,0 +1,28 @@
+{
+  "users": {
+    "132819036282159104": {
+      "username": "JohnyTheCarrot",
+      "discriminator": "0001",
+      "id": "132819036282159104",
+      "avatar": "cd1027e339b0e0a1001fd84cf7e3be13",
+      "socials": {
+        "github": "JohnyTheCarrot",
+        "twitter": "JohnyTheCarrot"
+      }
+    },
+    "106354106196570112": {
+      "username": "AEnterprise",
+      "discriminator": "4693",
+      "id": "106354106196570112",
+      "avatar": "a_830b0d2082e9b84d00816eae9324d29e",
+      "socials": {
+        "github": "AEnterprise",
+        "twitter": "AEnterprise1"
+      }
+    }
+  },
+  "teams": {
+    "Core Team": ["106354106196570112"],
+    "Dashboard Team": ["132819036282159104"]
+  }
+}

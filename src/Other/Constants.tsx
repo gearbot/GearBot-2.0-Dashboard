@@ -1,9 +1,10 @@
 /** @format */
 
-import { GearRoute, FooterLink } from "./Types";
+import { GearRoute, FooterLink, NavBarTab } from "./Types";
 import Home from "../Pages/Home";
 import Commands from "../Pages/Commands";
 import Development from "../Pages/Development";
+import MeetTheTeam from "../Pages/MeetTheTeam";
 import { Documentation } from "../Pages/Documentation";
 import { getString } from "../Language/LanguageHandler";
 
@@ -22,6 +23,29 @@ export const permissionLevels: string[] = [
   "Specific People",
   "Server Owner",
   "Disabled",
+];
+
+export const navBarTabs: NavBarTab[] = [
+  {
+    name: getString("add_gearbot"),
+    external: true,
+    href: botInvite,
+  },
+  {
+    name: getString("documentation"),
+    external: false,
+    href: "/docs",
+  },
+  {
+    name: getString("commands"),
+    external: false,
+    href: "/commands",
+  },
+  {
+    name: getString("meet_the_team"),
+    external: false,
+    href: "/team",
+  },
 ];
 
 export const routes: GearRoute[] = [
@@ -49,6 +73,11 @@ export const routes: GearRoute[] = [
     path: "/commands",
     exact: true,
     component: Commands,
+  },
+  {
+    path: "/team",
+    exact: true,
+    component: MeetTheTeam,
   },
   {
     path: "/__development",

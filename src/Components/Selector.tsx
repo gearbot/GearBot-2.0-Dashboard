@@ -3,12 +3,12 @@ import Grid from "./Grid";
 import { GridRow } from "./GridRow";
 import { getSVGPath } from "../Other/Utils";
 
-type GuildSelectorProps = {
+type SelectorProps = {
   title: string;
   pageWidth: number;
 };
 
-type GuildSelectorState = {
+type SelectorState = {
   index: number;
 };
 
@@ -18,11 +18,11 @@ const guildWidth = 182;
 const pageWidthPercentage = 60;
 const fadedGuildWidth = 60;
 
-export default class GuildSelector extends React.Component<
-  GuildSelectorProps,
-  GuildSelectorState
+export default class Selector extends React.Component<
+  SelectorProps,
+  SelectorState
 > {
-  constructor(props: GuildSelectorProps) {
+  constructor(props: SelectorProps) {
     super(props);
     this.state = {
       index: 0,
@@ -32,7 +32,7 @@ export default class GuildSelector extends React.Component<
     this.next = this.next.bind(this);
   }
 
-  calculateMaxGuildsOnScreen() {
+  calculateMaxItemsOnScreen() {
     const pageWidth = () => (pageWidthPercentage / 100) * this.props.pageWidth;
 
     const offset = () => guildGap + guildWidth;
@@ -62,7 +62,7 @@ export default class GuildSelector extends React.Component<
     return React.Children.map(children, (child, index: number) => {
       if (
         index >= this.state.index &&
-        index - this.state.index < this.calculateMaxGuildsOnScreen()
+        index - this.state.index < this.calculateMaxItemsOnScreen()
       )
         return child;
       else return undefined;
@@ -79,7 +79,7 @@ export default class GuildSelector extends React.Component<
     if (
       newIndex ===
       React.Children.count(this.props.children) -
-        this.calculateMaxGuildsOnScreen()
+        this.calculateMaxItemsOnScreen()
     )
       return;
     this.setState({
@@ -89,10 +89,10 @@ export default class GuildSelector extends React.Component<
   render() {
     let hasNext =
       React.Children.count(this.props.children) -
-        this.calculateMaxGuildsOnScreen() !==
+        this.calculateMaxItemsOnScreen() !==
       this.state.index;
     return (
-      <Grid gap={8} className="guild-selector">
+      <Grid gap={8} className="selector">
         <GridRow cell_override="1fr auto">
           <h3 className="selector-title">{this.props.title}</h3>
           <GridRow cells={2} gap={8}>
@@ -123,16 +123,16 @@ export default class GuildSelector extends React.Component<
           </GridRow>
         </GridRow>
         <div
-          className={"guilds" + (this.state.index > 0 ? " non-zero-index" : "")}
+          className={"items" + (this.state.index > 0 ? " non-zero-index" : "")}
         >
           {this.state.index !== 0 && (
-            <div className="faded-guild f1">
+            <div className="faded-item f1">
               <div />
             </div>
           )}
           {this.showSlice()}
           {hasNext && (
-            <div className="faded-guild f2">
+            <div className="faded-item f2">
               <div />
             </div>
           )}

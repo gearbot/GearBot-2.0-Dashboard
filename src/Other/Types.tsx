@@ -9,11 +9,26 @@ export type DiscordUser = {
   avatar: string;
 };
 
+export interface GearTeamMember extends DiscordUser {
+  socials: {
+    github?: string;
+    twitter?: string;
+    personalSite?: string;
+  };
+}
+
 export type DiscordGuild = {
   name: string;
   owner: DiscordUser;
   id: string;
   icon?: string;
+};
+
+export type NavBarTab = {
+  name: string;
+  external?: boolean;
+  admin_only?: boolean;
+  href: string;
 };
 
 export type GearRoute = {
