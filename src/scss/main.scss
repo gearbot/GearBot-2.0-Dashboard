@@ -279,6 +279,7 @@ body {
     padding: 10px;
     border-radius: 9px;
     cursor: pointer;
+    box-shadow: $box-shadow;
   }
   .doc-section:not(:last-child) {
     margin-bottom: 10px;

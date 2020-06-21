@@ -16,12 +16,14 @@ type AppState = {
 };
 
 export class App extends React.Component<AppProps, AppState> {
+  scrollerRef: React.RefObject<HTMLDivElement>;
   constructor(props: AppProps) {
     super(props);
     this.state = {
       width: 0,
       height: 0,
     };
+    this.scrollerRef = React.createRef();
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -49,8 +51,11 @@ export class App extends React.Component<AppProps, AppState> {
     return (
       <Router>
         <div className="main">
-          <NavBar pageWidth={this.state.width} />
-          <div className="main-scroller">
+          <NavBar
+            pageWidth={this.state.width}
+            scroller={this.scrollerRef.current!!}
+          />
+          <div className="main-scroller" ref={this.scrollerRef}>
             <div className="page">
               {routes.map((route: GearRoute, index: number) => {
                 return (
@@ -65,7 +70,10 @@ export class App extends React.Component<AppProps, AppState> {
                 );
               })}
             </div>
-            <Footer pageWidth={this.state.width} />
+            <Footer
+              pageWidth={this.state.width}
+              scroller={this.scrollerRef.current!!}
+            />
           </div>
         </div>
       </Router>

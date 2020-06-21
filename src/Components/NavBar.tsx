@@ -16,6 +16,7 @@ import { DiscordUser, NavBarTab } from "../Other/Types";
 
 type DesktopNavBarProps = {
   user?: DiscordUser;
+  scroller: HTMLDivElement;
 };
 
 type DesktopNavBarState = {};
@@ -49,7 +50,12 @@ export class DesktopNavBar extends React.Component<
           </Link>
           {navBarTabs.map((tab: NavBarTab, index: number) => {
             return !tab.external ? (
-              <Link to={tab.href} key={"tab-" + index} className="navbar-tab">
+              <Link
+                to={tab.href}
+                key={"tab-" + index}
+                className="navbar-tab"
+                onClick={() => (this.props.scroller.scrollTop = 0)}
+              >
                 <span>{tab.name}</span>
               </Link>
             ) : (
@@ -59,6 +65,7 @@ export class DesktopNavBar extends React.Component<
                 target="_blank"
                 rel="noopener noreferrer"
                 className="navbar-tab"
+                onClick={() => (this.props.scroller.scrollTop = 0)}
               >
                 <span>{tab.name}</span>
               </a>
@@ -90,7 +97,9 @@ export class DesktopNavBar extends React.Component<
   }
 }
 
-type MobileNavBarProps = {};
+type MobileNavBarProps = {
+  scroller: HTMLDivElement;
+};
 
 type MobileNavBarState = {
   burgerOpened: boolean;
@@ -139,7 +148,10 @@ export class MobileNavBar extends React.Component<
                 {navBarTabs.map((tab: NavBarTab, index: number) => {
                   return !tab.external ? (
                     <Link
-                      onClick={() => this.setState({ burgerOpened: false })}
+                      onClick={() => {
+                        this.setState({ burgerOpened: false });
+                        this.props.scroller.scrollTop = 0;
+                      }}
                       to={tab.href}
                       key={"tab-" + index}
                       className="navbar-tab"
@@ -148,7 +160,10 @@ export class MobileNavBar extends React.Component<
                     </Link>
                   ) : (
                     <a
-                      onClick={() => this.setState({ burgerOpened: false })}
+                      onClick={() => {
+                        this.setState({ burgerOpened: false });
+                        this.props.scroller.scrollTop = 0;
+                      }}
                       key={index}
                       href={tab.href}
                       target="_blank"
@@ -188,6 +203,7 @@ export class MobileNavBar extends React.Component<
 type NavBarProps = {
   pageWidth: number;
   user?: DiscordUser;
+  scroller: HTMLDivElement;
 };
 
 type NavBarState = {};
@@ -202,9 +218,12 @@ export class NavBar extends React.Component<NavBarProps, NavBarState> {
     return (
       <div className="page-header">
         {this.props.pageWidth > navBarMobileThreshold ? (
-          <DesktopNavBar user={this.props.user} />
+          <DesktopNavBar
+            user={this.props.user}
+            scroller={this.props.scroller}
+          />
         ) : (
-          <MobileNavBar />
+          <MobileNavBar scroller={this.props.scroller} />
         )}
       </div>
     );

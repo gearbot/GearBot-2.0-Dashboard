@@ -12,7 +12,9 @@ import Grid from "./Grid";
 import { FooterLink } from "../Other/Types";
 import { Link } from "react-router-dom";
 
-type FooterDesktopProps = {};
+type FooterDesktopProps = {
+  scroller: HTMLDivElement;
+};
 
 type FooterDesktopState = {};
 
@@ -46,6 +48,7 @@ export class FooterDesktop extends React.Component<
                   key={"footer-link-" + index}
                   className="footer-link"
                   to={footerLink.href}
+                  onClick={() => (this.props.scroller.scrollTop = 0)}
                 >
                   {footerLink.name}
                 </Link>
@@ -86,7 +89,9 @@ export class FooterDesktop extends React.Component<
   }
 }
 
-type FooterMobileProps = {};
+type FooterMobileProps = {
+  scroller: HTMLDivElement;
+};
 
 type FooterMobileState = {};
 
@@ -112,6 +117,7 @@ export class FooterMobile extends React.Component<
                   href={footerLink.href}
                   rel="noopener noreferrer"
                   className="footer-link"
+                  onClick={() => (this.props.scroller.scrollTop = 0)}
                 >
                   {footerLink.name}
                 </a>
@@ -120,6 +126,7 @@ export class FooterMobile extends React.Component<
                   key={"footer-link-" + index}
                   className="footer-link"
                   to={footerLink.href}
+                  onClick={() => (this.props.scroller.scrollTop = 0)}
                 >
                   {footerLink.name}
                 </Link>
@@ -142,6 +149,7 @@ export class FooterMobile extends React.Component<
 
 type FooterProps = {
   pageWidth: number;
+  scroller: HTMLDivElement;
 };
 
 type FooterState = {};
@@ -156,9 +164,9 @@ export class Footer extends React.Component<FooterProps, FooterState> {
     return (
       <div className="footer">
         {this.props.pageWidth > navBarMobileThreshold ? (
-          <FooterDesktop />
+          <FooterDesktop scroller={this.props.scroller} />
         ) : (
-          <FooterMobile />
+          <FooterMobile scroller={this.props.scroller} />
         )}
       </div>
     );
