@@ -112,7 +112,7 @@
   "configure_mod_roles_help": "Show or configure server mod roles",
   "configure_trusted_roles_help": "Show or configure server trusted roles",
   "configure_self_roles_help": "Allows adding/removing roles from the self assignable list",
-  "configure_invite_whitelist_help": "Allows adding/removing servers from the invite whitelist, only enforced when there are servers on the list",
+  "configure_allowed_invite_list_help": "Allows adding/removing servers from the allowed invite list, when there are servers on this list all invites to servers not on the list will be removed",
   "configure_ignored_users_help": "Configures users to ignore for edit/delete logs (like bots spamming the logs with edits)",
   "command_create_help": "Create a new command",
   "command_remove_help": "Removes a custom command",
@@ -123,5 +123,5 @@
   "mod_nickname_add_help": "Adds or edits a user's nickname.",
   "mod_nickname_remove_help": "Removes the user's nickname.",
   "about_apexstats": "Get stats from a player in Apex Legends.",
-  "configure_domain_list_help": "Configure whitelisted/blacklisted domains"
+  "configure_domain_list_help": "Configure domains to allow or block"
 }

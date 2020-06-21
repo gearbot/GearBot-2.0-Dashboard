@@ -15,8 +15,11 @@ type MeetTheTeamProps = {
 };
 
 type MeetTheTeamState = {};
-
-const teams: { [key: string]: string[] } = TeamGearBot.teams;
+interface TeamInterface {
+  description: String,
+  members: string[]
+}
+const teams: { [key: string]: TeamInterface } = TeamGearBot.teams;
 
 const users: { [key: string]: GearTeamMember } = TeamGearBot.users;
 
@@ -32,8 +35,9 @@ export default class MeetTheTeam extends React.Component<
           return (
             <>
               <h2>{team}</h2>
+              <p>{teams[team].description}</p>
               <div className="team-members">
-                {teams[team].map((userID: string) => {
+                {teams[team].members.map((userID: string) => {
                   return <UserCard user={users[userID]} />;
                 })}
               </div>

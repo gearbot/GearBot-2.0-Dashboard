@@ -19,10 +19,62 @@
         "github": "AEnterprise",
         "twitter": "AEnterprise1"
       }
+    },
+    "105076359188979712": {
+      "username": "BlackHoleFox",
+      "discriminator": "1527",
+      "id": "105076359188979712",
+      "avatar": "4c51555359beed0e171dd4aaf866fe49",
+      "socials": {
+        "github": "BlackHoleFox"
+      }
+    },
+    "82993510503944192": {
+      "username": "Shuu",
+      "discriminator": "0001",
+      "id": "82993510503944192",
+      "avatar": "3e7461040dd06302533423facb12ac8f",
+      "socials": {
+        "twitter": "shuu_37"
+      }
+    },
+    "128181551472050176": {
+      "username": "Farkas",
+      "discriminator": "0001",
+      "id": "128181551472050176",
+      "avatar": "279dc3abe62c43856062e3fd4901a821",
+      "socials": {
+        "github": "trilleplay",
+        "twitter": "TristanAtFarkas",
+        "personalSite": "https://www.tristanfarkas.se/"
+      }
     }
   },
   "teams": {
-    "Core Team": ["106354106196570112"],
-    "Dashboard Team": ["132819036282159104"]
+    "Core Team": {
+      "description": "The core team responsible for most of heavy lifting in making sure the gears keep turning smoothly.",
+      "members": [
+        "106354106196570112",
+        "105076359188979712"
+      ]
+    },
+    "Contributors": {
+      "description": "These people helped to make GearBot even better.",
+      "members": [
+        "128181551472050176"
+      ]
+    },
+    "Website Team": {
+      "description": "The team that made this amazing website.",
+      "members": [
+        "132819036282159104"
+      ]
+    },
+    "Website Design": {
+      "description": "Made the amazing design for this website.",
+      "members": [
+        "82993510503944192"
+      ]
+    }
   }
 }

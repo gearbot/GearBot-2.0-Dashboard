@@ -638,24 +638,48 @@
                         }
                     }
                 },
-                "blacklist": {
+                "allowed_invites": {
                     "aliases": [],
                     "commandlevel": 3,
-                    "description": "",
-                    "example": "!configure blacklist",
+                    "description": "configure_allowed_invite_list_help",
+                    "example": "!configure allowed_invites",
                     "subcommands": {
                         "add": {
                             "aliases": [],
                             "commandlevel": 3,
                             "description": "",
-                            "example": "!configure blacklist add <word>",
+                            "example": "!configure allowed_invites add <server>",
                             "subcommands": {}
                         },
                         "remove": {
                             "aliases": [],
                             "commandlevel": 3,
                             "description": "",
-                            "example": "!configure blacklist remove <word>",
+                            "example": "!configure allowed_invites remove <server>",
+                            "subcommands": {}
+                        }
+                    }
+                },
+                "censor_list": {
+                    "aliases": [
+                        "censorlist"
+                    ],
+                    "commandlevel": 3,
+                    "description": "",
+                    "example": "!configure [censor_list|censorlist]",
+                    "subcommands": {
+                        "add": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure censor_list add <word>",
+                            "subcommands": {}
+                        },
+                        "remove": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure censor_list remove <word>",
                             "subcommands": {}
                         }
                     }
@@ -865,28 +889,6 @@
                         }
                     }
                 },
-                "invite_whitelist": {
-                    "aliases": [],
-                    "commandlevel": 3,
-                    "description": "configure_invite_whitelist_help",
-                    "example": "!configure invite_whitelist",
-                    "subcommands": {
-                        "add": {
-                            "aliases": [],
-                            "commandlevel": 3,
-                            "description": "",
-                            "example": "!configure invite_whitelist add <server>",
-                            "subcommands": {}
-                        },
-                        "remove": {
-                            "aliases": [],
-                            "commandlevel": 3,
-                            "description": "",
-                            "example": "!configure invite_whitelist remove <server>",
-                            "subcommands": {}
-                        }
-                    }
-                },
                 "language": {
                     "aliases": [],
                     "commandlevel": 3,
@@ -1086,24 +1088,24 @@
                         }
                     }
                 },
-                "word_blacklist": {
+                "word_censor_list": {
                     "aliases": [],
                     "commandlevel": 3,
                     "description": "",
-                    "example": "!configure word_blacklist",
+                    "example": "!configure word_censor_list",
                     "subcommands": {
                         "add": {
                             "aliases": [],
                             "commandlevel": 3,
                             "description": "",
-                            "example": "!configure word_blacklist add <word>",
+                            "example": "!configure word_censor_list add <word>",
                             "subcommands": {}
                         },
                         "remove": {
                             "aliases": [],
                             "commandlevel": 3,
                             "description": "",
-                            "example": "!configure word_blacklist remove <word>",
+                            "example": "!configure word_censor_list remove <word>",
                             "subcommands": {}
                         }
                     }
