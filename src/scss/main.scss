@@ -407,6 +407,12 @@ td {
   height: 100%;
   width: 100%;
   margin-bottom: 30px;
+  h2 {
+    margin-bottom: 10px;
+  }
+  p {
+    margin-top: 5px;
+  }
   .team-members {
     flex-wrap: wrap;
     display: inline-flex;
