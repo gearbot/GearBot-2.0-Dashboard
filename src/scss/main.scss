@@ -660,7 +660,6 @@ a.button {
   box-shadow: $box-shadow;
   width: 182px;
   box-sizing: border-box;
-  cursor: pointer;
   user-select: none;
   overflow: hidden;
   transition: 0.2s;
@@ -707,6 +706,7 @@ a.button {
     a {
       display: flex;
       .social {
+        cursor: pointer;
         margin: auto;
         width: 32px;
       }
