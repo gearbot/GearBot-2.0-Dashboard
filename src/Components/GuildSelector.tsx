@@ -31,21 +31,29 @@ export default class GuildSelector extends React.Component<
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
   }
-  // I am SO terribly sorry for this code. Improvements are welcome.
+
   calculateMaxGuildsOnScreen() {
-    let calculationWithoutFaders =
-      ((pageWidthPercentage / 100) * this.props.pageWidth) /
-      (guildGap + guildWidth);
-    let isSecondFaderVisible =
-      React.Children.count(this.props.children) - calculationWithoutFaders !==
+    const pageWidth = () => (pageWidthPercentage / 100) * this.props.pageWidth;
+
+    const offset = () => guildGap + guildWidth;
+
+    const pageWidthWithoutFaders = () => pageWidth() / offset();
+
+    const isSecondFaderVisible = () =>
+      React.Children.count(this.props.children) - pageWidthWithoutFaders() !==
       this.state.index;
-    let fadedGuildFactor: number;
-    if (this.state.index > 0 && isSecondFaderVisible) fadedGuildFactor = 2;
-    else fadedGuildFactor = 1;
+
+    const isFirst = () => this.state.index > 0;
+
+    let fadedGuildFactor = 1;
+
+    if (!isFirst() && isSecondFaderVisible()) {
+      fadedGuildFactor = 2;
+    }
+
     return Math.floor(
-      ((pageWidthPercentage / 100) * this.props.pageWidth +
-        (fadedGuildWidth + guildGap) * fadedGuildFactor) /
-        (guildGap + guildWidth) -
+      (pageWidth() + (fadedGuildWidth + guildGap) * fadedGuildFactor) /
+        offset() -
         1
     );
   }
