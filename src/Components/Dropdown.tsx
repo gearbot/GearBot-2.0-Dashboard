@@ -56,12 +56,16 @@ export default class Dropdown extends React.Component<
             ) : (
               <span>{this.props.options[0].value}</span>
             )}
-            <img src={getSVGPath("dropdown-closed")} />
+            <img src={getSVGPath("dropdown-closed")} alt="open" />
           </div>
         </div>
         {this.state.opened && (
           <div className="dropdown-opened">
-            <img src={getSVGPath("dropdown-open")} onClick={this.close} />
+            <img
+              src={getSVGPath("dropdown-open")}
+              onClick={this.close}
+              alt="close"
+            />
             {typeof this.props.options[0] === "string"
               ? (this.props.options as string[]).map(
                   (option: string, index: number) => {
