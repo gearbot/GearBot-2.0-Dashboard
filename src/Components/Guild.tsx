@@ -19,7 +19,7 @@ export default class Guild extends React.Component<GuildProps, GuildState> {
       <div className="guild">
         <div className="icon">
           {guildIcon ? (
-            <img src={guildIcon} draggable={false} />
+            <img src={guildIcon} draggable={false} alt="" />
           ) : (
             <span>{abbreviateGuildName(this.props.guild)}</span>
           )}

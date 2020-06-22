@@ -107,6 +107,7 @@ export default class Selector extends React.Component<
                 src={getSVGPath(
                   "previous" + (this.state.index === 0 ? "-disabled" : "")
                 )}
+                alt="previous"
                 draggable={false}
               />
             </div>
@@ -118,7 +119,11 @@ export default class Selector extends React.Component<
                 cursor: !hasNext ? "not-allowed" : undefined,
               }}
             >
-              <img src={getSVGPath("next" + (!hasNext ? "-disabled" : ""))} />
+              <img
+                src={getSVGPath("next" + (!hasNext ? "-disabled" : ""))}
+                alt="next"
+                draggable={false}
+              />
             </div>
           </GridRow>
         </GridRow>

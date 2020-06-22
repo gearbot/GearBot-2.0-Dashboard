@@ -7,8 +7,9 @@ You can also help with translating GearBot to your language by joining the Crowd
 To change the language GearBot replies in:
 
 ```
-!configure language <lang_code>
+!configure language <language>
 ```
+You can either use the language name or code.
 
 Currently available language codes:
 

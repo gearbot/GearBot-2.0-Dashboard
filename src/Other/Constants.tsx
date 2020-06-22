@@ -107,4 +107,9 @@ export const footerLinks: FooterLink[] = [
     href: "/docs",
     name: getString("documentation"),
   },
+  {
+    external: false,
+    href: "/docs/Other/Supporting%20GearBot",
+    name: getString("support_gearbot")
+  }
 ];

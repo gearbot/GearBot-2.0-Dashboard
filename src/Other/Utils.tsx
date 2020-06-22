@@ -28,10 +28,10 @@ export function formatWithElements(
   str: string
 ) {
   let to_return: ReactElement[] = [];
-  let matches = str.matchAll(/\{([^\}]+)\}/g);
+  let matches = str.matchAll(/{([^}]+)}/g);
   let stringPieces = str
-    .split(/(\{(?:[^\}]+)\})/g)
-    .map((s) => s.replace(/(\{(?:[^\}]+)\})/g, ""));
+    .split(/({(?:[^}]+)})/g)
+    .map((s) => s.replace(/({(?:[^}]+)})/g, ""));
   if (stringPieces[0] === "") delete stringPieces[0];
   let match_array: string[] = [];
   let match = matches.next();
