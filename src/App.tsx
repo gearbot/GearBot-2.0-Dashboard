@@ -7,6 +7,7 @@ import { NavBar } from "./Components/NavBar";
 import { Footer } from "./Components/Footer";
 import { routes } from "./Other/Constants";
 import { GearRoute } from "./Other/Types";
+import {VERSION} from "./version";
 
 type AppProps = {};
 
@@ -31,7 +32,7 @@ export class App extends React.Component<AppProps, AppState> {
     if (process.env.REACT_APP_VERSIONCHECK === "true") {
       fetch("/version.txt").then((response) =>
         response.text().then((text) => {
-          if (text !== process.env.REACT_APP_VERSION) {
+          if (text !== VERSION) {
             navigator.serviceWorker.getRegistration().then(function (reg) {
               if (reg) {
                 reg.unregister().then(function () {
