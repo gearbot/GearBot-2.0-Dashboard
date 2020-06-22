@@ -11,7 +11,7 @@ import { getString } from "../Language/LanguageHandler";
 export const navBarMobileThreshold = 1100;
 
 export const botInvite =
-  "https://discordapp.com/oauth2/authorize?client_id=349977940198555660&scope=bot&permissions=1476783350";
+  "https://discord.com/oauth2/authorize?client_id=349977940198555660&scope=bot&permissions=1476783350";
 
 export const supportServerInvite = "https://discord.gg/EKautd5";
 
