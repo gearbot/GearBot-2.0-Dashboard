@@ -26,13 +26,6 @@ jobs:
         env:
           CI: true
           GENERATE_SOURCEMAP: false
-      - name: Zip Project
-        run: zip -r ./Dashboard.zip ./build
-      - name: upload artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: GearBot
-          path: Dashboard.zip
       - name: deploy to live server
         uses: AEnterprise/rsync-deploy@v1.0
         env:
