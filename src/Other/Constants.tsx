@@ -109,6 +109,11 @@ export const footerLinks: FooterLink[] = [
   },
   {
     external: false,
+    href: "/team",
+    name: getString("meet_the_team")
+  },
+  {
+    external: false,
     href: "/docs/Other/Supporting%20GearBot",
     name: getString("support_gearbot")
   }
