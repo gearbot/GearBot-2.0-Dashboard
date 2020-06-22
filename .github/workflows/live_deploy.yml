@@ -21,7 +21,7 @@ jobs:
 
       - run: npm install
       - run: echo $GITHUB_SHA > ./public/version.txt
-      - run: echo "export const VERSION = \"$myvar\";" > src/version.ts
+      - run: echo "export const VERSION = \"$GITHUB_SHA\";" > src/version.ts
       - run: npm run build
         env:
           CI: true
