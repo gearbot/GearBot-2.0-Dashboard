@@ -20,7 +20,7 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
 
       - run: npm install
-      - run: echo $GITHUB_SHA > ./public/version.ts
+      - run: echo $GITHUB_SHA > ./public/version.txt
       - run: echo "export const VERSION = \"$myvar\";" > src/version.ts
       - run: npm run build
         env:
