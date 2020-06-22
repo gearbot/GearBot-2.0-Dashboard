@@ -119,7 +119,7 @@ body {
       color: $accent;
       display: flex;
       align-items: center;
-      font-size: 24px;
+      font-size: 1.5em;
       text-decoration: none;
 
       .gear {
@@ -132,7 +132,7 @@ body {
     .navbar-tab {
       span {
         color: $white;
-        font-size: 16px;
+        font-size: 1em;
         font-weight: 500;
       }
 
@@ -209,7 +209,7 @@ body {
   background: $not-quite-black;
   color: $white;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.875em;
   padding: 10px;
   border-radius: 5px;
   display: grid;
@@ -280,11 +280,11 @@ body {
     }
 
     h1 {
-      font-size: 36px;
+      font-size: 2.25em;
     }
 
     p {
-      font-size: 14px;
+      font-size: 0.875em;
     }
   }
 }
@@ -518,7 +518,7 @@ button,
   min-width: 180px;
   min-height: 40px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1em;
   background: $darker;
   color: $white;
   z-index: 1;
@@ -569,7 +569,7 @@ a.button {
   width: 100%;
 
   .selector-title {
-    font-size: 18px;
+    font-size: 1.125em;
     line-height: 21px;
     font-weight: bold;
     margin: 0;
@@ -673,7 +673,7 @@ a.button {
 
   .action {
     line-height: $user-small-avatar-size;
-    font-size: 14px;
+    font-size: 0.875em;
     display: flex;
     $text-margin: 5px;
 
@@ -731,7 +731,7 @@ a.button {
     .username,
     .discriminator {
       font-weight: bold;
-      font-size: 14px;
+      font-size: 0.875em;
       line-height: $user-small-avatar-size;
     }
 
@@ -849,7 +849,7 @@ a.button {
     }
 
     span {
-      font-size: 18px;
+      font-size: 1.125em;
       font-weight: bold;
       line-height: 21px;
       text-align: center;
@@ -859,7 +859,7 @@ a.button {
   }
 
   .name {
-    font-size: 14px;
+    font-size: 0.875em;
     font-weight: bold;
     text-align: center;
     margin: 0;
