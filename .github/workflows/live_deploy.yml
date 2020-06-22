@@ -25,6 +25,7 @@ jobs:
       - run: npm run build
         env:
           CI: true
+          REACT_APP_VERSIONCHECK: true
           GENERATE_SOURCEMAP: false
       - name: deploy to live server
         uses: AEnterprise/rsync-deploy@v1.0
