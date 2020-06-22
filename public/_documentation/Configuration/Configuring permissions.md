@@ -13,7 +13,7 @@ At it's core, GearBot uses a very basic permission system that determines who is
 |  6 | Disabled        | Perm level nobody can get, used to disable stuff  |
 > **NOTE**: Bot owner commands to manage and update the bot fall outside of this permissions system and are handled separately, similarly bot ownership is not part of these permissions checks and has no effect on that. 
 
-For example: all commands in the basic cog have a default permission requirement of 0, allowing anyone to run them. This can be changed with an override (see [Reconfiguring command requirements](../command_requirements) for details later on) to only allow mods, or even nobody to run these commands.
+For example: all commands in the basic cog have a default permission requirement of 0, allowing anyone to run them. This can be changed with an override (see below) to only allow mods, or even nobody to run these commands.
 
 # Default detections
 Anyone with a role that has ``BAN MEMBERS`` is considered to be at level 2, ``ADMINISTRATOR`` grants level 3.

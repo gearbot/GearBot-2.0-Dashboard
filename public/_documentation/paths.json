@@ -3,18 +3,18 @@
     "Adding GearBot",
     "Configuring the prefix",
     "Configuring permissions",
-    "Setting up logging"
-  ],
-  "Setup": [
-    "Adding GearBot",
-    "Permissions Introduction",
-    "Setting a Language",
-    "Configuring Roles",
-    "Reconfiguring Command Requirements",
-    "Configuring Logging",
+    "Setting up logging",
+    "Setting up a mute role",
     "Censoring",
-    "Custom Commands",
-    "Ignoring Channels"
+    "Custom commands",
+    "Setting up selfroles",
+    "Setting a language"
   ],
-  "Guides": ["Archiving", "Infractions"]
+  "Moderating with GearBot": [
+    "Basic utilities",
+    "Tracking infractions"
+  ],
+  "Other": [
+    "Supporting GearBot"
+  ]
 }

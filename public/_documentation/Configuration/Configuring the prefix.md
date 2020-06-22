@@ -1,6 +1,6 @@
 # Prefix
 
-GearBot's default prefix is `!`, but this is one used by many bots. If you have any other bots that also reply to this, you can give GearBot a new prefix (if you are a lvl 3 (admin) user, see the [permissions guide](../intro_permissions))!
+GearBot's default prefix is `!`, but this is one used by many bots. If you have any other bots that also reply to this, you can give GearBot a new prefix (if you are a lvl 3 (admin) user, see the [permissions guide](Configuring%20permissions))!
 It will also respond to you mentioning him (`@GearBot#7326`) instead of using `!` regardless of his configured server prefix.
 
 Anyways, here's the command, just replace `<prefix>` with what you want GearBot to respond to (unless you want GearBot to respond to `<prefix>`, if so that's fine, don't replace it):

@@ -25,6 +25,7 @@
   "doc_section_not_found": "Doc section not found",
   "action_ban": "{author} banned {target}",
   "meet_the_team": "Meet the Team",
+  "support_gearbot": "Supporting GearBot",
 
   "ping_help": "See if the bot is still online.",
   "quote_help": "Quotes the requested message.",
