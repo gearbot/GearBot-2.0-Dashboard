@@ -15,8 +15,6 @@ type AppState = {
   height: number;
 };
 
-const VERSION = "1";
-
 export class App extends React.Component<AppProps, AppState> {
   scrollerRef: React.RefObject<HTMLDivElement>;
   constructor(props: AppProps) {
@@ -30,21 +28,23 @@ export class App extends React.Component<AppProps, AppState> {
   }
 
   componentDidMount() {
-    fetch("/version.txt").then(
-        response => response.text().then(
-            text => {
-              if (text != VERSION) {
-                navigator.serviceWorker.getRegistration().then(function (reg) {
-                  if (reg) {
-                    reg.unregister().then(function () {
+    if (process.env.REACT_APP_VERSIONCHECK == "true") {
+      fetch("/version.txt").then(
+          response => response.text().then(
+              text => {
+                if (text != process.env.REACT_APP_VERSION) {
+                  navigator.serviceWorker.getRegistration().then(function (reg) {
+                    if (reg) {
+                      reg.unregister().then(function () {
+                        window.location.reload(true);
+                      });
+                    } else {
                       window.location.reload(true);
-                    });
-                  } else {
-                    window.location.reload(true);
-                  }
-                });
-              }
-            }))
+                    }
+                  });
+                }
+              }));
+    }
 
 
     this.updateWindowDimensions();

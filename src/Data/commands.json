@@ -61,7 +61,7 @@
             ],
             "commandlevel": 0,
             "description": "custom_commands_help",
-            "example": "![commands|command]",
+            "example": "!commands",
             "subcommands": {
                 "create": {
                     "aliases": [
@@ -103,7 +103,7 @@
             ],
             "commandlevel": 3,
             "description": "emoji_help",
-            "example": "![emoji|emote]",
+            "example": "!emoji",
             "subcommands": {
                 "add": {
                     "aliases": [
@@ -149,7 +149,7 @@
                     ],
                     "commandlevel": 3,
                     "description": "emoji_roles_help",
-                    "example": "!emoji [roles|role]",
+                    "example": "!emoji roles",
                     "subcommands": {
                         "add": {
                             "aliases": [],
@@ -219,7 +219,7 @@
             ],
             "commandlevel": 2,
             "description": "inf_help",
-            "example": "![inf|infraction|infractions]",
+            "example": "!inf",
             "subcommands": {
                 "claim": {
                     "aliases": [],
@@ -251,7 +251,7 @@
                     "aliases": [],
                     "commandlevel": 2,
                     "description": "inf_search_help",
-                    "example": "!inf search fields] [query]",
+                    "example": "!inf search [fields] [query]",
                     "subcommands": {}
                 },
                 "update": {
@@ -267,7 +267,7 @@
             "aliases": [],
             "commandlevel": 2,
             "description": "mwarn_help",
-            "example": "!mwarn targets]... [reason]",
+            "example": "!mwarn [targets]... [reason]",
             "subcommands": {}
         },
         "warn": {
@@ -289,7 +289,7 @@
                     "aliases": [],
                     "commandlevel": 2,
                     "description": "archive_channel_help",
-                    "example": "!archive channel channel] [amount=100]",
+                    "example": "!archive channel [channel] [amount=100]",
                     "subcommands": {}
                 },
                 "user": {
@@ -348,7 +348,7 @@
                     "aliases": [],
                     "commandlevel": 2,
                     "description": "clean_everywhere_help",
-                    "example": "!clean everywhere users]... [amount=50]",
+                    "example": "!clean everywhere [users]... [amount=50]",
                     "subcommands": {}
                 },
                 "last": {
@@ -369,7 +369,7 @@
                     "aliases": [],
                     "commandlevel": 2,
                     "description": "clean_user_help",
-                    "example": "!clean user users]... [amount=50]",
+                    "example": "!clean user [users]... [amount=50]",
                     "subcommands": {}
                 }
             }
@@ -380,7 +380,7 @@
             ],
             "commandlevel": 2,
             "description": "clean_ban_help",
-            "example": "!cleanban <user> days=1] [reason]",
+            "example": "!cleanban <user> [days=1] [reason]",
             "subcommands": {}
         },
         "cleankick": {
@@ -414,7 +414,7 @@
             ],
             "commandlevel": 2,
             "description": "mban_help",
-            "example": "!mban targets]... [reason]",
+            "example": "!mban [targets]... [reason]",
             "subcommands": {}
         },
         "mcleanban": {
@@ -423,7 +423,7 @@
             ],
             "commandlevel": 2,
             "description": "mcleanban_help",
-            "example": "!mcleanban targets]... days=1] [reason]",
+            "example": "!mcleanban [targets]... [days=1] [reason]",
             "subcommands": {}
         },
         "mkick": {
@@ -432,14 +432,14 @@
             ],
             "commandlevel": 2,
             "description": "mkick_help",
-            "example": "!mkick targets]... [reason]",
+            "example": "!mkick [targets]... [reason]",
             "subcommands": {}
         },
         "munban": {
             "aliases": [],
             "commandlevel": 2,
             "description": "munban_help",
-            "example": "!munban targets]... [reason]",
+            "example": "!munban [targets]... [reason]",
             "subcommands": {}
         },
         "mute": {
@@ -455,7 +455,7 @@
             ],
             "commandlevel": 2,
             "description": "mod_nickname_help",
-            "example": "![nickname|nick]",
+            "example": "!nickname",
             "subcommands": {
                 "add": {
                     "aliases": [
@@ -539,7 +539,7 @@
             "aliases": [],
             "commandlevel": 2,
             "description": "slowmode_help",
-            "example": "!slowmode channel] <duration>",
+            "example": "!slowmode [channel] <duration>",
             "subcommands": {}
         },
         "tempban": {
@@ -588,7 +588,7 @@
             ],
             "commandlevel": 0,
             "description": "remind_help",
-            "example": "![remind|r|reminder]",
+            "example": "!remind",
             "subcommands": {
                 "me": {
                     "aliases": [
@@ -612,7 +612,7 @@
             ],
             "commandlevel": 3,
             "description": "configure_help",
-            "example": "![configure|config|cfg]",
+            "example": "!configure",
             "subcommands": {
                 "admin_roles": {
                     "aliases": [
@@ -620,7 +620,7 @@
                     ],
                     "commandlevel": 3,
                     "description": "configure_admin_roles_help",
-                    "example": "!configure [admin_roles|adminroles]",
+                    "example": "!configure admin_roles",
                     "subcommands": {
                         "add": {
                             "aliases": [],
@@ -666,7 +666,7 @@
                     ],
                     "commandlevel": 3,
                     "description": "",
-                    "example": "!configure [censor_list|censorlist]",
+                    "example": "!configure censor_list",
                     "subcommands": {
                         "add": {
                             "aliases": [],
@@ -838,7 +838,7 @@
                             ],
                             "commandlevel": 3,
                             "description": "ignored_channels_edits_help",
-                            "example": "!configure ignored_channels [edits|edit]",
+                            "example": "!configure ignored_channels edits",
                             "subcommands": {
                                 "add": {
                                     "aliases": [],
@@ -871,7 +871,7 @@
                     ],
                     "commandlevel": 3,
                     "description": "configure_ignored_users_help",
-                    "example": "!configure [ignored_users|ignoredUsers]",
+                    "example": "!configure ignored_users",
                     "subcommands": {
                         "add": {
                             "aliases": [],
@@ -960,7 +960,7 @@
                     ],
                     "commandlevel": 3,
                     "description": "configure_mod_roles_help",
-                    "example": "!configure [mod_roles|modroles]",
+                    "example": "!configure mod_roles",
                     "subcommands": {
                         "add": {
                             "aliases": [],
@@ -1039,7 +1039,7 @@
                     ],
                     "commandlevel": 3,
                     "description": "configure_self_roles_help",
-                    "example": "!configure [self_roles|selfrole|self_role]",
+                    "example": "!configure self_roles",
                     "subcommands": {
                         "add": {
                             "aliases": [],
@@ -1070,7 +1070,7 @@
                     ],
                     "commandlevel": 3,
                     "description": "configure_trusted_roles_help",
-                    "example": "!configure [trusted_roles|trustedroles]",
+                    "example": "!configure trusted_roles",
                     "subcommands": {
                         "add": {
                             "aliases": [],
