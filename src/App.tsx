@@ -28,10 +28,10 @@ export class App extends React.Component<AppProps, AppState> {
   }
 
   componentDidMount() {
-    if (process.env.REACT_APP_VERSIONCHECK == "true") {
+    if (process.env.REACT_APP_VERSIONCHECK === "true") {
       fetch("/version.txt").then((response) =>
         response.text().then((text) => {
-          if (text != process.env.REACT_APP_VERSION) {
+          if (text !== process.env.REACT_APP_VERSION) {
             navigator.serviceWorker.getRegistration().then(function (reg) {
               if (reg) {
                 reg.unregister().then(function () {

@@ -5,7 +5,6 @@ import { GridRow } from "./GridRow";
 import { UserProfile } from "./UserProfile";
 import {
   navBarMobileThreshold,
-  botInvite,
   supportServerInvite,
   navBarTabs,
 } from "../Other/Constants";

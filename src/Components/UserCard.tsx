@@ -44,6 +44,7 @@ export default class UserCard extends React.Component<
                 rel="noopener noreferrer"
               >
                 <img
+                  alt="github"
                   className="social"
                   src={getSVGPath("github")}
                   draggable={false}
@@ -57,6 +58,7 @@ export default class UserCard extends React.Component<
                 rel="noopener noreferrer"
               >
                 <img
+                  alt="twitter"
                   className="social"
                   src={getSVGPath("twitter")}
                   draggable={false}
@@ -70,6 +72,7 @@ export default class UserCard extends React.Component<
                 rel="noopener noreferrer"
               >
                 <img
+                  alt="personal website"
                   className="social"
                   src={getSVGPath("globe")}
                   draggable={false}
