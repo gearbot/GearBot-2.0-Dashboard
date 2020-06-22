@@ -21,11 +21,11 @@ jobs:
 
       - run: npm install
       - run: echo $GITHUB_SHA > ./public/version.txt
+      - run: REACT_APP_VERSION=$GITHUB_SHA
       - run: npm run build
         env:
           CI: true
           GENERATE_SOURCEMAP: false
-          REACT_APP_VERSION: ${{GITHUB_SHA}}
       - name: Zip Project
         run: zip -r ./Dashboard.zip ./build
       - name: upload artifact
