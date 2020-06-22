@@ -29,7 +29,7 @@ export class App extends React.Component<AppProps, AppState> {
   }
 
   componentDidMount() {
-    if (true) {
+    if (process.env.REACT_APP_VERSIONCHECK === "true") {
       fetch("/version.txt").then((response) =>
         response.text().then((text) => {
           if (text !== VERSION) {
