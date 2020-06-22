@@ -4,7 +4,7 @@
 $navbar-height: 70px;
 // WARNING: do not change value without changing the value in Selector.tsx, too!
 $footer-and-navbar-content-width: 60%;
-$footer-height: 340px;
+$footer-height: 380px;
 $scrollbar-width: 5px;
 $hamburger-menu-width: 300px;
 $log-entry-height: 80px;
@@ -806,8 +806,6 @@ a.button {
     place-content: center;
 
     a {
-      display: flex;
-
       .social {
         cursor: pointer;
         margin: auto;

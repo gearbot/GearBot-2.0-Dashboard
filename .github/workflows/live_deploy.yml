@@ -1,12 +1,9 @@
 on:
-  pull_request:
-    branches:
-      - '*'
   push:
     branches:
       - 'live'
 
-name: Test
+name: Deploy
 
 jobs:
   test:
@@ -23,14 +20,25 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
 
       - run: npm install
+      - run: echo $GITHUB_SHA > ./public/version.txt
+      - run: REACT_APP_VERSION=$GITHUB_SHA
       - run: npm run build
         env:
-          CI: false
+          CI: true
           GENERATE_SOURCEMAP: false
-      - name: Zip Project
-        run: zip -r ./Dashboard.zip ./build
-      - name: upload artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: GearBot
-          path: Dashboard.zip
+      - name: deploy to live server
+        uses: AEnterprise/rsync-deploy@v1.0
+        env:
+          DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-e -c -r --delete"
+          SERVER_PORT: 21
+          FOLDER: "build/"
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          USERNAME: web
+          SERVER_DESTINATION: /var/www/gearbot.rocks
+      - name: Purge Cloudflare Cache
+        uses: jakejarvis/cloudflare-purge-action@v0.1.1
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+          CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
