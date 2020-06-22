@@ -189,7 +189,7 @@ body {
   }
 }
 
-.dropdown {
+.user-dropdown {
   position: absolute;
   background: $not-quite-black;
   color: $white;
@@ -767,5 +767,83 @@ a.button {
     font-weight: bold;
     text-align: center;
     margin: 0;
+  }
+}
+
+.bar {
+  background: $darker;
+  padding: 8px 16px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dropdown-parent {
+  $dropdown-size: 22px;
+  $border-radius: 5px;
+  $padding-left: 11px;
+  $padding-vertical: 4px;
+  height: $dropdown-size;
+  position: relative;
+  .dropdown {
+    background: $background;
+    border-radius: $border-radius;
+    height: $dropdown-size;
+    font-size: 12px;
+    user-select: none;
+    overflow: hidden;
+    cursor: pointer;
+    div {
+      grid-template-columns: 1fr auto;
+      display: grid;
+      margin: $padding-vertical $padding-left;
+      img {
+        margin: auto;
+      }
+    }
+  }
+
+  .dropdown-opened {
+    background: $not-quite-black;
+    position: absolute;
+    border-radius: $border-radius;
+    top: 0;
+    width: 100%;
+    //padding: 8px;
+    font-size: 12px;
+    box-sizing: border-box;
+    cursor: pointer;
+    //padding: 8px $padding-left;
+    user-select: none;
+    img {
+      position: absolute;
+      top: 8px;
+      right: 11px;
+    }
+    div {
+      padding-left: $padding-left;
+      transition: 0.1s;
+      color: rgba($white, 0.7);
+      p {
+        margin: 0;
+      }
+      &:hover {
+        color: $white;
+      }
+    }
+    // second child bc the first is the dropdown arrow image
+    div:nth-child(2) {
+      p {
+        margin-top: $padding-vertical;
+      }
+    }
+    div:last-child {
+      p {
+        margin-bottom: $padding-vertical;
+      }
+    }
+    div:not(:last-child) {
+      margin-bottom: 8px;
+    }
   }
 }

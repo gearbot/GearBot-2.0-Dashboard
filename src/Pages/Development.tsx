@@ -10,6 +10,7 @@ import React from "react";
 import { LogEntry, DiscordUser, DiscordGuild } from "../Other/Types";
 import Guild from "../Components/Guild";
 import Selector from "../Components/Selector";
+import Dropdown from "../Components/Dropdown";
 import { GridRow } from "../Components/GridRow";
 
 const dummyUsers: DiscordUser[] = [
@@ -59,17 +60,52 @@ type DevelopmentProps = {
   pageWidth: number;
 };
 
-type DevelopmentState = {};
+type DevelopmentState = {
+  dropdown1Value: string;
+  dropdown2Value: string;
+};
 
 export default class Development extends React.Component<
   DevelopmentProps,
   DevelopmentState
 > {
+  constructor(props: DevelopmentProps) {
+    super(props);
+    this.state = {
+      dropdown1Value: "Select",
+      dropdown2Value: "Select",
+    };
+  }
+
   render() {
     return (
       <div className="page-development">
         <h1>Development Page</h1>
         <Grid gap={10}>
+          <div className="bar">
+            <span style={{ marginRight: 20 }}>Text</span>
+            <Dropdown
+              parentStyle={{ marginRight: 10 }}
+              style={{ width: 80 }}
+              options={["AAAA", "BBBB", "CCCC", "DDDD"]}
+              value={this.state.dropdown1Value}
+              onChange={(newValue: string) =>
+                this.setState({
+                  dropdown1Value: newValue,
+                })
+              }
+            />
+            <Dropdown
+              style={{ width: 80 }}
+              options={["EEEE", "FFFF", "GGGG", "HHHH"]}
+              value={this.state.dropdown2Value}
+              onChange={(newValue: string) =>
+                this.setState({
+                  dropdown2Value: newValue,
+                })
+              }
+            />
+          </div>
           {dummyLogEntries.map((logEntry: LogEntry, index: number) => {
             return <LogEntryComponent key={index} logEntry={logEntry} />;
           })}

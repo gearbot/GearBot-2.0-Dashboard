@@ -54,7 +54,7 @@ export class UserProfile extends React.Component<
           )}
         </div>
         {this.state.dropdownOpen && (
-          <div className="dropdown" style={{ width: 160, top: 40 }}>
+          <div className="user-dropdown" style={{ width: 160, top: 40 }}>
             <div>
               <p>{getString("profile_dropdown_report_bug")}</p>
             </div>

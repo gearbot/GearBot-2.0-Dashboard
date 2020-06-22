@@ -33,7 +33,6 @@ export function formatWithElements(
     .split(/(\{(?:[^\}]+)\})/g)
     .map((s) => s.replace(/(\{(?:[^\}]+)\})/g, ""));
   if (stringPieces[0] === "") delete stringPieces[0];
-  console.log(stringPieces);
   let match_array: string[] = [];
   let match = matches.next();
   let done = false;
