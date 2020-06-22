@@ -73,22 +73,25 @@ export class DesktopNavBar extends React.Component<
           {this.props.user ? (
             <UserProfile withDropdown={true} user={this.props.user} />
           ) : (
-            <a
-              className="login-with-discord"
-              href={supportServerInvite}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="login-content">
-                <img
-                  className="logo"
-                  alt=""
-                  src={getSVGPath("Discord-Logo-White")}
-                  width={32}
-                />
-                <span className="text">{getString("join_support_server")}</span>
-              </div>
-            </a>
+            <div className="login-with-discord">
+              <a
+                href={supportServerInvite}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="login-content">
+                  <img
+                    className="logo"
+                    alt=""
+                    src={getSVGPath("Discord-Logo-White")}
+                    width={32}
+                  />
+                  <span className="text">
+                    {getString("join_support_server")}
+                  </span>
+                </div>
+              </a>
+            </div>
           )}
         </GridRow>
       </div>

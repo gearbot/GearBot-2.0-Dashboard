@@ -159,7 +159,12 @@ body {
   display: flex;
   text-decoration: none;
 
+  a {
+    text-decoration: none;
+  }
+
   .login-content {
+    margin-left: auto;
     cursor: pointer;
     color: $white;
     justify-content: flex-end;
@@ -419,6 +424,7 @@ body {
         color: $white;
         text-decoration: none;
         margin: 8px 0;
+        width: fit-content;
       }
     }
 
