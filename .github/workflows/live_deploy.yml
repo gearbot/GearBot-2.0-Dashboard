@@ -3,7 +3,7 @@ on:
     branches:
       - 'live'
 
-name: Test
+name: Deploy
 
 jobs:
   test:
