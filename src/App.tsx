@@ -32,7 +32,7 @@ export class App extends React.Component<AppProps, AppState> {
     if (process.env.REACT_APP_VERSIONCHECK === "true") {
       fetch("/version.txt").then((response) =>
         response.text().then((text) => {
-          if (text != VERSION) {
+          if (text.replace(/\n/g, '') !== VERSION) {
             navigator.serviceWorker.getRegistration().then(function (reg) {
               if (reg) {
                 reg.unregister().then(function () {
