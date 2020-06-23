@@ -8,7 +8,7 @@ import { Footer } from "./Components/Footer";
 import { routes } from "./Other/Constants";
 import { GearRoute, Theme } from "./Other/Types";
 import { VERSION } from "./version";
-import { getCurrentTheme } from "./Other/Utils";
+import { getCurrentTheme, setCurrentTheme } from "./Other/Utils";
 
 type AppProps = {};
 
@@ -104,6 +104,12 @@ export class App extends React.Component<AppProps, AppState> {
                 pageWidth={this.state.width}
                 scroller={this.scrollerRef.current!!}
                 theme={this.state.theme}
+                setTheme={(theme: Theme) => {
+                  this.setState({
+                    theme: theme,
+                  });
+                  setCurrentTheme(theme);
+                }}
               />
             </div>
           </div>

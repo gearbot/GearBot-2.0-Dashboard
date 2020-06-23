@@ -11,10 +11,12 @@ import { getString } from "../Language/LanguageHandler";
 import Grid from "./Grid";
 import { FooterLink, Theme } from "../Other/Types";
 import { Link } from "react-router-dom";
+import { GridRow } from "./GridRow";
 
 type FooterDesktopProps = {
   scroller: HTMLDivElement;
   theme: Theme;
+  setTheme: (theme: Theme) => void;
 };
 
 type FooterDesktopState = {};
@@ -72,18 +74,34 @@ export class FooterDesktop extends React.Component<
             width="80px"
             height="80px"
           />
-          <a
-            href={supportServerInvite}
-            target="_blank noreferrer"
-            style={{ display: "flex" }}
-          >
+          <GridRow cells={2}>
             <img
-              alt="Discord Support Server"
-              src={getThemedSVGPath(this.props.theme, "Discord-Logo")}
-              style={{ marginLeft: "auto" }}
               width={25}
+              style={{ cursor: "pointer" }}
+              src={getThemedSVGPath(
+                this.props.theme,
+                this.props.theme === "dark" ? "sun" : "moon"
+              )}
+              alt={this.props.theme + " theme"}
+              onClick={() => {
+                this.props.setTheme(
+                  this.props.theme === "dark" ? "light" : "dark"
+                );
+              }}
             />
-          </a>
+            <a
+              href={supportServerInvite}
+              target="_blank noreferrer"
+              style={{ display: "flex" }}
+            >
+              <img
+                alt="Discord Support Server"
+                src={getThemedSVGPath(this.props.theme, "Discord-Logo")}
+                style={{ marginLeft: "auto" }}
+                width={25}
+              />
+            </a>
+          </GridRow>
         </Grid>
       </div>
     );
@@ -92,6 +110,8 @@ export class FooterDesktop extends React.Component<
 
 type FooterMobileProps = {
   scroller: HTMLDivElement;
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
 };
 
 type FooterMobileState = {};
@@ -133,6 +153,20 @@ export class FooterMobile extends React.Component<
                 </Link>
               );
             })}
+            <img
+              width={25}
+              style={{ cursor: "pointer", marginTop: 8 }}
+              src={getThemedSVGPath(
+                this.props.theme,
+                this.props.theme === "dark" ? "sun" : "moon"
+              )}
+              alt={this.props.theme + " theme"}
+              onClick={() => {
+                this.props.setTheme(
+                  this.props.theme === "dark" ? "light" : "dark"
+                );
+              }}
+            />
           </div>
           <div className="copyright-notice" style={{ marginTop: 40 }}>
             <span>
@@ -152,6 +186,7 @@ type FooterProps = {
   pageWidth: number;
   scroller: HTMLDivElement;
   theme: Theme;
+  setTheme: (theme: Theme) => void;
 };
 
 type FooterState = {};
@@ -169,9 +204,14 @@ export class Footer extends React.Component<FooterProps, FooterState> {
           <FooterDesktop
             scroller={this.props.scroller}
             theme={this.props.theme}
+            setTheme={this.props.setTheme}
           />
         ) : (
-          <FooterMobile scroller={this.props.scroller} />
+          <FooterMobile
+            scroller={this.props.scroller}
+            theme={this.props.theme}
+            setTheme={this.props.setTheme}
+          />
         )}
       </div>
     );
