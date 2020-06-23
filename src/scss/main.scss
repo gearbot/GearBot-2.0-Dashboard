@@ -1,5 +1,22 @@
 /** @format */
 
+@import "sass-themify.scss";
+
+$themes: (
+  "light": (
+    "accent": #fecb4d,
+    "darker": #191b1f,
+    "background": #2c2f36,
+    "text-color": #dadada,
+  ),
+  "dark": (
+    "accent": #fecb4d,
+    "darker": #191b1f,
+    "background": #2c2f36,
+    "text-color": #dadada,
+  ),
+);
+
 // sizes
 $navbar-height: 70px;
 // WARNING: do not change value without changing the value in Selector.tsx, too!
@@ -27,6 +44,14 @@ $grey-text: #767b85;
 // etc
 $table-radius: 5px;
 $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+
+.main {
+  @include themify($themes) {
+    .main-scroller {
+      background: themed("background");
+    }
+  }
+}
 
 * {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -82,10 +107,6 @@ a {
   width: 100%;
   overflow: auto;
   height: calc(100% - #{$navbar-height});
-}
-
-body {
-  background: $background;
 }
 
 .grid {
