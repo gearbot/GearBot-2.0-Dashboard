@@ -1,12 +1,15 @@
 import React from "react";
-import { getSVGPath } from "../Other/Utils";
+import { getThemedSVGPath } from "../Other/Utils";
 import { GridRow } from "../Components/GridRow";
 import { getString } from "../Language/LanguageHandler";
 import { navBarMobileThreshold, botInvite } from "../Other/Constants";
 import { Link } from "react-router-dom";
 import Grid from "../Components/Grid";
+import { Theme } from "../Other/Types";
 
-type ShowOffDesktopProps = {};
+type ShowOffDesktopProps = {
+  theme: Theme;
+};
 
 type ShowOffDesktopState = {};
 
@@ -42,7 +45,10 @@ class ShowOffDesktop extends React.Component<
           </div>
         </div>
         <div className="bg">
-          <img src={getSVGPath("home-showoff-bg")} alt="" />
+          <img
+            src={getThemedSVGPath(this.props.theme, "home-showoff-bg")}
+            alt=""
+          />
         </div>
       </div>
     );
@@ -82,6 +88,7 @@ class ShowOffMobile extends React.Component<
 
 type HomeProps = {
   pageWidth: number;
+  theme: Theme;
 };
 
 type HomeState = {};
@@ -96,7 +103,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
     return (
       <div className="page-home">
         {this.props.pageWidth > navBarMobileThreshold ? (
-          <ShowOffDesktop />
+          <ShowOffDesktop theme={this.props.theme} />
         ) : (
           <ShowOffMobile />
         )}

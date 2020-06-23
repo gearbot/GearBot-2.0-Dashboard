@@ -1,7 +1,8 @@
 /** @format */
 
-import { DiscordUser, DiscordGuild } from "./Types";
+import { DiscordUser, DiscordGuild, Theme } from "./Types";
 import React, { ReactElement } from "react";
+import { defaultTheme } from "./Constants";
 
 export function abbreviateGuildName(guild: DiscordGuild) {
   return guild.name.replace(/[^A-Z]/g, "");
@@ -69,6 +70,22 @@ export function getProfilePicture(user: DiscordUser): string {
     const default_avatar = parseInt(user.discriminator) % 5;
     return `https://cdn.discordapp.com/embed/avatars/${default_avatar}.png`;
   }
+}
+
+export function setCurrentTheme(theme: Theme) {
+  localStorage.setItem("theme", theme);
+}
+
+export function getCurrentTheme(): Theme {
+  let themeFromStorage = localStorage.getItem("theme") as Theme;
+  if (themeFromStorage === null) {
+    themeFromStorage = defaultTheme;
+  }
+  return themeFromStorage;
+}
+
+export function getThemedSVGPath(theme: Theme, name: string): string {
+  return getSVGPath(`themed/${theme}/${name}`);
 }
 
 export function getSVGPath(name: string): string {

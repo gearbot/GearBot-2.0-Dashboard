@@ -8,14 +8,15 @@ import {
   supportServerInvite,
   navBarTabs,
 } from "../Other/Constants";
-import { getSVGPath } from "../Other/Utils";
+import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
 import { Link } from "react-router-dom";
 import { getString } from "../Language/LanguageHandler";
-import { DiscordUser, NavBarTab } from "../Other/Types";
+import { DiscordUser, NavBarTab, Theme } from "../Other/Types";
 
 type DesktopNavBarProps = {
   user?: DiscordUser;
   scroller: HTMLDivElement;
+  theme: Theme;
 };
 
 type DesktopNavBarState = {};
@@ -83,7 +84,7 @@ export class DesktopNavBar extends React.Component<
                   <img
                     className="logo"
                     alt=""
-                    src={getSVGPath("Discord-Logo-White")}
+                    src={getThemedSVGPath(this.props.theme, "Discord-Logo")}
                     width={32}
                   />
                   <span className="text">
@@ -177,7 +178,7 @@ export class MobileNavBar extends React.Component<
                   );
                 })}
                 <a href={supportServerInvite} className="navbar-tab">
-                  {getString("join_support_server")}
+                  <span>{getString("join_support_server")}</span>
                 </a>
               </div>
             </div>
@@ -206,6 +207,7 @@ type NavBarProps = {
   pageWidth: number;
   user?: DiscordUser;
   scroller: HTMLDivElement;
+  theme: Theme;
 };
 
 type NavBarState = {};
@@ -223,6 +225,7 @@ export class NavBar extends React.Component<NavBarProps, NavBarState> {
           <DesktopNavBar
             user={this.props.user}
             scroller={this.props.scroller}
+            theme={this.props.theme}
           />
         ) : (
           <MobileNavBar scroller={this.props.scroller} />
