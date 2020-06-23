@@ -1,0 +1,16 @@
+@import "sass-themify.scss";
+
+$themes: (
+  "light": (
+    accent: #fecb4d,
+    darker: #191b1f,
+    background: #2c2f36,
+    text-color: #dadada,
+  ),
+  dark: (
+    accent: #fecb4d,
+    darker: #191b1f,
+    background: #2c2f36,
+    text-color: #dadada,
+  ),
+);
