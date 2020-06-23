@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { getSVGPath } from "../Other/Utils";
+import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
 import {
   navBarMobileThreshold,
   supportServerInvite,
@@ -9,11 +9,12 @@ import {
 } from "../Other/Constants";
 import { getString } from "../Language/LanguageHandler";
 import Grid from "./Grid";
-import { FooterLink } from "../Other/Types";
+import { FooterLink, Theme } from "../Other/Types";
 import { Link } from "react-router-dom";
 
 type FooterDesktopProps = {
   scroller: HTMLDivElement;
+  theme: Theme;
 };
 
 type FooterDesktopState = {};
@@ -78,7 +79,7 @@ export class FooterDesktop extends React.Component<
           >
             <img
               alt="Discord Support Server"
-              src={getSVGPath("Discord-Logo-White")}
+              src={getThemedSVGPath(this.props.theme, "Discord-Logo")}
               style={{ marginLeft: "auto" }}
               width={25}
             />
@@ -150,6 +151,7 @@ export class FooterMobile extends React.Component<
 type FooterProps = {
   pageWidth: number;
   scroller: HTMLDivElement;
+  theme: Theme;
 };
 
 type FooterState = {};
@@ -164,7 +166,10 @@ export class Footer extends React.Component<FooterProps, FooterState> {
     return (
       <div className="footer">
         {this.props.pageWidth > navBarMobileThreshold ? (
-          <FooterDesktop scroller={this.props.scroller} />
+          <FooterDesktop
+            scroller={this.props.scroller}
+            theme={this.props.theme}
+          />
         ) : (
           <FooterMobile scroller={this.props.scroller} />
         )}

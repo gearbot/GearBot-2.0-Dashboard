@@ -1,21 +1,6 @@
 /** @format */
 
-@import "sass-themify.scss";
-
-$themes: (
-  "light": (
-    "accent": #fecb4d,
-    "darker": #191b1f,
-    "background": #2c2f36,
-    "text-color": #dadada,
-  ),
-  "dark": (
-    "accent": #fecb4d,
-    "darker": #191b1f,
-    "background": #2c2f36,
-    "text-color": #dadada,
-  ),
-);
+@import "themes.scss";
 
 // sizes
 $navbar-height: 70px;
@@ -32,23 +17,133 @@ $guild-height: 166px;
 
 // colors
 $accent: #fecb4d;
-$white: #dadada;
+//$white: #dadada;
 $background: #2c2f36;
 $darker: #191b1f;
 $not-quite-black: #0f1012;
 $tr-background: #3e3c3c;
 $alert: #fe4d4d;
 $grey: #2c2f36;
-$grey-text: #767b85;
 
 // etc
 $table-radius: 5px;
 $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 
-.main {
+.themed {
   @include themify($themes) {
     .main-scroller {
-      background: themed("background");
+      background: themed("primary");
+    }
+    table,
+    th,
+    td {
+      border: 1px solid themed("table-border-color");
+    }
+    table {
+      background: themed("secondary");
+      thead {
+        background: themed("tertiary");
+      }
+      tbody {
+        tr:hover {
+          background: themed("table-row-hover");
+        }
+      }
+    }
+    code,
+    pre {
+      background: themed("secondary");
+    }
+    .user-dropdown {
+      background: themed("tertiary");
+    }
+    .page-header {
+      background: themed("secondary");
+    }
+    .footer {
+      color: themed("text-color");
+      background: themed("secondary");
+      .footer-link {
+        color: themed("text-color");
+      }
+    }
+    .login-content {
+      color: themed("text-color");
+    }
+    .burger-bg {
+      background: rgba(themed("secondary"), 0.3);
+    }
+    .burger-menu {
+      background: themed("secondary");
+      .burger-content {
+        color: themed("text-color");
+        a {
+          text-decoration: none;
+          background: themed("mobile-navbar-bg");
+          padding: 10px;
+          border-radius: 5px;
+        }
+
+        a:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .navbar-tab {
+      span {
+        color: themed("text-color");
+      }
+    }
+    .dropdown-opened {
+      div {
+        color: rgba(themed("text-color"), 0.7);
+        &:hover {
+          color: themed("text-color");
+        }
+      }
+    }
+    .doc-section {
+      background: themed("secondary");
+      color: themed("text-color");
+    }
+    .log-entry-information {
+      background: rgba(themed("secondary"), 0.5);
+      color: themed("text-color");
+      .item-name {
+        color: themed("grey-text");
+      }
+    }
+    .user-card {
+      background: themed("secondary");
+      .avatar {
+        background: themed("primary");
+      }
+      .discriminator {
+        color: themed("secondary-text");
+      }
+      .socials {
+        background: themed("user-card-color");
+      }
+    }
+    .user {
+      &.small {
+        color: themed("text-color");
+      }
+    }
+    .username,
+    .user-dropdown,
+    .page {
+      color: themed("text-color");
+    }
+
+    button,
+    .button {
+      background: themed("secondary");
+      color: themed("text-color");
+      &.primary {
+        background: #fecb4d;
+        color: $darker;
+      }
     }
   }
 }
@@ -71,14 +166,12 @@ body,
 }
 
 code {
-  background: $darker;
   border-radius: 3px;
   padding: 0 5px;
 }
 
 pre {
   padding: 10px;
-  background: $darker;
   border-radius: 10px;
   overflow-x: auto;
 }
@@ -152,7 +245,6 @@ a {
 
     .navbar-tab {
       span {
-        color: $white;
         font-size: 1em;
         font-weight: 500;
       }
@@ -187,7 +279,6 @@ a {
   .login-content {
     margin-left: auto;
     cursor: pointer;
-    color: $white;
     justify-content: flex-end;
     align-items: center;
     display: flex;
@@ -216,14 +307,6 @@ a {
       margin-right: 8px;
     }
 
-    .username {
-      color: $white;
-    }
-
-    .discriminator {
-      color: gray;
-    }
-
     .dropdown-icon {
       margin-left: 10px;
     }
@@ -232,8 +315,6 @@ a {
 
 .user-dropdown {
   position: absolute;
-  background: $not-quite-black;
-  color: $white;
   font-weight: 500;
   font-size: 0.875em;
   padding: 10px;
@@ -259,7 +340,6 @@ a {
 }
 
 .page {
-  color: $white;
   width: $footer-and-navbar-content-width;
   margin-left: auto;
   margin-right: auto;
@@ -331,10 +411,8 @@ a {
   }
 
   .doc-section {
-    color: $white;
     text-decoration: none;
     display: block;
-    background: $darker;
     padding: 10px;
     border-radius: 9px;
     cursor: pointer;
@@ -385,7 +463,6 @@ a {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba($not-quite-black, 0.3);
 }
 
 .burger-menu {
@@ -395,7 +472,6 @@ a {
   top: 0;
   bottom: 0;
   width: $hamburger-menu-width;
-  background: $not-quite-black;
   box-shadow: $box-shadow;
 
   .burger-content {
@@ -424,7 +500,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $white;
 
   .footer-content {
     display: inline-grid;
@@ -442,7 +517,6 @@ a {
       flex-direction: column;
 
       .footer-link {
-        color: $white;
         text-decoration: none;
         margin: 8px 0;
         width: fit-content;
@@ -474,7 +548,6 @@ li {
 table,
 th,
 td {
-  border: 1px solid black;
   border-spacing: 0;
 }
 
@@ -510,7 +583,6 @@ td {
 table {
   overflow-x: auto;
   width: 100%;
-  background: $darker;
   border-radius: $table-radius;
 
   thead {
@@ -522,17 +594,12 @@ table {
       }
     }
 
-    background: $not-quite-black;
     border: none;
   }
 
   tbody {
     td {
       padding: 10px;
-    }
-
-    tr:hover {
-      background: $tr-background;
     }
   }
 }
@@ -546,8 +613,6 @@ button,
   min-height: 40px;
   font-weight: 500;
   font-size: 1em;
-  background: $darker;
-  color: $white;
   z-index: 1;
 
   span {
@@ -555,11 +620,6 @@ button,
   }
 
   cursor: pointer;
-
-  &.primary {
-    background: #fecb4d;
-    color: $darker;
-  }
 }
 
 a.button {
@@ -730,20 +790,14 @@ a.button {
   border-bottom-right-radius: 5px;
 
   .item-name {
-    color: $grey-text;
     margin-right: 8px;
     user-select: none;
-  }
-
-  .item {
-    color: $white;
   }
 }
 
 .user {
   &.small {
     display: inline-flex;
-    color: $white;
 
     .avatar {
       width: $user-small-avatar-size;
@@ -769,7 +823,6 @@ a.button {
 }
 
 .user-card {
-  background: $darker;
   border-radius: 5px;
   box-shadow: $box-shadow;
   width: 182px;
@@ -793,7 +846,6 @@ a.button {
 
     .avatar {
       $icon-size: 90px;
-      background: $background;
       width: $icon-size;
       height: $icon-size;
       border-radius: 50%;
@@ -813,15 +865,10 @@ a.button {
       margin: 0;
       font-weight: bold;
     }
-
-    .discriminator {
-      color: darken($white, 20%);
-    }
   }
 
   .socials {
     position: relative;
-    background: $not-quite-black;
     padding: 13px;
     display: flex;
     place-content: center;
@@ -945,12 +992,8 @@ a.button {
     div {
       padding-left: $padding-left;
       transition: 0.1s;
-      color: rgba($white, 0.7);
       p {
         margin: 0;
-      }
-      &:hover {
-        color: $white;
       }
     }
     // second child bc the first is the dropdown arrow image

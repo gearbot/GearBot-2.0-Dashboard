@@ -9,6 +9,8 @@ export type DiscordUser = {
   avatar: string;
 };
 
+export type Theme = "dark" | "light";
+
 export interface GearTeamMember extends DiscordUser {
   socials: {
     github?: string;

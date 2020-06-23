@@ -1,10 +1,16 @@
 import React from "react";
-import { GearTeamMember } from "../Other/Types";
-import { capStringLength, getProfilePicture, getSVGPath } from "../Other/Utils";
+import { GearTeamMember, Theme } from "../Other/Types";
+import {
+  capStringLength,
+  getProfilePicture,
+  getSVGPath,
+  getThemedSVGPath,
+} from "../Other/Utils";
 import { GridRow } from "./GridRow";
 
 type UserCardProps = {
   user: GearTeamMember;
+  theme: Theme;
 };
 
 type UserCardState = {};
@@ -46,7 +52,7 @@ export default class UserCard extends React.Component<
                 <img
                   alt="github"
                   className="social"
-                  src={getSVGPath("github")}
+                  src={getThemedSVGPath(this.props.theme, "github")}
                   draggable={false}
                 />
               </a>
@@ -60,7 +66,7 @@ export default class UserCard extends React.Component<
                 <img
                   alt="twitter"
                   className="social"
-                  src={getSVGPath("twitter")}
+                  src={getThemedSVGPath(this.props.theme, "twitter")}
                   draggable={false}
                 />
               </a>
@@ -74,7 +80,7 @@ export default class UserCard extends React.Component<
                 <img
                   alt="personal website"
                   className="social"
-                  src={getSVGPath("globe")}
+                  src={getThemedSVGPath(this.props.theme, "globe")}
                   draggable={false}
                 />
               </a>

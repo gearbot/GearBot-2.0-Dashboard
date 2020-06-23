@@ -6,16 +6,16 @@ import "./scss/main.scss";
 import { NavBar } from "./Components/NavBar";
 import { Footer } from "./Components/Footer";
 import { routes } from "./Other/Constants";
-import { GearRoute } from "./Other/Types";
+import { GearRoute, Theme } from "./Other/Types";
 import { VERSION } from "./version";
-
-var theme = "light";
+import { getCurrentTheme } from "./Other/Utils";
 
 type AppProps = {};
 
 type AppState = {
   width: number;
   height: number;
+  theme: Theme;
 };
 
 export class App extends React.Component<AppProps, AppState> {
@@ -25,6 +25,7 @@ export class App extends React.Component<AppProps, AppState> {
     this.state = {
       width: 0,
       height: 0,
+      theme: getCurrentTheme(),
     };
     this.scrollerRef = React.createRef();
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -65,36 +66,46 @@ export class App extends React.Component<AppProps, AppState> {
   }
 
   handleRouteComponent(route: GearRoute, props: { [key: string]: any }) {
-    return <route.component {...props} pageWidth={this.state.width} />;
+    return (
+      <route.component
+        {...props}
+        pageWidth={this.state.width}
+        theme={this.state.theme}
+      />
+    );
   }
 
   render() {
     return (
       <Router>
-        <div className="main">
-          <NavBar
-            pageWidth={this.state.width}
-            scroller={this.scrollerRef.current!!}
-          />
-          <div className="main-scroller" ref={this.scrollerRef}>
-            <div className="page">
-              {routes.map((route: GearRoute, index: number) => {
-                return (
-                  <Route
-                    exact={route.exact}
-                    path={route.path}
-                    key={"route-" + index}
-                    render={(props: { [key: string]: any }) =>
-                      this.handleRouteComponent(route, props)
-                    }
-                  />
-                );
-              })}
-            </div>
-            <Footer
+        <div className={"main theme-" + this.state.theme}>
+          <div className="themed">
+            <NavBar
               pageWidth={this.state.width}
               scroller={this.scrollerRef.current!!}
+              theme={this.state.theme}
             />
+            <div className="main-scroller" ref={this.scrollerRef}>
+              <div className="page">
+                {routes.map((route: GearRoute, index: number) => {
+                  return (
+                    <Route
+                      exact={route.exact}
+                      path={route.path}
+                      key={"route-" + index}
+                      render={(props: { [key: string]: any }) =>
+                        this.handleRouteComponent(route, props)
+                      }
+                    />
+                  );
+                })}
+              </div>
+              <Footer
+                pageWidth={this.state.width}
+                scroller={this.scrollerRef.current!!}
+                theme={this.state.theme}
+              />
+            </div>
           </div>
         </div>
       </Router>

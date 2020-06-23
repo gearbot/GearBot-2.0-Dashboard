@@ -1,11 +1,12 @@
 import React from "react";
-import { GearTeamMember } from "../Other/Types";
+import { GearTeamMember, Theme } from "../Other/Types";
 import TeamGearBot from "../Data/teamgearbot.json";
 import { getString } from "../Language/LanguageHandler";
 import UserCard from "../Components/UserCard";
 
 type MeetTheTeamProps = {
   pageWidth: number;
+  theme: Theme;
 };
 
 type MeetTheTeamState = {};
@@ -33,7 +34,11 @@ export default class MeetTheTeam extends React.Component<
               <div className="team-members">
                 {teams[team].members.map((userID: string, index: number) => {
                   return (
-                    <UserCard user={users[userID]} key={`usercard-${index}`} />
+                    <UserCard
+                      theme={this.props.theme}
+                      user={users[userID]}
+                      key={`usercard-${index}`}
+                    />
                   );
                 })}
               </div>
