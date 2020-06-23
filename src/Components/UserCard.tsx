@@ -3,7 +3,6 @@ import { GearTeamMember, Theme } from "../Other/Types";
 import {
   capStringLength,
   getProfilePicture,
-  getSVGPath,
   getThemedSVGPath,
 } from "../Other/Utils";
 import { GridRow } from "./GridRow";
