@@ -146,7 +146,69 @@ $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
       color: themed("text-color");
       &.primary {
         background: #fecb4d;
-        color: $darker;
+        color: themed("secondary");
+      }
+    }
+    ::-webkit-scrollbar-thumb {
+      background: themed("scrollbar-color");
+    }
+
+    .selector {
+      .selector-control {
+        background: themed("secondary");
+      }
+    }
+
+    .faded-item {
+      &.f1 {
+        div {
+          background: linear-gradient(
+            -270deg,
+            #00000000 0%,
+            themed("secondary") 100%
+          );
+        }
+      }
+
+      &.f2 {
+        div {
+          background: linear-gradient(
+            270deg,
+            #00000000 0%,
+            themed("secondary") 100%
+          );
+        }
+      }
+    }
+
+    .guild {
+      background: themed("secondary");
+      .icon {
+        background: themed("primary");
+      }
+    }
+
+    .bar {
+      background: themed("secondary");
+    }
+
+    .dropdown-opened {
+      background: themed("tertiary");
+    }
+
+    .dropdown {
+      background: themed("primary");
+    }
+
+    .log-entry {
+      background: themed("secondary");
+
+      .reason {
+        color: themed("secondary-text");
+      }
+
+      .icon {
+        background: themed("primary");
       }
     }
   }
@@ -220,7 +282,6 @@ a {
 }
 
 .page-header {
-  background: $darker;
   height: $navbar-height;
   position: fixed;
   width: 100%;
@@ -486,7 +547,6 @@ a {
 
     a {
       text-decoration: none;
-      background: lighten($color: $darker, $amount: 15%);
       padding: 10px;
       border-radius: 5px;
     }
@@ -499,7 +559,6 @@ a {
 
 .footer {
   height: $footer-height;
-  background-color: $darker;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -646,7 +705,6 @@ a.button {
 ::-webkit-scrollbar-thumb {
   z-index: 5;
   width: $scrollbar-width;
-  background: lighten($darker, 20%);
   border-radius: 45px;
 }
 
@@ -667,7 +725,6 @@ a.button {
   }
 
   .selector-control {
-    background: $darker;
     border-radius: 5px;
     box-shadow: $box-shadow;
     display: flex;
@@ -687,13 +744,13 @@ a.button {
     display: inline-flex;
 
     &.non-zero-index {
-      div:not(:nth-child(2)) {
+      .guild:not(:nth-child(2)) {
         margin-left: $gap;
       }
     }
 
     &:not(.non-zero-index) {
-      div:not(:first-child) {
+      .guild:not(:first-child) {
         margin-left: $gap;
       }
     }
@@ -707,32 +764,28 @@ a.button {
       &.f1 {
         div {
           right: $gap;
-          background: linear-gradient(-270deg, #00000000 0%, $darker 100%);
         }
       }
 
       &.f2 {
         margin-left: $gap;
-
-        div {
-          background: linear-gradient(270deg, #00000000 0%, $darker 100%);
-        }
       }
 
       div {
         position: absolute;
         height: 100%;
-        background: $darker;
         border-radius: 5px;
-        box-shadow: $box-shadow;
         width: $faded-item-width;
+      }
+
+      &:not(.faded-item) {
+        box-shadow: $box-shadow;
       }
     }
   }
 }
 
 .log-entry {
-  background: $darker;
   padding: 20px;
   box-shadow: $box-shadow;
   display: inline-flex;
@@ -775,10 +828,6 @@ a.button {
     .text {
       margin-right: $text-margin;
     }
-  }
-
-  .reason {
-    color: rgba(218, 218, 218, 0.8);
   }
 
   .log-hamburger {
@@ -888,7 +937,6 @@ a.button {
 }
 
 .guild {
-  background: $darker;
   border-radius: 5px;
   box-shadow: $box-shadow;
   // WARNING: do not change value without changing the value in Selector.tsx, too!
@@ -911,7 +959,6 @@ a.button {
 
   .icon {
     $icon-size: 90px;
-    background: $background;
     width: $icon-size;
     height: $icon-size;
     border-radius: 50%;
@@ -944,7 +991,6 @@ a.button {
 }
 
 .bar {
-  background: $darker;
   padding: 8px 16px;
   border-radius: 5px;
   display: inline-flex;
@@ -959,7 +1005,6 @@ a.button {
   height: $dropdown-size;
   position: relative;
   .dropdown {
-    background: $background;
     border-radius: $border-radius;
     height: $dropdown-size;
     font-size: 12px;
@@ -977,7 +1022,6 @@ a.button {
   }
 
   .dropdown-opened {
-    background: $not-quite-black;
     position: absolute;
     border-radius: $border-radius;
     top: 0;
