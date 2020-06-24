@@ -18,6 +18,8 @@ type AppState = {
   theme: Theme;
 };
 
+export const ThemeContext = React.createContext("light");
+
 export class App extends React.Component<AppProps, AppState> {
   scrollerRef: React.RefObject<HTMLDivElement>;
   constructor(props: AppProps) {
@@ -80,38 +82,40 @@ export class App extends React.Component<AppProps, AppState> {
       <Router>
         <div className={"main theme-" + this.state.theme}>
           <div className="themed">
-            <NavBar
-              pageWidth={this.state.width}
-              scroller={this.scrollerRef.current!!}
-              theme={this.state.theme}
-            />
-            <div className="main-scroller" ref={this.scrollerRef}>
-              <div className="page">
-                {routes.map((route: GearRoute, index: number) => {
-                  return (
-                    <Route
-                      exact={route.exact}
-                      path={route.path}
-                      key={"route-" + index}
-                      render={(props: { [key: string]: any }) =>
-                        this.handleRouteComponent(route, props)
-                      }
-                    />
-                  );
-                })}
-              </div>
-              <Footer
+            <ThemeContext.Provider value={this.state.theme}>
+              <NavBar
                 pageWidth={this.state.width}
                 scroller={this.scrollerRef.current!!}
                 theme={this.state.theme}
-                setTheme={(theme: Theme) => {
-                  this.setState({
-                    theme: theme,
-                  });
-                  setCurrentTheme(theme);
-                }}
               />
-            </div>
+              <div className="main-scroller" ref={this.scrollerRef}>
+                <div className="page">
+                  {routes.map((route: GearRoute, index: number) => {
+                    return (
+                      <Route
+                        exact={route.exact}
+                        path={route.path}
+                        key={"route-" + index}
+                        render={(props: { [key: string]: any }) =>
+                          this.handleRouteComponent(route, props)
+                        }
+                      />
+                    );
+                  })}
+                </div>
+                <Footer
+                  pageWidth={this.state.width}
+                  scroller={this.scrollerRef.current!!}
+                  theme={this.state.theme}
+                  setTheme={(theme: Theme) => {
+                    this.setState({
+                      theme: theme,
+                    });
+                    setCurrentTheme(theme);
+                  }}
+                />
+              </div>
+            </ThemeContext.Provider>
           </div>
         </div>
       </Router>

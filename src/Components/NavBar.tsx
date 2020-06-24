@@ -12,6 +12,7 @@ import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
 import { Link } from "react-router-dom";
 import { getString } from "../Language/LanguageHandler";
 import { DiscordUser, NavBarTab, Theme } from "../Other/Types";
+import { ThemeContext } from "../App";
 
 type DesktopNavBarProps = {
   user?: DiscordUser;
@@ -218,6 +219,8 @@ export class NavBar extends React.Component<NavBarProps, NavBarState> {
     this.state = {};
   }
 
+  static contextType = ThemeContext;
+
   render() {
     return (
       <div className="page-header">
@@ -225,7 +228,7 @@ export class NavBar extends React.Component<NavBarProps, NavBarState> {
           <DesktopNavBar
             user={this.props.user}
             scroller={this.props.scroller}
-            theme={this.props.theme}
+            theme={this.context}
           />
         ) : (
           <MobileNavBar scroller={this.props.scroller} />
