@@ -1,5 +1,5 @@
 import React from "react";
-import { GearTeamMember, Theme } from "../Other/Types";
+import { GearTeamMember } from "../Other/Types";
 import {
   capStringLength,
   getProfilePicture,
