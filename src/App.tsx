@@ -9,6 +9,7 @@ import { routes } from "./Other/Constants";
 import { GearRoute, Theme } from "./Other/Types";
 import { VERSION } from "./version";
 import { getCurrentTheme, setCurrentTheme } from "./Other/Utils";
+import { ThemeContext } from "./Other/Constants";
 
 type AppProps = {};
 
@@ -17,8 +18,6 @@ type AppState = {
   height: number;
   theme: Theme;
 };
-
-export const ThemeContext = React.createContext("light");
 
 export class App extends React.Component<AppProps, AppState> {
   scrollerRef: React.RefObject<HTMLDivElement>;
@@ -68,13 +67,7 @@ export class App extends React.Component<AppProps, AppState> {
   }
 
   handleRouteComponent(route: GearRoute, props: { [key: string]: any }) {
-    return (
-      <route.component
-        {...props}
-        pageWidth={this.state.width}
-        theme={this.state.theme}
-      />
-    );
+    return <route.component {...props} pageWidth={this.state.width} />;
   }
 
   render() {
@@ -86,7 +79,6 @@ export class App extends React.Component<AppProps, AppState> {
               <NavBar
                 pageWidth={this.state.width}
                 scroller={this.scrollerRef.current!!}
-                theme={this.state.theme}
               />
               <div className="main-scroller" ref={this.scrollerRef}>
                 <div className="page">
@@ -106,7 +98,6 @@ export class App extends React.Component<AppProps, AppState> {
                 <Footer
                   pageWidth={this.state.width}
                   scroller={this.scrollerRef.current!!}
-                  theme={this.state.theme}
                   setTheme={(theme: Theme) => {
                     this.setState({
                       theme: theme,

@@ -7,6 +7,7 @@ import Development from "../Pages/Development";
 import MeetTheTeam from "../Pages/MeetTheTeam";
 import { Documentation } from "../Pages/Documentation";
 import { getString } from "../Language/LanguageHandler";
+import React from "react";
 
 export const navBarMobileThreshold = 1100;
 
@@ -120,3 +121,7 @@ export const footerLinks: FooterLink[] = [
     name: getString("support_gearbot"),
   },
 ];
+
+// contexts
+
+export const ThemeContext = React.createContext(defaultTheme as Theme);

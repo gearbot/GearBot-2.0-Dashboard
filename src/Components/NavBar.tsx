@@ -12,12 +12,11 @@ import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
 import { Link } from "react-router-dom";
 import { getString } from "../Language/LanguageHandler";
 import { DiscordUser, NavBarTab, Theme } from "../Other/Types";
-import { ThemeContext } from "../App";
+import { ThemeContext } from "../Other/Constants";
 
 type DesktopNavBarProps = {
   user?: DiscordUser;
   scroller: HTMLDivElement;
-  theme: Theme;
 };
 
 type DesktopNavBarState = {};
@@ -76,23 +75,27 @@ export class DesktopNavBar extends React.Component<
             <UserProfile withDropdown={true} user={this.props.user} />
           ) : (
             <div className="login-with-discord">
-              <a
-                href={supportServerInvite}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="login-content">
-                  <img
-                    className="logo"
-                    alt=""
-                    src={getThemedSVGPath(this.props.theme, "Discord-Logo")}
-                    width={32}
-                  />
-                  <span className="text">
-                    {getString("join_support_server")}
-                  </span>
-                </div>
-              </a>
+              <ThemeContext.Consumer>
+                {(context) => (
+                  <a
+                    href={supportServerInvite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="login-content">
+                      <img
+                        className="logo"
+                        alt=""
+                        src={getThemedSVGPath(context as Theme, "Discord-Logo")}
+                        width={32}
+                      />
+                      <span className="text">
+                        {getString("join_support_server")}
+                      </span>
+                    </div>
+                  </a>
+                )}
+              </ThemeContext.Consumer>
             </div>
           )}
         </GridRow>
@@ -208,7 +211,6 @@ type NavBarProps = {
   pageWidth: number;
   user?: DiscordUser;
   scroller: HTMLDivElement;
-  theme: Theme;
 };
 
 type NavBarState = {};
@@ -219,8 +221,6 @@ export class NavBar extends React.Component<NavBarProps, NavBarState> {
     this.state = {};
   }
 
-  static contextType = ThemeContext;
-
   render() {
     return (
       <div className="page-header">
@@ -228,7 +228,6 @@ export class NavBar extends React.Component<NavBarProps, NavBarState> {
           <DesktopNavBar
             user={this.props.user}
             scroller={this.props.scroller}
-            theme={this.context}
           />
         ) : (
           <MobileNavBar scroller={this.props.scroller} />
