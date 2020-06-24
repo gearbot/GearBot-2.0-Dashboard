@@ -34,11 +34,7 @@ export default class MeetTheTeam extends React.Component<
               <div className="team-members">
                 {teams[team].members.map((userID: string, index: number) => {
                   return (
-                    <UserCard
-                      theme={this.props.theme}
-                      user={users[userID]}
-                      key={`usercard-${index}`}
-                    />
+                    <UserCard user={users[userID]} key={`usercard-${index}`} />
                   );
                 })}
               </div>
