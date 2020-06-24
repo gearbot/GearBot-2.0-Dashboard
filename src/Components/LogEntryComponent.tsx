@@ -1,10 +1,15 @@
 import React from "react";
 import { LogEntry } from "../Other/Types";
-import { getSVGPath, formatWithElements } from "../Other/Utils";
+import {
+  getSVGPath,
+  formatWithElements,
+  getThemedSVGPath,
+} from "../Other/Utils";
 import SmallUser from "./SmallUser";
 import Grid from "./Grid";
 import { GridRow } from "./GridRow";
 import { getString } from "../Language/LanguageHandler";
+import { ThemeContext } from "../Other/Constants";
 
 type LogEntryInformationProps = {
   tagName: string;
@@ -94,12 +99,19 @@ export default class LogEntryComponent extends React.Component<
                 </div>
               </Grid>
             </div>
-            <img
-              alt={!this.state.expanded ? "open" : "close"}
-              className="log-hamburger"
-              draggable={false}
-              src={getSVGPath(!this.state.expanded ? "hamburger" : "collapse")}
-            />
+            <ThemeContext.Consumer>
+              {(theme) => (
+                <img
+                  alt={!this.state.expanded ? "open" : "close"}
+                  className="log-hamburger"
+                  draggable={false}
+                  src={getThemedSVGPath(
+                    theme,
+                    !this.state.expanded ? "hamburger" : "collapse"
+                  )}
+                />
+              )}
+            </ThemeContext.Consumer>
           </GridRow>
         </div>
         {this.state.expanded && (

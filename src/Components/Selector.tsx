@@ -1,7 +1,8 @@
 import React from "react";
 import Grid from "./Grid";
 import { GridRow } from "./GridRow";
-import { getSVGPath } from "../Other/Utils";
+import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
+import { ThemeContext } from "../Other/Constants";
 
 type SelectorProps = {
   title: string;
@@ -93,40 +94,48 @@ export default class Selector extends React.Component<
       this.state.index;
     return (
       <Grid gap={8} className="selector">
-        <GridRow cell_override="1fr auto">
-          <h3 className="selector-title">{this.props.title}</h3>
-          <GridRow cells={2} gap={8}>
-            <div
-              className="selector-control"
-              onClick={this.previous}
-              style={{
-                cursor: this.state.index === 0 ? "not-allowed" : undefined,
-              }}
-            >
-              <img
-                src={getSVGPath(
-                  "previous" + (this.state.index === 0 ? "-disabled" : "")
-                )}
-                alt="previous"
-                draggable={false}
-              />
-            </div>
-            <div
-              className="selector-control"
-              draggable={false}
-              onClick={this.next}
-              style={{
-                cursor: !hasNext ? "not-allowed" : undefined,
-              }}
-            >
-              <img
-                src={getSVGPath("next" + (!hasNext ? "-disabled" : ""))}
-                alt="next"
-                draggable={false}
-              />
-            </div>
-          </GridRow>
-        </GridRow>
+        <ThemeContext.Consumer>
+          {(theme) => (
+            <GridRow cell_override="1fr auto">
+              <h3 className="selector-title">{this.props.title}</h3>
+              <GridRow cells={2} gap={8}>
+                <div
+                  className="selector-control"
+                  onClick={this.previous}
+                  style={{
+                    cursor: this.state.index === 0 ? "not-allowed" : undefined,
+                  }}
+                >
+                  <img
+                    src={getThemedSVGPath(
+                      theme,
+                      "previous" + (this.state.index === 0 ? "-disabled" : "")
+                    )}
+                    alt="previous"
+                    draggable={false}
+                  />
+                </div>
+                <div
+                  className="selector-control"
+                  draggable={false}
+                  onClick={this.next}
+                  style={{
+                    cursor: !hasNext ? "not-allowed" : undefined,
+                  }}
+                >
+                  <img
+                    src={getThemedSVGPath(
+                      theme,
+                      "next" + (!hasNext ? "-disabled" : "")
+                    )}
+                    alt="next"
+                    draggable={false}
+                  />
+                </div>
+              </GridRow>
+            </GridRow>
+          )}
+        </ThemeContext.Consumer>
         <div
           className={"items" + (this.state.index > 0 ? " non-zero-index" : "")}
         >
