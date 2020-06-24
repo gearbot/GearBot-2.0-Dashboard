@@ -25,6 +25,13 @@ class ShowOffDesktop extends React.Component<
   render() {
     return (
       <div className="show-off">
+        <div className="bg">
+          <img
+            src={getThemedSVGPath(this.props.theme, "home-showoff-bg")}
+            alt=""
+            draggable={false}
+          />
+        </div>
         <div className="content">
           <div>
             <h1>{getString("showoff_title")}</h1>
@@ -43,12 +50,6 @@ class ShowOffDesktop extends React.Component<
               </Link>
             </GridRow>
           </div>
-        </div>
-        <div className="bg">
-          <img
-            src={getThemedSVGPath(this.props.theme, "home-showoff-bg")}
-            alt=""
-          />
         </div>
       </div>
     );
