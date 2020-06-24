@@ -81,7 +81,11 @@ export default class Development extends React.Component<
   render() {
     return (
       <div className="page-development">
-        <h1>Development Page</h1>
+        <h1 style={{ marginBottom: 5 }}>Development Page</h1>
+        <p style={{ marginTop: 5 }}>
+          You have caught a rare development page. This page is a sort of
+          'testing ground' for the people who make this site.
+        </p>
         <Grid gap={10}>
           <div className="bar">
             <span style={{ marginRight: 20 }}>Text</span>
