@@ -37,15 +37,19 @@ export class App extends React.Component<AppProps, AppState> {
       fetch("/version.txt").then((response) =>
         response.text().then((text) => {
           if (text.replace(/\n/g, "") !== VERSION) {
-            navigator.serviceWorker.getRegistration().then(function (reg) {
-              if (reg) {
-                reg.unregister().then(function () {
-                  window.location.reload(true);
-                });
-              } else {
-                window.location.reload(true);
-              }
-            });
+            let attempt = localStorage.getItem("update_attempt");
+            if (attempt === null) {
+              localStorage.setItem("update_attempt", "1");
+              this.unregister_and(() => window.location.reload(true));
+            } else if (attempt === "1") {
+              localStorage.setItem("update_attempt", "2");
+              this.unregister_and(() => window.location.href = window.location.href + (window.location.href.includes("?") ? "&": "?") + "update");
+            } else {
+              localStorage.removeItem("update_attempt")
+              alert("Failed to update to the latest version of the dashboard! You are currently using an older version cached by your browser.")
+            }
+          } else {
+            localStorage.removeItem("update_attempt")
           }
         })
       );
@@ -53,6 +57,18 @@ export class App extends React.Component<AppProps, AppState> {
 
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
+  }
+
+  unregister_and(action: Function) {
+    navigator.serviceWorker.getRegistration().then(function (reg) {
+      if (reg) {
+        reg.unregister().then(function () {
+          action()
+        });
+      } else {
+        action()
+      }
+    });
   }
 
   componentWillUnmount() {
