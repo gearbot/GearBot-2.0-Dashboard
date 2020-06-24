@@ -12,6 +12,7 @@ import Guild from "../Components/Guild";
 import Selector from "../Components/Selector";
 import Dropdown from "../Components/Dropdown";
 import { GridRow } from "../Components/GridRow";
+import { UserProfile } from "../Components/UserProfile";
 
 const dummyUsers: DiscordUser[] = [
   {
@@ -110,6 +111,18 @@ export default class Development extends React.Component<
             return <LogEntryComponent key={index} logEntry={logEntry} />;
           })}
         </Grid>
+        <div style={{ display: "flex", placeContent: "center", marginTop: 20 }}>
+          <div>
+            <UserProfile
+              user={{
+                username: "JohnyTheCarrot",
+                discriminator: "0001",
+                id: "132819036282159104",
+                avatar: "cd1027e339b0e0a1001fd84cf7e3be13",
+              }}
+            />
+          </div>
+        </div>
         <div style={{ display: "flex", placeContent: "center" }}>
           <GridRow
             cells={2}

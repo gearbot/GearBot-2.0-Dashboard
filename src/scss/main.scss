@@ -15,16 +15,6 @@ $log-entry-icon-size: 40px;
 $user-small-avatar-size: 16px;
 $guild-height: 166px;
 
-// colors
-$accent: #fecb4d;
-//$white: #dadada;
-$background: #2c2f36;
-$darker: #191b1f;
-$not-quite-black: #0f1012;
-$tr-background: #3e3c3c;
-$alert: #fe4d4d;
-$grey: #2c2f36;
-
 // etc
 $table-radius: 5px;
 $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -59,14 +49,25 @@ $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
       background: themed("secondary");
     }
     .user-dropdown {
-      background: themed("tertiary");
+      background: themed("popout-color");
+      div:hover {
+        background: themed("primary");
+      }
     }
     .page-header {
       background: themed("secondary");
+      .header-logo {
+        color: themed("accent");
+      }
     }
     .footer {
       color: themed("text-color");
       background: themed("secondary");
+      .footer-content {
+        .footer-title {
+          color: themed("accent");
+        }
+      }
       .footer-link {
         color: themed("text-color");
       }
@@ -193,7 +194,7 @@ $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     }
 
     .dropdown-opened {
-      background: themed("tertiary");
+      background: themed("popout-color");
     }
 
     .dropdown {
@@ -211,7 +212,39 @@ $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
         background: themed("primary");
       }
     }
+
+    .panel {
+      background: themed("secondary");
+    }
+
+    blockquote {
+      &::before {
+        background: themed("accent");
+      }
+    }
+
+    a {
+      color: themed("accent");
+    }
+
+    .hamburger {
+      div {
+        span {
+          background: themed("accent");
+        }
+      }
+    }
+
+    .alert-color {
+      color: themed("alert");
+    }
   }
+}
+
+.panel {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
 }
 
 * {
@@ -249,15 +282,10 @@ blockquote {
     content: "";
     height: 100%;
     left: -10px;
-    background: $accent;
     position: absolute;
     width: 3px;
     border-radius: 5px;
   }
-}
-
-a {
-  color: $accent;
 }
 
 .main-scroller {
@@ -295,7 +323,6 @@ a {
     user-select: none;
 
     .header-logo {
-      color: $accent;
       display: flex;
       align-items: center;
       font-size: 1.5em;
@@ -386,6 +413,7 @@ a {
   border-radius: 5px;
   display: grid;
   grid-gap: 20px;
+  z-index: 2;
   box-shadow: $box-shadow;
 
   div {
@@ -397,10 +425,6 @@ a {
 
     padding: 6px;
     border-radius: 5px;
-  }
-
-  div:hover {
-    background: lighten($color: $not-quite-black, $amount: 15%);
   }
 }
 
@@ -514,7 +538,6 @@ a {
     grid-gap: 10px;
 
     span {
-      background: $accent;
       width: 100%;
       height: 5px;
       border-radius: 50px;
@@ -570,7 +593,6 @@ a {
     width: $footer-and-navbar-content-width;
 
     .footer-title {
-      color: $accent;
       margin: 0;
       margin-bottom: 8px;
     }
@@ -594,10 +616,6 @@ a {
       }
     }
   }
-}
-
-.alert-color {
-  color: $alert;
 }
 
 li {
@@ -801,7 +819,6 @@ a.button {
   .icon {
     width: $log-entry-icon-size;
     height: $log-entry-icon-size;
-    background: $grey;
     border-radius: 5px;
     display: flex;
     place-content: center;
@@ -830,6 +847,10 @@ a.button {
     }
   }
 
+  .reason {
+    font-size: 0.875em;
+  }
+
   .log-hamburger {
     margin: auto;
     margin-right: 13px;
@@ -838,7 +859,6 @@ a.button {
 
 .log-entry-information {
   padding: 20px 80px;
-  background: rgba($darker, 0.5);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
@@ -950,6 +970,8 @@ a.button {
   flex-direction: column;
   cursor: pointer;
   user-select: none;
+  $speed: 0.3s;
+  transition: transform $speed ease, box-shadow $speed ease;
 
   &:hover {
     transition: 0.2s;
@@ -1024,6 +1046,7 @@ a.button {
   .dropdown-opened {
     position: absolute;
     border-radius: $border-radius;
+    box-shadow: $box-shadow;
     top: 0;
     width: 100%;
     //padding: 8px;
