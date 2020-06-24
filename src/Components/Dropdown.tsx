@@ -1,5 +1,6 @@
 import React, { CSSProperties } from "react";
-import { getSVGPath } from "../Other/Utils";
+import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
+import { ThemeContext } from "../Other/Constants";
 
 type Option = { actualValue: string; value: string };
 
@@ -61,11 +62,15 @@ export default class Dropdown extends React.Component<
         </div>
         {this.state.opened && (
           <div className="dropdown-opened">
-            <img
-              src={getSVGPath("dropdown-open")}
-              onClick={this.close}
-              alt="close"
-            />
+            <ThemeContext.Consumer>
+              {(theme) => (
+                <img
+                  src={getThemedSVGPath(theme, "dropdown-open")}
+                  onClick={this.close}
+                  alt="close"
+                />
+              )}
+            </ThemeContext.Consumer>
             {typeof this.props.options[0] === "string"
               ? (this.props.options as string[]).map(
                   (option: string, index: number) => {
