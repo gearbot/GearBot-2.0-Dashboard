@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "./Grid";
 import { GridRow } from "./GridRow";
-import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
+import { getThemedSVGPath } from "../Other/Utils";
 import { ThemeContext } from "../Other/Constants";
 
 type SelectorProps = {
