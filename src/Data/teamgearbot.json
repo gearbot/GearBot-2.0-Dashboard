@@ -33,7 +33,7 @@
       "username": "Shuu",
       "discriminator": "0001",
       "id": "82993510503944192",
-      "avatar": "3e7461040dd06302533423facb12ac8f",
+      "avatar": "6ecff652993399f5aeec5a88c220cd9e",
       "socials": {
         "twitter": "shuu_37"
       }
@@ -92,10 +92,7 @@
   "teams": {
     "Core Team": {
       "description": "The core team responsible for most of heavy lifting in making sure the gears keep turning smoothly.",
-      "members": [
-        "106354106196570112",
-        "105076359188979712"
-      ]
+      "members": ["106354106196570112", "105076359188979712"]
     },
     "Contributors": {
       "description": "These people helped to make GearBot even better.",
@@ -108,21 +105,15 @@
     },
     "Website Team": {
       "description": "The team that made this amazing website.",
-      "members": [
-        "132819036282159104"
-      ]
+      "members": ["132819036282159104"]
     },
     "Website Design": {
       "description": "Made the amazing design for this website.",
-      "members": [
-        "82993510503944192"
-      ]
+      "members": ["82993510503944192"]
     },
     "Emoji Design": {
       "description": "People who made the amazing emoji GearBot uses.",
-      "members": [
-        "267025484028706816"
-      ]
+      "members": ["267025484028706816"]
     }
   }
 }
