@@ -31,24 +31,41 @@ function renderCommands(commands: { [key: string]: Command }) {
       return (
         <React.Fragment key={commandName + "-" + commandIndex}>
           {renderCommand(commandName, command)}
-          {Object.keys(command.subcommands).map(
-            (subCommandName: string, subCommandIndex: number) => {
-              let subCommand = command.subcommands[subCommandName];
-              return renderCommand(
-                `${commandName} ${subCommandName}`,
-                subCommand
-              );
-            }
-          )}
         </React.Fragment>
       );
     }
   );
 }
 
+function getFilteredCommands(
+  commands: { [key: string]: Command },
+  names: string[],
+  filter: string
+) {
+  let filteredCommands: { [key: string]: Command } = {};
+  Object.keys(commands).forEach((key, index) => {
+    let command = commands[key];
+    if (names[index].includes(filter)) filteredCommands[key] = command;
+    let filteredSubcommands = getFilteredCommands(
+      command.subcommands,
+      Object.keys(command.subcommands).map(
+        (subcommand_key) => `${key} ${subcommand_key}`
+      ),
+      filter
+    );
+    Object.keys(filteredSubcommands).forEach((subcommand_key) => {
+      filteredCommands[`${key} ${subcommand_key}`] =
+        filteredSubcommands[subcommand_key];
+    });
+  });
+  return filteredCommands;
+}
+
 type CommandsProps = {};
 
-type CommandsState = {};
+type CommandsState = {
+  search: string;
+};
 
 export default class Commands extends React.Component<
   CommandsProps,
@@ -56,18 +73,42 @@ export default class Commands extends React.Component<
 > {
   constructor(props: CommandsProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      search: "",
+    };
   }
 
   render() {
     let commandData = CommandData as { [key: string]: any };
     return (
-      <div style={{ width: "100%", marginBottom: 30 }}>
+      <div style={{ width: "100%", marginBottom: 30, marginTop: 30 }}>
+        <div style={{ display: "flex", placeContent: "center" }}>
+          <input
+            placeholder="Search by command name..."
+            value={this.state.search}
+            onChange={(value) => {
+              this.setState({
+                search: value.target.value,
+              });
+            }}
+            style={{ width: "50%" }}
+          />
+        </div>
         {Object.keys(commandData).map((section: string, index: number) => {
           let commands = commandData[section] as { [key: string]: Command };
+          let tableContents = renderCommands(
+            getFilteredCommands(
+              commands,
+              Object.keys(commands),
+              this.state.search
+            )
+          );
+          if (tableContents.length === 0) return undefined;
           return (
             <React.Fragment key={"table-" + index}>
-              <h2>{section}</h2>
+              <h2>
+                {section} - ({tableContents.length})
+              </h2>
               <div className="commands-table-container">
                 <table>
                   <thead>
@@ -79,7 +120,7 @@ export default class Commands extends React.Component<
                       <th>{getString("example")}</th>
                     </tr>
                   </thead>
-                  <tbody>{renderCommands(commands)}</tbody>
+                  <tbody>{tableContents}</tbody>
                 </table>
               </div>
             </React.Fragment>
