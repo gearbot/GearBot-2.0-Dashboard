@@ -238,6 +238,15 @@ $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     .alert-color {
       color: themed("alert");
     }
+
+    input {
+      background: themed("secondary");
+      color: themed("text-color");
+    }
+
+    ::placeholder {
+      color: themed("text-secondary");
+    }
   }
 }
 
@@ -482,6 +491,13 @@ blockquote {
       font-size: 0.875em;
     }
   }
+}
+
+input {
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+  padding-left: 15px;
 }
 
 .page-docs {
