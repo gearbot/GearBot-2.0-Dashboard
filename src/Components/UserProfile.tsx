@@ -1,9 +1,11 @@
 /** @format */
 
 import React from "react";
-import { DiscordUser } from "../Other/Types";
+import { DiscordUser, Theme } from "../Other/Types";
 import { getProfilePicture, getSVGPath } from "../Other/Utils";
+import ToggleSwitch from "./ToggleSwitch";
 import { getString } from "../Language/LanguageHandler";
+import { ThemeContext, ChangeThemeContext } from "../Other/Constants";
 
 type UserProfileProps = {
   user: DiscordUser;
@@ -55,6 +57,24 @@ export class UserProfile extends React.Component<
         </div>
         {this.state.dropdownOpen && (
           <div className="user-dropdown" style={{ width: 160, top: 40 }}>
+            <div style={{ display: "flex" }}>
+              <span>{getString("theme")}</span>
+              <ThemeContext.Consumer>
+                {(theme) => (
+                  <ChangeThemeContext.Consumer>
+                    {(setTheme: (theme: Theme) => void) => (
+                      <ToggleSwitch
+                        style={{ marginLeft: "auto" }}
+                        open={theme === "light"}
+                        onChange={() => {
+                          setTheme(theme === "light" ? "dark" : "light");
+                        }}
+                      />
+                    )}
+                  </ChangeThemeContext.Consumer>
+                )}
+              </ThemeContext.Consumer>
+            </div>
             <div>
               <p>{getString("profile_dropdown_report_bug")}</p>
             </div>
