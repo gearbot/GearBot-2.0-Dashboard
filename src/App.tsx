@@ -106,12 +106,14 @@ export class App extends React.Component<AppProps, AppState> {
                 <NavBar
                   pageWidth={this.state.width}
                   scroller={this.scrollerRef.current!!}
-                  user={{
+                  user={
+                    /**{
                     username: "JohnyTheCarrot",
                     discriminator: "0001",
                     id: "132819036282159104",
                     avatar: "cd1027e339b0e0a1001fd84cf7e3be13",
-                  }}
+                  }*/ undefined
+                  }
                 />
                 <div className="main-scroller" ref={this.scrollerRef}>
                   <div className="page">
