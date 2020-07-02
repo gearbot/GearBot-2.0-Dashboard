@@ -51,7 +51,7 @@ $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     .user-dropdown {
       background: themed("popout-color");
       div:hover {
-        background: themed("primary");
+        color: themed("full-text-color");
       }
     }
     .page-header {
@@ -245,7 +245,25 @@ $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     }
 
     ::placeholder {
-      color: themed("text-secondary");
+      color: themed("secondary-text");
+    }
+
+    .toggleswitch {
+      background: themed("primary");
+      &.off::before {
+        background: rgba(themed("secondary-text"), 0.7);
+      }
+      &.on::before {
+        background: themed("secondary-text");
+      }
+    }
+
+    .user-profile {
+      .profile-content {
+        .discriminator {
+          color: themed("secondary-text");
+        }
+      }
     }
   }
 }
@@ -418,7 +436,7 @@ blockquote {
   position: absolute;
   font-weight: 500;
   font-size: 0.875em;
-  padding: 10px;
+  padding: 16px;
   border-radius: 5px;
   display: grid;
   grid-gap: 20px;
@@ -432,8 +450,29 @@ blockquote {
       margin: 0;
     }
 
-    padding: 6px;
     border-radius: 5px;
+  }
+}
+
+.toggleswitch {
+  $padding: 3px;
+  $width: 40px;
+  $height: 16px;
+  width: $width;
+  height: $height;
+  padding: $padding;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  &::before {
+    display: inline-block;
+    border-radius: 5px;
+    content: "";
+    height: 100%;
+    width: calc(#{$height} - (#{$padding} * 2));
+  }
+  &.on::before {
+    margin-left: auto;
   }
 }
 

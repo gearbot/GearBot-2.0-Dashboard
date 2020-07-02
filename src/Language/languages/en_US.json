@@ -26,6 +26,7 @@
   "action_ban": "{author} banned {target}",
   "meet_the_team": "Meet the Team",
   "support_gearbot": "Supporting GearBot",
+  "theme": "Theme",
 
   "ping_help": "See if the bot is still online.",
   "quote_help": "Quotes the requested message.",

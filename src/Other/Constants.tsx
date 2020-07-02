@@ -125,3 +125,5 @@ export const footerLinks: FooterLink[] = [
 // contexts
 
 export const ThemeContext = React.createContext(defaultTheme as Theme);
+
+export const ChangeThemeContext = React.createContext((theme: Theme) => {});
