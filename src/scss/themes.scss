@@ -1,0 +1,36 @@
+@import "themify.scss";
+
+$themes: (
+  "light": (
+    "accent": #fecb4d,
+    "table-border-color": #adadad,
+    "user-card-color": #efefef,
+    "table-row-hover": #e4e4e4,
+    "tertiary": #cecece,
+    "secondary": white,
+    "primary": #eaeaea,
+    "text-color": #302c2c,
+    "secondary-text": #767b85,
+    "mobile-navbar-bg": #e8e8e8,
+    "scrollbar-color": #9a9a9a,
+    "button-primary": #191b1f,
+    "popout-color": #fff,
+    "alert": #fe4d4d,
+  ),
+  "dark": (
+    "accent": #fecb4d,
+    "table-border-color": black,
+    "table-row-hover": #36393e,
+    "user-card-color": #0f1012,
+    "tertiary": #0f1012,
+    "secondary": #191b1f,
+    "primary": #2c2f36,
+    "text-color": #dadada,
+    "secondary-text": #a7a7a7,
+    "mobile-navbar-bg": #3b4049,
+    "scrollbar-color": #474c57,
+    "button-primary": #191b1f,
+    "popout-color": #0f1012,
+    "alert": #fe4d4d,
+  ),
+);

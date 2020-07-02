@@ -1,10 +1,11 @@
 import React from "react";
-import { getSVGPath } from "../Other/Utils";
+import { getThemedSVGPath } from "../Other/Utils";
 import { GridRow } from "../Components/GridRow";
 import { getString } from "../Language/LanguageHandler";
 import { navBarMobileThreshold, botInvite } from "../Other/Constants";
 import { Link } from "react-router-dom";
 import Grid from "../Components/Grid";
+import { ThemeContext } from "../Other/Constants";
 
 type ShowOffDesktopProps = {};
 
@@ -22,6 +23,17 @@ class ShowOffDesktop extends React.Component<
   render() {
     return (
       <div className="show-off">
+        <div className="bg">
+          <ThemeContext.Consumer>
+            {(theme) => (
+              <img
+                src={getThemedSVGPath(theme, "home-showoff-bg")}
+                alt=""
+                draggable={false}
+              />
+            )}
+          </ThemeContext.Consumer>
+        </div>
         <div className="content">
           <div>
             <h1>{getString("showoff_title")}</h1>
@@ -40,9 +52,6 @@ class ShowOffDesktop extends React.Component<
               </Link>
             </GridRow>
           </div>
-        </div>
-        <div className="bg">
-          <img src={getSVGPath("home-showoff-bg")} alt="" />
         </div>
       </div>
     );

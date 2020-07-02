@@ -8,10 +8,11 @@ import {
   supportServerInvite,
   navBarTabs,
 } from "../Other/Constants";
-import { getSVGPath } from "../Other/Utils";
+import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
 import { Link } from "react-router-dom";
 import { getString } from "../Language/LanguageHandler";
-import { DiscordUser, NavBarTab } from "../Other/Types";
+import { DiscordUser, NavBarTab, Theme } from "../Other/Types";
+import { ThemeContext } from "../Other/Constants";
 
 type DesktopNavBarProps = {
   user?: DiscordUser;
@@ -74,23 +75,27 @@ export class DesktopNavBar extends React.Component<
             <UserProfile withDropdown={true} user={this.props.user} />
           ) : (
             <div className="login-with-discord">
-              <a
-                href={supportServerInvite}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="login-content">
-                  <img
-                    className="logo"
-                    alt=""
-                    src={getSVGPath("Discord-Logo-White")}
-                    width={32}
-                  />
-                  <span className="text">
-                    {getString("join_support_server")}
-                  </span>
-                </div>
-              </a>
+              <ThemeContext.Consumer>
+                {(context) => (
+                  <a
+                    href={supportServerInvite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="login-content">
+                      <img
+                        className="logo"
+                        alt=""
+                        src={getThemedSVGPath(context as Theme, "Discord-Logo")}
+                        width={32}
+                      />
+                      <span className="text">
+                        {getString("join_support_server")}
+                      </span>
+                    </div>
+                  </a>
+                )}
+              </ThemeContext.Consumer>
             </div>
           )}
         </GridRow>
@@ -177,7 +182,7 @@ export class MobileNavBar extends React.Component<
                   );
                 })}
                 <a href={supportServerInvite} className="navbar-tab">
-                  {getString("join_support_server")}
+                  <span>{getString("join_support_server")}</span>
                 </a>
               </div>
             </div>

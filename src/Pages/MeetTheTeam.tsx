@@ -1,11 +1,12 @@
 import React from "react";
-import { GearTeamMember } from "../Other/Types";
+import { GearTeamMember, Theme } from "../Other/Types";
 import TeamGearBot from "../Data/teamgearbot.json";
 import { getString } from "../Language/LanguageHandler";
 import UserCard from "../Components/UserCard";
 
 type MeetTheTeamProps = {
   pageWidth: number;
+  theme: Theme;
 };
 
 type MeetTheTeamState = {};

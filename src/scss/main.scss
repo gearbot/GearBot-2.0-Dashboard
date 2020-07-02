@@ -1,5 +1,7 @@
 /** @format */
 
+@import "themes.scss";
+
 // sizes
 $navbar-height: 70px;
 // WARNING: do not change value without changing the value in Selector.tsx, too!
@@ -13,20 +15,246 @@ $log-entry-icon-size: 40px;
 $user-small-avatar-size: 16px;
 $guild-height: 166px;
 
-// colors
-$accent: #fecb4d;
-$white: #dadada;
-$background: #2c2f36;
-$darker: #191b1f;
-$not-quite-black: #0f1012;
-$tr-background: #3e3c3c;
-$alert: #fe4d4d;
-$grey: #2c2f36;
-$grey-text: #767b85;
-
 // etc
 $table-radius: 5px;
 $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+
+* {
+  transition: background-color 0.2s ease;
+}
+
+.themed {
+  @include themify($themes) {
+    .main-scroller {
+      background: themed("primary");
+    }
+    table,
+    th,
+    td {
+      border: 1px solid themed("table-border-color");
+    }
+    table {
+      background: themed("secondary");
+      thead {
+        background: themed("tertiary");
+      }
+      tbody {
+        tr:hover {
+          background: themed("table-row-hover");
+        }
+      }
+    }
+    code,
+    pre {
+      background: themed("secondary");
+    }
+    .user-dropdown {
+      background: themed("popout-color");
+      div:hover {
+        background: themed("primary");
+      }
+    }
+    .page-header {
+      background: themed("secondary");
+      .header-logo {
+        color: themed("accent");
+      }
+    }
+    .footer {
+      color: themed("text-color");
+      background: themed("secondary");
+      .footer-content {
+        .footer-title {
+          color: themed("accent");
+        }
+      }
+      .footer-link {
+        color: themed("text-color");
+      }
+    }
+    .login-content {
+      color: themed("text-color");
+    }
+    .burger-bg {
+      background: rgba(themed("secondary"), 0.3);
+    }
+    .burger-menu {
+      background: themed("secondary");
+      .burger-content {
+        color: themed("text-color");
+        a {
+          text-decoration: none;
+          background: themed("mobile-navbar-bg");
+          padding: 10px;
+          border-radius: 5px;
+        }
+
+        a:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .navbar-tab {
+      span {
+        color: themed("text-color");
+      }
+    }
+    .dropdown-opened {
+      div {
+        color: rgba(themed("text-color"), 0.7);
+        &:hover {
+          color: themed("text-color");
+        }
+      }
+    }
+    .doc-section {
+      background: themed("secondary");
+      color: themed("text-color");
+    }
+    .log-entry-information {
+      background: rgba(themed("secondary"), 0.5);
+      color: themed("text-color");
+      .item-name {
+        color: themed("grey-text");
+      }
+    }
+    .user-card {
+      background: themed("secondary");
+      .avatar {
+        background: themed("primary");
+      }
+      .discriminator {
+        color: themed("secondary-text");
+      }
+      .socials {
+        background: themed("user-card-color");
+      }
+    }
+    .user {
+      &.small {
+        color: themed("text-color");
+      }
+    }
+    .username,
+    .user-dropdown,
+    .page {
+      color: themed("text-color");
+    }
+
+    button,
+    .button {
+      background: themed("secondary");
+      color: themed("text-color");
+      &.primary {
+        background: #fecb4d;
+        color: themed("button-primary");
+      }
+    }
+    ::-webkit-scrollbar-thumb {
+      background: themed("scrollbar-color");
+    }
+
+    .selector {
+      .selector-control {
+        background: themed("secondary");
+      }
+    }
+
+    .faded-item {
+      &.f1 {
+        div {
+          background: linear-gradient(
+            -270deg,
+            #00000000 0%,
+            themed("secondary") 100%
+          );
+        }
+      }
+
+      &.f2 {
+        div {
+          background: linear-gradient(
+            270deg,
+            #00000000 0%,
+            themed("secondary") 100%
+          );
+        }
+      }
+    }
+
+    .guild {
+      background: themed("secondary");
+      .icon {
+        background: themed("primary");
+      }
+    }
+
+    .bar {
+      background: themed("secondary");
+    }
+
+    .dropdown-opened {
+      background: themed("popout-color");
+    }
+
+    .dropdown {
+      background: themed("primary");
+    }
+
+    .log-entry {
+      background: themed("secondary");
+
+      .reason {
+        color: themed("secondary-text");
+      }
+
+      .icon {
+        background: themed("primary");
+      }
+    }
+
+    .panel {
+      background: themed("secondary");
+    }
+
+    blockquote {
+      &::before {
+        background: themed("accent");
+      }
+    }
+
+    a {
+      color: themed("accent");
+    }
+
+    .hamburger {
+      div {
+        span {
+          background: themed("accent");
+        }
+      }
+    }
+
+    .alert-color {
+      color: themed("alert");
+    }
+
+    input {
+      background: themed("secondary");
+      color: themed("text-color");
+    }
+
+    ::placeholder {
+      color: themed("text-secondary");
+    }
+  }
+}
+
+.panel {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+}
 
 * {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -46,14 +274,12 @@ body,
 }
 
 code {
-  background: $darker;
   border-radius: 3px;
   padding: 0 5px;
 }
 
 pre {
   padding: 10px;
-  background: $darker;
   border-radius: 10px;
   overflow-x: auto;
 }
@@ -65,15 +291,10 @@ blockquote {
     content: "";
     height: 100%;
     left: -10px;
-    background: $accent;
     position: absolute;
     width: 3px;
     border-radius: 5px;
   }
-}
-
-a {
-  color: $accent;
 }
 
 .main-scroller {
@@ -82,10 +303,6 @@ a {
   width: 100%;
   overflow: auto;
   height: calc(100% - #{$navbar-height});
-}
-
-body {
-  background: $background;
 }
 
 .grid {
@@ -102,7 +319,6 @@ body {
 }
 
 .page-header {
-  background: $darker;
   height: $navbar-height;
   position: fixed;
   width: 100%;
@@ -116,7 +332,6 @@ body {
     user-select: none;
 
     .header-logo {
-      color: $accent;
       display: flex;
       align-items: center;
       font-size: 1.5em;
@@ -131,7 +346,6 @@ body {
 
     .navbar-tab {
       span {
-        color: $white;
         font-size: 1em;
         font-weight: 500;
       }
@@ -166,7 +380,6 @@ body {
   .login-content {
     margin-left: auto;
     cursor: pointer;
-    color: $white;
     justify-content: flex-end;
     align-items: center;
     display: flex;
@@ -195,14 +408,6 @@ body {
       margin-right: 8px;
     }
 
-    .username {
-      color: $white;
-    }
-
-    .discriminator {
-      color: gray;
-    }
-
     .dropdown-icon {
       margin-left: 10px;
     }
@@ -211,14 +416,13 @@ body {
 
 .user-dropdown {
   position: absolute;
-  background: $not-quite-black;
-  color: $white;
   font-weight: 500;
   font-size: 0.875em;
   padding: 10px;
   border-radius: 5px;
   display: grid;
   grid-gap: 20px;
+  z-index: 2;
   box-shadow: $box-shadow;
 
   div {
@@ -231,14 +435,9 @@ body {
     padding: 6px;
     border-radius: 5px;
   }
-
-  div:hover {
-    background: lighten($color: $not-quite-black, $amount: 15%);
-  }
 }
 
 .page {
-  color: $white;
   width: $footer-and-navbar-content-width;
   margin-left: auto;
   margin-right: auto;
@@ -294,6 +493,13 @@ body {
   }
 }
 
+input {
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+  padding-left: 15px;
+}
+
 .page-docs {
   width: 100%;
   display: flex;
@@ -310,10 +516,8 @@ body {
   }
 
   .doc-section {
-    color: $white;
     text-decoration: none;
     display: block;
-    background: $darker;
     padding: 10px;
     border-radius: 9px;
     cursor: pointer;
@@ -350,7 +554,6 @@ body {
     grid-gap: 10px;
 
     span {
-      background: $accent;
       width: 100%;
       height: 5px;
       border-radius: 50px;
@@ -364,7 +567,6 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba($not-quite-black, 0.3);
 }
 
 .burger-menu {
@@ -374,7 +576,6 @@ body {
   top: 0;
   bottom: 0;
   width: $hamburger-menu-width;
-  background: $not-quite-black;
   box-shadow: $box-shadow;
 
   .burger-content {
@@ -385,7 +586,6 @@ body {
 
     a {
       text-decoration: none;
-      background: lighten($color: $darker, $amount: 15%);
       padding: 10px;
       border-radius: 5px;
     }
@@ -398,12 +598,10 @@ body {
 
 .footer {
   height: $footer-height;
-  background-color: $darker;
   font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $white;
 
   .footer-content {
     display: inline-grid;
@@ -411,7 +609,6 @@ body {
     width: $footer-and-navbar-content-width;
 
     .footer-title {
-      color: $accent;
       margin: 0;
       margin-bottom: 8px;
     }
@@ -421,7 +618,6 @@ body {
       flex-direction: column;
 
       .footer-link {
-        color: $white;
         text-decoration: none;
         margin: 8px 0;
         width: fit-content;
@@ -438,10 +634,6 @@ body {
   }
 }
 
-.alert-color {
-  color: $alert;
-}
-
 li {
   margin: 5px 0;
 
@@ -453,7 +645,6 @@ li {
 table,
 th,
 td {
-  border: 1px solid black;
   border-spacing: 0;
 }
 
@@ -489,7 +680,6 @@ td {
 table {
   overflow-x: auto;
   width: 100%;
-  background: $darker;
   border-radius: $table-radius;
 
   thead {
@@ -501,17 +691,12 @@ table {
       }
     }
 
-    background: $not-quite-black;
     border: none;
   }
 
   tbody {
     td {
       padding: 10px;
-    }
-
-    tr:hover {
-      background: $tr-background;
     }
   }
 }
@@ -525,8 +710,6 @@ button,
   min-height: 40px;
   font-weight: 500;
   font-size: 1em;
-  background: $darker;
-  color: $white;
   z-index: 1;
 
   span {
@@ -534,11 +717,6 @@ button,
   }
 
   cursor: pointer;
-
-  &.primary {
-    background: #fecb4d;
-    color: $darker;
-  }
 }
 
 a.button {
@@ -561,7 +739,6 @@ a.button {
 ::-webkit-scrollbar-thumb {
   z-index: 5;
   width: $scrollbar-width;
-  background: lighten($darker, 20%);
   border-radius: 45px;
 }
 
@@ -582,7 +759,6 @@ a.button {
   }
 
   .selector-control {
-    background: $darker;
     border-radius: 5px;
     box-shadow: $box-shadow;
     display: flex;
@@ -602,13 +778,13 @@ a.button {
     display: inline-flex;
 
     &.non-zero-index {
-      div:not(:nth-child(2)) {
+      .guild:not(:nth-child(2)) {
         margin-left: $gap;
       }
     }
 
     &:not(.non-zero-index) {
-      div:not(:first-child) {
+      .guild:not(:first-child) {
         margin-left: $gap;
       }
     }
@@ -622,32 +798,28 @@ a.button {
       &.f1 {
         div {
           right: $gap;
-          background: linear-gradient(-270deg, #00000000 0%, $darker 100%);
         }
       }
 
       &.f2 {
         margin-left: $gap;
-
-        div {
-          background: linear-gradient(270deg, #00000000 0%, $darker 100%);
-        }
       }
 
       div {
         position: absolute;
         height: 100%;
-        background: $darker;
         border-radius: 5px;
-        box-shadow: $box-shadow;
         width: $faded-item-width;
+      }
+
+      &:not(.faded-item) {
+        box-shadow: $box-shadow;
       }
     }
   }
 }
 
 .log-entry {
-  background: $darker;
   padding: 20px;
   box-shadow: $box-shadow;
   display: inline-flex;
@@ -663,7 +835,6 @@ a.button {
   .icon {
     width: $log-entry-icon-size;
     height: $log-entry-icon-size;
-    background: $grey;
     border-radius: 5px;
     display: flex;
     place-content: center;
@@ -693,7 +864,7 @@ a.button {
   }
 
   .reason {
-    color: rgba(218, 218, 218, 0.8);
+    font-size: 0.875em;
   }
 
   .log-hamburger {
@@ -704,25 +875,18 @@ a.button {
 
 .log-entry-information {
   padding: 20px 80px;
-  background: rgba($darker, 0.5);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
   .item-name {
-    color: $grey-text;
     margin-right: 8px;
     user-select: none;
-  }
-
-  .item {
-    color: $white;
   }
 }
 
 .user {
   &.small {
     display: inline-flex;
-    color: $white;
 
     .avatar {
       width: $user-small-avatar-size;
@@ -748,7 +912,6 @@ a.button {
 }
 
 .user-card {
-  background: $darker;
   border-radius: 5px;
   box-shadow: $box-shadow;
   width: 182px;
@@ -772,7 +935,6 @@ a.button {
 
     .avatar {
       $icon-size: 90px;
-      background: $background;
       width: $icon-size;
       height: $icon-size;
       border-radius: 50%;
@@ -792,15 +954,10 @@ a.button {
       margin: 0;
       font-weight: bold;
     }
-
-    .discriminator {
-      color: darken($white, 20%);
-    }
   }
 
   .socials {
     position: relative;
-    background: $not-quite-black;
     padding: 13px;
     display: flex;
     place-content: center;
@@ -816,7 +973,6 @@ a.button {
 }
 
 .guild {
-  background: $darker;
   border-radius: 5px;
   box-shadow: $box-shadow;
   // WARNING: do not change value without changing the value in Selector.tsx, too!
@@ -830,6 +986,8 @@ a.button {
   flex-direction: column;
   cursor: pointer;
   user-select: none;
+  $speed: 0.3s;
+  transition: transform $speed ease, box-shadow $speed ease;
 
   &:hover {
     transition: 0.2s;
@@ -839,7 +997,6 @@ a.button {
 
   .icon {
     $icon-size: 90px;
-    background: $background;
     width: $icon-size;
     height: $icon-size;
     border-radius: 50%;
@@ -872,11 +1029,11 @@ a.button {
 }
 
 .bar {
-  background: $darker;
   padding: 8px 16px;
   border-radius: 5px;
   display: inline-flex;
   align-items: center;
+  box-shadow: $box-shadow;
 }
 
 .dropdown-parent {
@@ -887,7 +1044,6 @@ a.button {
   height: $dropdown-size;
   position: relative;
   .dropdown {
-    background: $background;
     border-radius: $border-radius;
     height: $dropdown-size;
     font-size: 12px;
@@ -905,9 +1061,9 @@ a.button {
   }
 
   .dropdown-opened {
-    background: $not-quite-black;
     position: absolute;
     border-radius: $border-radius;
+    box-shadow: $box-shadow;
     top: 0;
     width: 100%;
     //padding: 8px;
@@ -924,12 +1080,8 @@ a.button {
     div {
       padding-left: $padding-left;
       transition: 0.1s;
-      color: rgba($white, 0.7);
       p {
         margin: 0;
-      }
-      &:hover {
-        color: $white;
       }
     }
     // second child bc the first is the dropdown arrow image

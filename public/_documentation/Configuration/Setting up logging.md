@@ -2,7 +2,7 @@
 GearBot can help you keep track of what people are doing on the server and when bad actors are trying to cover their tracks.
 Altough it is recommended to use 2 logging channels (one for everything, one with only critical logs that mods should be aware of like users being censored), you can as many channels as fits your needs.
 
-Logs can be added to a channel with ``!configure logging add <key>`` and removed with ``!configure logging remove <key>``. Alternatively you can use ``everything`` instead of a key to add/remove everything.
+Logs can be added to a channel with ``!configure logging add <channel> <key>`` and removed with ``!configure logging remove <channel> <key>``. Alternatively you can use ``everything`` instead of a key to add/remove everything.
 A list of what is being logged where can be acquired by running``!configure logging`` without further arguments.
 
 # Setting up a general bot log channel

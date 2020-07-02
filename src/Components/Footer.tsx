@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { getSVGPath } from "../Other/Utils";
+import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
 import {
   navBarMobileThreshold,
   supportServerInvite,
@@ -9,11 +9,14 @@ import {
 } from "../Other/Constants";
 import { getString } from "../Language/LanguageHandler";
 import Grid from "./Grid";
-import { FooterLink } from "../Other/Types";
+import { FooterLink, Theme } from "../Other/Types";
 import { Link } from "react-router-dom";
+import { GridRow } from "./GridRow";
+import { ThemeContext } from "../Other/Constants";
 
 type FooterDesktopProps = {
   scroller: HTMLDivElement;
+  setTheme: (theme: Theme) => void;
 };
 
 type FooterDesktopState = {};
@@ -71,18 +74,36 @@ export class FooterDesktop extends React.Component<
             width="80px"
             height="80px"
           />
-          <a
-            href={supportServerInvite}
-            target="_blank noreferrer"
-            style={{ display: "flex" }}
-          >
-            <img
-              alt="Discord Support Server"
-              src={getSVGPath("Discord-Logo-White")}
-              style={{ marginLeft: "auto" }}
-              width={25}
-            />
-          </a>
+          <ThemeContext.Consumer>
+            {(theme: Theme) => (
+              <GridRow cells={2}>
+                <img
+                  width={25}
+                  style={{ cursor: "pointer" }}
+                  src={getThemedSVGPath(
+                    theme,
+                    theme === "dark" ? "sun" : "moon"
+                  )}
+                  alt={theme + " theme"}
+                  onClick={() => {
+                    this.props.setTheme(theme === "dark" ? "light" : "dark");
+                  }}
+                />
+                <a
+                  href={supportServerInvite}
+                  target="_blank noreferrer"
+                  style={{ display: "flex" }}
+                >
+                  <img
+                    alt="Discord Support Server"
+                    src={getThemedSVGPath(theme, "Discord-Logo")}
+                    style={{ marginLeft: "auto" }}
+                    width={25}
+                  />
+                </a>
+              </GridRow>
+            )}
+          </ThemeContext.Consumer>
         </Grid>
       </div>
     );
@@ -91,6 +112,7 @@ export class FooterDesktop extends React.Component<
 
 type FooterMobileProps = {
   scroller: HTMLDivElement;
+  setTheme: (theme: Theme) => void;
 };
 
 type FooterMobileState = {};
@@ -132,6 +154,22 @@ export class FooterMobile extends React.Component<
                 </Link>
               );
             })}
+            <ThemeContext.Consumer>
+              {(theme) => (
+                <img
+                  width={25}
+                  style={{ cursor: "pointer", marginTop: 8 }}
+                  src={getThemedSVGPath(
+                    theme,
+                    theme === "dark" ? "sun" : "moon"
+                  )}
+                  alt={theme + " theme"}
+                  onClick={() => {
+                    this.props.setTheme(theme === "dark" ? "light" : "dark");
+                  }}
+                />
+              )}
+            </ThemeContext.Consumer>
           </div>
           <div className="copyright-notice" style={{ marginTop: 40 }}>
             <span>
@@ -150,6 +188,7 @@ export class FooterMobile extends React.Component<
 type FooterProps = {
   pageWidth: number;
   scroller: HTMLDivElement;
+  setTheme: (theme: Theme) => void;
 };
 
 type FooterState = {};
@@ -164,9 +203,15 @@ export class Footer extends React.Component<FooterProps, FooterState> {
     return (
       <div className="footer">
         {this.props.pageWidth > navBarMobileThreshold ? (
-          <FooterDesktop scroller={this.props.scroller} />
+          <FooterDesktop
+            scroller={this.props.scroller}
+            setTheme={this.props.setTheme}
+          />
         ) : (
-          <FooterMobile scroller={this.props.scroller} />
+          <FooterMobile
+            scroller={this.props.scroller}
+            setTheme={this.props.setTheme}
+          />
         )}
       </div>
     );

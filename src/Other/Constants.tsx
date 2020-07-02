@@ -1,12 +1,13 @@
 /** @format */
 
-import { GearRoute, FooterLink, NavBarTab } from "./Types";
+import { GearRoute, FooterLink, NavBarTab, Theme } from "./Types";
 import Home from "../Pages/Home";
 import Commands from "../Pages/Commands";
 import Development from "../Pages/Development";
 import MeetTheTeam from "../Pages/MeetTheTeam";
 import { Documentation } from "../Pages/Documentation";
 import { getString } from "../Language/LanguageHandler";
+import React from "react";
 
 export const navBarMobileThreshold = 1100;
 
@@ -14,6 +15,8 @@ export const botInvite =
   "https://discord.com/oauth2/authorize?client_id=349977940198555660&scope=bot&permissions=1476783350";
 
 export const supportServerInvite = "https://discord.gg/EKautd5";
+
+export const defaultTheme: Theme = "dark";
 
 export const permissionLevels: string[] = [
   "Public",
@@ -110,11 +113,15 @@ export const footerLinks: FooterLink[] = [
   {
     external: false,
     href: "/team",
-    name: getString("meet_the_team")
+    name: getString("meet_the_team"),
   },
   {
     external: false,
     href: "/docs/Other/Supporting%20GearBot",
-    name: getString("support_gearbot")
-  }
+    name: getString("support_gearbot"),
+  },
 ];
+
+// contexts
+
+export const ThemeContext = React.createContext(defaultTheme as Theme);
