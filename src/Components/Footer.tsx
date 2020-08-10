@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
 import {
   navBarMobileThreshold,
   supportServerInvite,
@@ -13,6 +12,12 @@ import { FooterLink, Theme } from "../Other/Types";
 import { Link } from "react-router-dom";
 import { GridRow } from "./GridRow";
 import { ThemeContext } from "../Other/Constants";
+
+// SVGs
+import { ReactComponent as GearBot } from "../SVG/gearbot.svg";
+import { ReactComponent as DiscordLogo } from "../SVG/Discord-Logo.svg";
+import { ReactComponent as Moon } from "../SVG/moon.svg";
+import { ReactComponent as Sun } from "../SVG/sun.svg";
 
 type FooterDesktopProps = {
   scroller: HTMLDivElement;
@@ -68,41 +73,35 @@ export class FooterDesktop extends React.Component<
           </div>
         </div>
         <Grid style={{ gridTemplateRows: "1fr auto" }}>
-          <img
-            src={getSVGPath("icon")}
-            alt="gearbot logo"
-            width="80px"
-            height="80px"
-          />
+          <GearBot className="svg_logo" width="74" height="74" />
           <ThemeContext.Consumer>
-            {(theme: Theme) => (
-              <GridRow cells={2}>
-                <img
-                  width={25}
-                  style={{ cursor: "pointer" }}
-                  src={getThemedSVGPath(
-                    theme,
-                    theme === "dark" ? "sun" : "moon"
-                  )}
-                  alt={theme + " theme"}
-                  onClick={() => {
-                    this.props.setTheme(theme === "dark" ? "light" : "dark");
-                  }}
-                />
-                <a
-                  href={supportServerInvite}
-                  target="_blank noreferrer"
-                  style={{ display: "flex" }}
-                >
-                  <img
-                    alt="Discord Support Server"
-                    src={getThemedSVGPath(theme, "Discord-Logo")}
-                    style={{ marginLeft: "auto" }}
+            {(theme: Theme) => {
+              let ThemeIcon = theme === "dark" ? Sun : Moon;
+              return (
+                <GridRow cells={2}>
+                  <ThemeIcon
+                    className="svg_basic"
                     width={25}
+                    height={25}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      this.props.setTheme(theme === "dark" ? "light" : "dark");
+                    }}
                   />
-                </a>
-              </GridRow>
-            )}
+                  <a
+                    href={supportServerInvite}
+                    target="_blank noreferrer"
+                    style={{ display: "flex" }}
+                  >
+                    <DiscordLogo
+                      className="svg_basic"
+                      width={25}
+                      style={{ marginLeft: "auto" }}
+                    />
+                  </a>
+                </GridRow>
+              );
+            }}
           </ThemeContext.Consumer>
         </Grid>
       </div>
@@ -155,20 +154,20 @@ export class FooterMobile extends React.Component<
               );
             })}
             <ThemeContext.Consumer>
-              {(theme) => (
-                <img
-                  width={25}
-                  style={{ cursor: "pointer", marginTop: 8 }}
-                  src={getThemedSVGPath(
-                    theme,
-                    theme === "dark" ? "sun" : "moon"
-                  )}
-                  alt={theme + " theme"}
-                  onClick={() => {
-                    this.props.setTheme(theme === "dark" ? "light" : "dark");
-                  }}
-                />
-              )}
+              {(theme) => {
+                let ThemeIcon = theme === "dark" ? Sun : Moon;
+                return (
+                  <ThemeIcon
+                    className="svg_basic"
+                    width={25}
+                    height={25}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      this.props.setTheme(theme === "dark" ? "light" : "dark");
+                    }}
+                  />
+                );
+              }}
             </ThemeContext.Consumer>
           </div>
           <div className="copyright-notice" style={{ marginTop: 40 }}>

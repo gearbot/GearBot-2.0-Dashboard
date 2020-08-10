@@ -1,8 +1,10 @@
 import React from "react";
 import Grid from "./Grid";
 import { GridRow } from "./GridRow";
-import { getThemedSVGPath } from "../Other/Utils";
-import { ThemeContext } from "../Other/Constants";
+
+//SVGs
+import { ReactComponent as IconNext } from "../SVG/next.svg";
+import { ReactComponent as IconPrevious } from "../SVG/previous.svg";
 
 type SelectorProps = {
   title: string;
@@ -94,48 +96,36 @@ export default class Selector extends React.Component<
       this.state.index;
     return (
       <Grid gap={8} className="selector">
-        <ThemeContext.Consumer>
-          {(theme) => (
-            <GridRow cell_override="1fr auto">
-              <h3 className="selector-title">{this.props.title}</h3>
-              <GridRow cells={2} gap={8}>
-                <div
-                  className="selector-control"
-                  onClick={this.previous}
-                  style={{
-                    cursor: this.state.index === 0 ? "not-allowed" : undefined,
-                  }}
-                >
-                  <img
-                    src={getThemedSVGPath(
-                      theme,
-                      "previous" + (this.state.index === 0 ? "-disabled" : "")
-                    )}
-                    alt="previous"
-                    draggable={false}
-                  />
-                </div>
-                <div
-                  className="selector-control"
-                  draggable={false}
-                  onClick={this.next}
-                  style={{
-                    cursor: !hasNext ? "not-allowed" : undefined,
-                  }}
-                >
-                  <img
-                    src={getThemedSVGPath(
-                      theme,
-                      "next" + (!hasNext ? "-disabled" : "")
-                    )}
-                    alt="next"
-                    draggable={false}
-                  />
-                </div>
-              </GridRow>
-            </GridRow>
-          )}
-        </ThemeContext.Consumer>
+        <GridRow cell_override="1fr auto">
+          <h3 className="selector-title">{this.props.title}</h3>
+          <GridRow cells={2} gap={8}>
+            <div
+              className="selector-control"
+              onClick={this.previous}
+              style={{
+                cursor: this.state.index === 0 ? "not-allowed" : undefined,
+              }}
+            >
+              <IconPrevious
+                className={
+                  "svg_previous" + (this.state.index === 0 ? "-disabled" : "")
+                }
+              />
+            </div>
+            <div
+              className="selector-control"
+              draggable={false}
+              onClick={this.next}
+              style={{
+                cursor: !hasNext ? "not-allowed" : undefined,
+              }}
+            >
+              <IconNext
+                className={"svg_next" + (!hasNext ? "-disabled" : "")}
+              />
+            </div>
+          </GridRow>
+        </GridRow>
         <div
           className={"items" + (this.state.index > 0 ? " non-zero-index" : "")}
         >

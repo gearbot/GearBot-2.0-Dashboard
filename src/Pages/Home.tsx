@@ -1,11 +1,12 @@
 import React from "react";
-import { getThemedSVGPath } from "../Other/Utils";
 import { GridRow } from "../Components/GridRow";
 import { getString } from "../Language/LanguageHandler";
 import { navBarMobileThreshold, botInvite } from "../Other/Constants";
 import { Link } from "react-router-dom";
 import Grid from "../Components/Grid";
-import { ThemeContext } from "../Other/Constants";
+
+// SVGs
+import { ReactComponent as GearBot } from "../SVG/gearbot.svg";
 
 type ShowOffDesktopProps = {};
 
@@ -24,15 +25,7 @@ class ShowOffDesktop extends React.Component<
     return (
       <div className="show-off">
         <div className="bg">
-          <ThemeContext.Consumer>
-            {(theme) => (
-              <img
-                src={getThemedSVGPath(theme, "home-showoff-bg")}
-                alt=""
-                draggable={false}
-              />
-            )}
-          </ThemeContext.Consumer>
+          <GearBot className="svg_home-showoff-bg" />
         </div>
         <div className="content">
           <div>

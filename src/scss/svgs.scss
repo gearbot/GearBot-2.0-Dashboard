@@ -1,0 +1,54 @@
+@import "themes.scss";
+
+.themed {
+  @include themify($themes) {
+    .svg_home-showoff-bg {
+      fill: themed("svg-primary");
+      fill-opacity: 0.05;
+    }
+
+    .svg_logo {
+      fill: themed("accent");
+    }
+
+    .svg_basic {
+      fill: themed("svg-primary");
+    }
+
+    .svg_auditlog-control {
+      fill: themed("svg-secondary");
+    }
+
+    .svg_arrow {
+      fill: #767b85;
+    }
+
+    .svg_dropdown-open {
+      fill: themed("dropdown-open");
+    }
+
+    .svg_dropdown-closed {
+      fill: themed("dropdown-closed");
+    }
+
+    .svg_cross {
+      stroke: themed("accent");
+    }
+
+    .svg_next {
+      fill: themed("enabled");
+    }
+
+    .svg_next-disabled {
+      fill: themed("disabled");
+    }
+
+    .svg_previous {
+      fill: themed("enabled");
+    }
+
+    .svg_previous-disabled {
+      fill: themed("disabled");
+    }
+  }
+}

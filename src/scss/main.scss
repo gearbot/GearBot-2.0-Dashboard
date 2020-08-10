@@ -1,6 +1,7 @@
 /** @format */
 
 @import "themes.scss";
+@import "svgs.scss";
 
 // sizes
 $navbar-height: 70px;
@@ -146,7 +147,7 @@ $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
       background: themed("secondary");
       color: themed("text-color");
       &.primary {
-        background: #fecb4d;
+        background: themed("accent");
         color: themed("button-primary");
       }
     }
@@ -582,7 +583,7 @@ input {
   left: 0;
   top: 0;
 
-  img {
+  svg {
     width: calc(#{$navbar-height} - 25px);
   }
 
@@ -801,7 +802,8 @@ a.button {
     border-radius: 5px;
     box-shadow: $box-shadow;
     display: flex;
-    place-content: center;
+    align-items: center;
+    justify-content: center;
     width: 40px;
     height: 30px;
     cursor: pointer;
@@ -878,11 +880,15 @@ a.button {
     display: flex;
     place-content: center;
 
-    img {
+    svg {
       $size: 70%;
       margin: auto;
       width: $size;
       height: $size;
+    }
+
+    // these are the logtypes, case is important
+    .BAN {
       transform: rotate(45deg);
     }
   }
@@ -1006,6 +1012,7 @@ a.button {
         cursor: pointer;
         margin: auto;
         width: 32px;
+        height: 32px;
       }
     }
   }
@@ -1093,7 +1100,7 @@ a.button {
       grid-template-columns: 1fr auto;
       display: grid;
       margin: $padding-vertical $padding-left;
-      img {
+      svg {
         margin: auto;
       }
     }
@@ -1111,7 +1118,7 @@ a.button {
     cursor: pointer;
     //padding: 8px $padding-left;
     user-select: none;
-    img {
+    svg {
       position: absolute;
       top: 8px;
       right: 11px;

@@ -1,6 +1,8 @@
 import React, { CSSProperties } from "react";
-import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
-import { ThemeContext } from "../Other/Constants";
+
+//SVGs
+import { ReactComponent as DropdownOpen } from "../SVG/dropdown-open.svg";
+import { ReactComponent as DropdownClosed } from "../SVG/dropdown-closed.svg";
 
 type Option = { actualValue: string; value: string };
 
@@ -57,20 +59,12 @@ export default class Dropdown extends React.Component<
             ) : (
               <span>{this.props.options[0].value}</span>
             )}
-            <img src={getSVGPath("dropdown-closed")} alt="open" />
+            <DropdownClosed className="svg_dropdown-closed" />
           </div>
         </div>
         {this.state.opened && (
           <div className="dropdown-opened">
-            <ThemeContext.Consumer>
-              {(theme) => (
-                <img
-                  src={getThemedSVGPath(theme, "dropdown-open")}
-                  onClick={this.close}
-                  alt="close"
-                />
-              )}
-            </ThemeContext.Consumer>
+            <DropdownOpen onClick={this.close} className="svg_dropdown-open" />
             {typeof this.props.options[0] === "string"
               ? (this.props.options as string[]).map(
                   (option: string, index: number) => {
@@ -84,11 +78,9 @@ export default class Dropdown extends React.Component<
                     );
                   }
                 )
-              : (this.props.options as Option[]).map(
-                  (option: Option, index: number) => {
-                    return <p>{option.value}</p>;
-                  }
-                )}
+              : (this.props.options as Option[]).map((option: Option) => {
+                  return <p>{option.value}</p>;
+                })}
           </div>
         )}
       </div>

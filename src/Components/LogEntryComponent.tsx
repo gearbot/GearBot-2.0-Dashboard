@@ -1,15 +1,17 @@
 import React from "react";
-import { LogEntry } from "../Other/Types";
-import {
-  getSVGPath,
-  formatWithElements,
-  getThemedSVGPath,
-} from "../Other/Utils";
+import { LogEntry, LogType } from "../Other/Types";
+import { formatWithElements } from "../Other/Utils";
 import SmallUser from "./SmallUser";
 import Grid from "./Grid";
 import { GridRow } from "./GridRow";
 import { getString } from "../Language/LanguageHandler";
-import { ThemeContext } from "../Other/Constants";
+
+//SVGs
+import { ReactComponent as Hamburger } from "../SVG/hamburger.svg";
+import { ReactComponent as Collapse } from "../SVG/collapse.svg";
+import { ReactComponent as Arrow } from "../SVG/arrow.svg";
+import { ReactComponent as IconBan } from "../SVG/ban.svg";
+import { ReactComponent as IconKick } from "../SVG/kick.svg";
 
 type LogEntryInformationProps = {
   tagName: string;
@@ -23,11 +25,9 @@ class LogEntryInformation extends React.Component<
   render() {
     return (
       <div>
-        <img
-          alt=""
+        <Arrow
           style={{ marginRight: 20, userSelect: "none" }}
-          src={getSVGPath("arrow")}
-          draggable={false}
+          className="svg_arrow"
         />
         <span className="item-name">{this.props.tagName}</span>
         <span className="item">{this.props.tag}</span>
@@ -35,6 +35,11 @@ class LogEntryInformation extends React.Component<
     );
   }
 }
+
+const LOGTYPE_ICONS: { [key in LogType]: any } = {
+  BAN: IconBan,
+  KICK: IconKick,
+};
 
 type LogEntryComponentProps = {
   logEntry: LogEntry;
@@ -57,6 +62,8 @@ export default class LogEntryComponent extends React.Component<
     };
   }
   render() {
+    let HamburgerIcon = this.state.expanded ? Collapse : Hamburger;
+    let Icon = LOGTYPE_ICONS[this.props.logEntry.logType];
     return (
       <div>
         <div
@@ -68,11 +75,7 @@ export default class LogEntryComponent extends React.Component<
           <GridRow cell_override="1fr auto">
             <div style={{ display: "flex" }}>
               <div className="icon">
-                <img
-                  src={getSVGPath(this.props.logEntry.logType)}
-                  draggable="false"
-                  alt={this.props.logEntry.logType}
-                />
+                <Icon className={this.props.logEntry.logType} />
               </div>
               <Grid
                 style={{
@@ -99,19 +102,7 @@ export default class LogEntryComponent extends React.Component<
                 </div>
               </Grid>
             </div>
-            <ThemeContext.Consumer>
-              {(theme) => (
-                <img
-                  alt={!this.state.expanded ? "open" : "close"}
-                  className="log-hamburger"
-                  draggable={false}
-                  src={getThemedSVGPath(
-                    theme,
-                    !this.state.expanded ? "hamburger" : "collapse"
-                  )}
-                />
-              )}
-            </ThemeContext.Consumer>
+            <HamburgerIcon className="svg_auditlog-control log-hamburger" />
           </GridRow>
         </div>
         {this.state.expanded && (
