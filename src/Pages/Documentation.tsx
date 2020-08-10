@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { getString } from "../Language/LanguageHandler";
+import paths from "../Data/paths.json";
 
 type SectionsSelectorProps = {
   paths?: { [key: string]: string[] };
@@ -82,7 +83,6 @@ type DocumentationProps = {
 };
 
 type DocumentationState = {
-  paths?: { [key: string]: string[] };
   markdown?: string;
 };
 
@@ -107,32 +107,25 @@ export class Documentation extends React.Component<
           })
         );
     }
-    fetch("/_documentation/paths.json")
-      .then((res) => res.json())
-      .then((json) => {
-        this.setState({
-          paths: json,
-        });
-      });
   }
 
   render() {
     // sorry for the mess
     // TODO: clean up
+    let paths_typed = paths as { [key: string]: string[] };
     return (
       <div className="page-docs">
         {!this.props.match?.params.section &&
         !this.props.match?.params.subsection ? (
           <div className="center">
             <h1 className="title full-width">{getString("documentation")}</h1>
-            <SectionsSelector paths={this.state.paths} />
+            <SectionsSelector paths={paths} />
           </div>
         ) : this.props.match.params.subsection ? (
           this.state.markdown && (
             <div style={{ maxWidth: "100%" }}>
-              {this.state.paths &&
-              this.state.paths[this.props.match.params.section] ? (
-                this.state.paths[this.props.match.params.section].includes(
+              {paths_typed && paths_typed[this.props.match.params.section] ? (
+                paths_typed[this.props.match.params.section].includes(
                   this.props.match.params.subsection
                 ) ? (
                   <>
@@ -166,7 +159,7 @@ export class Documentation extends React.Component<
               {this.props.match.params.section}
             </h1>
             <SubsectionSelector
-              paths={this.state.paths}
+              paths={paths_typed}
               selectedSection={this.props.match.params.section}
             />
             <Link
