@@ -2,7 +2,6 @@ import React from "react";
 import { GearTeamMember } from "../Other/Types";
 import { capStringLength, getProfilePicture } from "../Other/Utils";
 import { GridRow } from "./GridRow";
-import { ThemeContext } from "../Other/Constants";
 
 //SVGs
 import { ReactComponent as GitHub } from "../SVG/github.svg";
