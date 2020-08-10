@@ -116,7 +116,7 @@ $box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
       background: rgba(themed("secondary"), 0.5);
       color: themed("text-color");
       .item-name {
-        color: themed("grey-text");
+        color: themed("secondary-text");
       }
     }
     .user-card {
@@ -923,9 +923,13 @@ a.button {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
-  .item-name {
-    margin-right: 8px;
-    user-select: none;
+  .log-entry-information-field {
+    display: flex;
+
+    .item-name {
+      margin-right: 8px;
+      user-select: none;
+    }
   }
 }
 

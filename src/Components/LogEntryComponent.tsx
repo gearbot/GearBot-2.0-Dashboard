@@ -24,7 +24,7 @@ class LogEntryInformation extends React.Component<
 > {
   render() {
     return (
-      <div>
+      <div className="log-entry-information-field">
         <Arrow
           style={{ marginRight: 20, userSelect: "none" }}
           className="svg_arrow"
