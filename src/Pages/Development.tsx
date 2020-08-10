@@ -19,7 +19,7 @@ const dummyUsers: DiscordUser[] = [
     username: "JohnyTheCarrot",
     discriminator: "0001",
     id: "132819036282159104",
-    avatar: "cd1027e339b0e0a1001fd84cf7e3be13",
+    avatar: "c48e8f0943f2b056c5830bfd98d3e057",
   },
   {
     username: "AEnterprise",
@@ -44,7 +44,7 @@ const dummyGuild2: DiscordGuild = {
 
 const dummyLogEntries: LogEntry[] = [
   {
-    logType: "BAN",
+    logType: "KICK",
     author: dummyUsers[1],
     target: dummyUsers[0],
     reason: "Being a big dummy.",
@@ -117,14 +117,7 @@ export default class Development extends React.Component<
         </Grid>
         <div style={{ display: "flex", placeContent: "center", marginTop: 20 }}>
           <div>
-            <UserProfile
-              user={{
-                username: "JohnyTheCarrot",
-                discriminator: "0001",
-                id: "132819036282159104",
-                avatar: "cd1027e339b0e0a1001fd84cf7e3be13",
-              }}
-            />
+            <UserProfile user={dummyUsers[0]} withDropdown={true} />
           </div>
         </div>
         <div style={{ display: "flex", placeContent: "center" }}>

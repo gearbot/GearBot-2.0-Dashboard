@@ -2,10 +2,13 @@
 
 import React from "react";
 import { DiscordUser, Theme } from "../Other/Types";
-import { getProfilePicture, getSVGPath } from "../Other/Utils";
+import { getProfilePicture } from "../Other/Utils";
 import ToggleSwitch from "./ToggleSwitch";
 import { getString } from "../Language/LanguageHandler";
 import { ThemeContext, ChangeThemeContext } from "../Other/Constants";
+
+//SVGs
+import { ReactComponent as DropdownClosed } from "../SVG/dropdown-closed.svg";
 
 type UserProfileProps = {
   user: DiscordUser;
@@ -48,10 +51,10 @@ export class UserProfile extends React.Component<
             #{this.props.user.discriminator}
           </span>
           {this.props.withDropdown === true && (
-            <img
-              className="dropdown-icon"
-              alt="dropdown"
-              src={getSVGPath("dropdown")}
+            <DropdownClosed
+              className="dropdown-icon svg_dropdown-closed"
+              width={10}
+              height={10}
             />
           )}
         </div>

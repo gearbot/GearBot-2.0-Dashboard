@@ -83,7 +83,7 @@ export function getCurrentTheme(): Theme {
   }
   return themeFromStorage;
 }
-
+/**
 export function getThemedSVGPath(theme: Theme, name: string): string {
   return getSVGPath(`themed/${theme}/${name}`);
 }
@@ -91,3 +91,4 @@ export function getThemedSVGPath(theme: Theme, name: string): string {
 export function getSVGPath(name: string): string {
   return `/SVGs/${name}.svg`;
 }
+*/

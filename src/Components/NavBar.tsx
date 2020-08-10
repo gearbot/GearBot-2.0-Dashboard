@@ -8,11 +8,14 @@ import {
   supportServerInvite,
   navBarTabs,
 } from "../Other/Constants";
-import { getSVGPath, getThemedSVGPath } from "../Other/Utils";
 import { Link } from "react-router-dom";
 import { getString } from "../Language/LanguageHandler";
-import { DiscordUser, NavBarTab, Theme } from "../Other/Types";
-import { ThemeContext } from "../Other/Constants";
+import { DiscordUser, NavBarTab } from "../Other/Types";
+
+// SVGs
+import { ReactComponent as GearBot } from "../SVG/gearbot.svg";
+import { ReactComponent as DiscordLogo } from "../SVG/Discord-Logo.svg";
+import { ReactComponent as Cross } from "../SVG/cross.svg";
 
 type DesktopNavBarProps = {
   user?: DiscordUser;
@@ -40,10 +43,11 @@ export class DesktopNavBar extends React.Component<
           cell_override={"auto ".repeat(navBarTabs.length + 1) + "1fr"}
         >
           <Link to="/" className="header-logo">
-            <img
-              alt="gearbot logo"
-              src={getSVGPath("icon")}
-              draggable={false}
+            <GearBot
+              className="svg_logo"
+              width="36"
+              height="36"
+              style={{ marginRight: 2 }}
             />
             <span className="gear">GEAR</span>
             <span className="bot">BOT</span>
@@ -75,27 +79,18 @@ export class DesktopNavBar extends React.Component<
             <UserProfile withDropdown={true} user={this.props.user} />
           ) : (
             <div className="login-with-discord">
-              <ThemeContext.Consumer>
-                {(context) => (
-                  <a
-                    href={supportServerInvite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="login-content">
-                      <img
-                        className="logo"
-                        alt=""
-                        src={getThemedSVGPath(context as Theme, "Discord-Logo")}
-                        width={32}
-                      />
-                      <span className="text">
-                        {getString("join_support_server")}
-                      </span>
-                    </div>
-                  </a>
-                )}
-              </ThemeContext.Consumer>
+              <a
+                href={supportServerInvite}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="login-content">
+                  <DiscordLogo className="svg_basic" width={32} />
+                  <span className="text">
+                    {getString("join_support_server")}
+                  </span>
+                </div>
+              </a>
             </div>
           )}
         </GridRow>
@@ -137,11 +132,7 @@ export class MobileNavBar extends React.Component<
                 className="hamburger"
                 onClick={() => this.setState({ burgerOpened: false })}
               >
-                <img
-                  src={getSVGPath("cross")}
-                  alt="close"
-                  style={{ color: "red" }}
-                />
+                <Cross className="svg_cross" width={45} height={45} />
               </div>
               <div className="burger-content">
                 <Link
@@ -197,7 +188,12 @@ export class MobileNavBar extends React.Component<
         </div>
         <div className="content">
           <div className="header-logo">
-            <img src={getSVGPath("icon")} alt="gearbot logo" />
+            <GearBot
+              className="svg_logo"
+              width="36"
+              height="36"
+              style={{ marginRight: 2 }}
+            />
             <span className="gear">GEAR</span>
             <span className="bot">BOT</span>
           </div>
