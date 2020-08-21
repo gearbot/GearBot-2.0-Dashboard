@@ -8,6 +8,7 @@ import MeetTheTeam from "../Pages/MeetTheTeam";
 import { Documentation } from "../Pages/Documentation";
 import { getString } from "../Language/LanguageHandler";
 import React from "react";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
 
 export const navBarMobileThreshold = 1100;
 
@@ -87,6 +88,11 @@ export const routes: GearRoute[] = [
     exact: true,
     component: Development,
   },
+  {
+    path: "/privacy_policy",
+    exact: true,
+    component: PrivacyPolicy
+  }
 ];
 
 export const footerLinks: FooterLink[] = [
@@ -114,6 +120,11 @@ export const footerLinks: FooterLink[] = [
     external: false,
     href: "/team",
     name: getString("meet_the_team"),
+  },
+  {
+    external: false,
+    href: "/privacy_policy",
+    name: getString("privacy_policy")
   },
   {
     external: false,
