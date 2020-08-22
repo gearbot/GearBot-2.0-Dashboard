@@ -33,7 +33,7 @@
       "username": "Shuu",
       "discriminator": "0001",
       "id": "82993510503944192",
-      "avatar": "6ecff652993399f5aeec5a88c220cd9e",
+      "avatar": "a_ae9200e4f24ade769cbc9d0576c07e29",
       "socials": {
         "twitter": "shuu_37"
       }
@@ -91,7 +91,7 @@
   },
   "teams": {
     "Core Team": {
-      "description": "The core team responsible for most of heavy lifting in making sure the gears keep turning smoothly.",
+      "description": "The core team responsible for most of the heavy lifting in making sure the gears keep turning smoothly.",
       "members": ["106354106196570112", "105076359188979712"]
     },
     "Contributors": {
