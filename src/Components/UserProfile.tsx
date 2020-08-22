@@ -44,7 +44,7 @@ export class UserProfile extends React.Component<
           <img
             className="avatar"
             alt=""
-            src={getProfilePicture(this.props.user)}
+            src={getProfilePicture(this.props.user, false, 32)}
           />
           <span className="username">{this.props.user.username}</span>
           <span className="discriminator">

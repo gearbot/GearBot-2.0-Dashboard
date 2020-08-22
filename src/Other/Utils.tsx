@@ -47,12 +47,7 @@ export function formatWithElements(
   let match_index = 0;
   stringPieces.forEach((piece, index) => {
     if (piece !== "") {
-      to_return.push(
-        <span className="text">
-          {/**formatWithElements(other_placeholders, stringPieces[index])*/}
-          {stringPieces[index]}
-        </span>
-      );
+      to_return.push(<span className="text">{stringPieces[index]}</span>);
       return;
     }
     let match = match_array[match_index];
@@ -63,12 +58,22 @@ export function formatWithElements(
   return to_return;
 }
 
-export function getProfilePicture(user: DiscordUser): string {
+// If gif is true, this will return a gif link if and only if the avatar also supports being a gif in the first place.
+// Else, it will return a png.
+export function getProfilePicture(
+  user: DiscordUser,
+  gif: boolean = false,
+  size: 16 | 32 | 64 | 128 = 128
+): string {
+  let extension = "png";
+  if (gif && user.avatar.substring(0, 2) === "a_") {
+    extension = "gif";
+  }
   if (user.avatar !== null)
-    return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+    return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${extension}?size=${size}`;
   else {
     const default_avatar = parseInt(user.discriminator) % 5;
-    return `https://cdn.discordapp.com/embed/avatars/${default_avatar}.png`;
+    return `https://cdn.discordapp.com/embed/avatars/${default_avatar}.${extension}?size=${size}`;
   }
 }
 

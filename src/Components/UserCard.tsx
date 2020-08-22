@@ -12,20 +12,33 @@ type UserCardProps = {
   user: GearTeamMember;
 };
 
-type UserCardState = {};
+type UserCardState = {
+  hover: boolean;
+};
 
 export default class UserCard extends React.Component<
   UserCardProps,
   UserCardState
 > {
+  constructor(props: UserCardProps) {
+    super(props);
+    this.state = {
+      hover: false,
+    };
+  }
+
   render() {
     return (
-      <div className="user-card">
+      <div
+        className="user-card"
+        onMouseEnter={() => this.setState({ hover: true })}
+        onMouseLeave={() => this.setState({ hover: false })}
+      >
         <div className="info">
           <div className="avatar">
             <img
               alt=""
-              src={getProfilePicture(this.props.user)}
+              src={getProfilePicture(this.props.user, this.state.hover)}
               draggable={false}
             />
           </div>

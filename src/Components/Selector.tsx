@@ -60,6 +60,7 @@ export default class Selector extends React.Component<
         1
     );
   }
+  
   showSlice() {
     let children = this.props.children;
     return React.Children.map(children, (child, index: number) => {

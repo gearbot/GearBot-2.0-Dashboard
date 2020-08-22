@@ -27,8 +27,9 @@
   "action_kick": "{author} kicked {target}",
   "meet_the_team": "Meet the Team",
   "support_gearbot": "Supporting GearBot",
-  "privacy_policy": "Privacy policy",
+  "privacy_policy": "Privacy Policy",
   "theme": "Theme",
+  "command_not_found": "We couldn't find a command by that name.",
 
   "ping_help": "See if the bot is still online.",
   "quote_help": "Quotes the requested message.",
