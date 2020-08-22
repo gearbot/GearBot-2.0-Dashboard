@@ -80,6 +80,40 @@ export default class Commands extends React.Component<
 
   render() {
     let commandData = CommandData as { [key: string]: any };
+    let commandTables = Object.keys(commandData).map(
+      (section: string, index: number) => {
+        let commands = commandData[section] as { [key: string]: Command };
+        let tableContents = renderCommands(
+          getFilteredCommands(
+            commands,
+            Object.keys(commands),
+            this.state.search
+          )
+        );
+        if (tableContents.length === 0) return undefined;
+        return (
+          <React.Fragment key={"table-" + index}>
+            <h2>
+              {section} - ({tableContents.length})
+            </h2>
+            <div className="commands-table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>{getString("command")}</th>
+                    <th>{getString("aliases")}</th>
+                    <th>{getString("permission_level")}</th>
+                    <th>{getString("description")}</th>
+                    <th>{getString("example")}</th>
+                  </tr>
+                </thead>
+                <tbody>{tableContents}</tbody>
+              </table>
+            </div>
+          </React.Fragment>
+        );
+      }
+    );
     return (
       <div style={{ width: "100%", marginBottom: 30, marginTop: 30 }}>
         <div style={{ display: "flex", placeContent: "center" }}>
@@ -94,38 +128,13 @@ export default class Commands extends React.Component<
             style={{ width: "50%" }}
           />
         </div>
-        {Object.keys(commandData).map((section: string, index: number) => {
-          let commands = commandData[section] as { [key: string]: Command };
-          let tableContents = renderCommands(
-            getFilteredCommands(
-              commands,
-              Object.keys(commands),
-              this.state.search
-            )
-          );
-          if (tableContents.length === 0) return undefined;
-          return (
-            <React.Fragment key={"table-" + index}>
-              <h2>
-                {section} - ({tableContents.length})
-              </h2>
-              <div className="commands-table-container">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>{getString("command")}</th>
-                      <th>{getString("aliases")}</th>
-                      <th>{getString("permission_level")}</th>
-                      <th>{getString("description")}</th>
-                      <th>{getString("example")}</th>
-                    </tr>
-                  </thead>
-                  <tbody>{tableContents}</tbody>
-                </table>
-              </div>
-            </React.Fragment>
-          );
-        })}
+        {commandTables.filter((table) => table).length > 0 ? (
+          commandTables
+        ) : (
+          <div className="commands-no-result-parent">
+            <h2>{getString("command_not_found")}</h2>
+          </div>
+        )}
       </div>
     );
   }
