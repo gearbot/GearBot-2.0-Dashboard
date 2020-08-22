@@ -16,7 +16,7 @@ export default class SmallUser extends React.Component<
     return (
       <div className="user small">
         <div className="avatar">
-          <img alt="" src={getProfilePicture(this.props.user)} />
+          <img alt="" src={getProfilePicture(this.props.user, false, 16)} />
         </div>
         <span className="username">{this.props.user.username}</span>#
         <span className="discriminator">{this.props.user.discriminator}</span>
