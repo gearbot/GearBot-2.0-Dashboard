@@ -71,12 +71,12 @@ export default class PrivacyPolicy extends React.Component<{}, {}> {
         applicable law after confirming that we have information that may be
         relevant to an investigation.
         <h2>Data deletion</h2>
-        If you want to request your data to be deleted please join the{" "}
+        If you want to request your data to be deleted please join the&nbsp;
         <a href={supportServerInvite} target="_blank" rel="noopener noreferrer">
           support server
-        </a>{" "}
-        and either ask in #support or DM AEnterprise#4693 directly. We will
-        process your request as soon as we are able to.
+        </a>
+        &nbsp;and either ask in #support or DM AEnterprise#4693 directly. We
+        will process your request as soon as we are able to.
       </div>
     );
   }

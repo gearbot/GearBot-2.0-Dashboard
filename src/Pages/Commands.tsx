@@ -79,6 +79,9 @@ export default class Commands extends React.Component<
   }
 
   render() {
+    if (this.state.search.toLowerCase() === "dabbit") {
+      window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    }
     let commandData = CommandData as { [key: string]: any };
     let commandTables = Object.keys(commandData).map(
       (section: string, index: number) => {
