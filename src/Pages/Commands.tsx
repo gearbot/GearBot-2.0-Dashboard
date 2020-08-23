@@ -67,6 +67,8 @@ type CommandsState = {
   search: string;
 };
 
+let canRickroll = true;
+
 export default class Commands extends React.Component<
   CommandsProps,
   CommandsState
@@ -79,8 +81,11 @@ export default class Commands extends React.Component<
   }
 
   render() {
-    if (this.state.search.toLowerCase() === "dabbit") {
+    if (this.state.search.toLowerCase() === "dabbit" && canRickroll) {
       window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+      canRickroll = false;
+    } else if (this.state.search.toLocaleLowerCase() !== "dabbit") {
+      canRickroll = true;
     }
     let commandData = CommandData as { [key: string]: any };
     let commandTables = Object.keys(commandData).map(
