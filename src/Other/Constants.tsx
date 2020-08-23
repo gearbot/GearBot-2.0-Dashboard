@@ -91,8 +91,8 @@ export const routes: GearRoute[] = [
   {
     path: "/privacy_policy",
     exact: true,
-    component: PrivacyPolicy
-  }
+    component: PrivacyPolicy,
+  },
 ];
 
 export const footerLinks: FooterLink[] = [
@@ -124,7 +124,7 @@ export const footerLinks: FooterLink[] = [
   {
     external: false,
     href: "/privacy_policy",
-    name: getString("privacy_policy")
+    name: getString("privacy_policy"),
   },
   {
     external: false,

@@ -13,6 +13,7 @@ import Selector from "../Components/Selector";
 import Dropdown from "../Components/Dropdown";
 import { GridRow } from "../Components/GridRow";
 import { UserProfile } from "../Components/UserProfile";
+import { VERSION } from "../version";
 
 const dummyUsers: DiscordUser[] = [
   {
@@ -85,6 +86,9 @@ export default class Development extends React.Component<
         <p style={{ marginTop: 5 }}>
           You have caught a rare development page. This page is a sort of
           'testing ground' for the people who make this site.
+        </p>
+        <p>
+          <b>version:</b> {VERSION}
         </p>
         <Grid gap={10}>
           <div className="bar">
