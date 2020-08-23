@@ -5,7 +5,6 @@ import Home from "../Pages/Home";
 import Commands from "../Pages/Commands";
 import Development from "../Pages/Development";
 import MeetTheTeam from "../Pages/MeetTheTeam";
-import BuildInfo from "../Pages/BuildInfo";
 import { Documentation } from "../Pages/Documentation";
 import { getString } from "../Language/LanguageHandler";
 import React from "react";
