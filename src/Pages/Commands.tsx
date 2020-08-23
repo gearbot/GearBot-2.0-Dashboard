@@ -79,9 +79,6 @@ export default class Commands extends React.Component<
   }
 
   render() {
-    if (this.state.search.toLowerCase() === "dabbit") {
-      window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-    }
     let commandData = CommandData as { [key: string]: any };
     let commandTables = Object.keys(commandData).map(
       (section: string, index: number) => {
@@ -124,6 +121,13 @@ export default class Commands extends React.Component<
             placeholder="Search by command name..."
             value={this.state.search}
             onChange={(value) => {
+              if (value.target.value === "dabbit") {
+                this.setState({
+                  search: "Did I get you?",
+                });
+                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                return;
+              }
               this.setState({
                 search: value.target.value,
               });
