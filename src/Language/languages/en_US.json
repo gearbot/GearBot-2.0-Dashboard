@@ -61,7 +61,7 @@
   "dm_on_tempban_help": "Configure temp-ban behaviour for DMs (off by default)",
   "dm_on_ban_help": "Configure ban behaviour for DMs (off by default)",
   "dm_on_mute_help": "Configure mute behaviour for DMs (off by default)",
-  "dm_on_umute_help": "Configure unmute behaviour for DMs (off by default)",
+  "dm_on_unmute_help": "Configure unmute behaviour for DMs (off by default)",
   "dm_on_kick_help": "Configure kick behaviour for DMs (off by default)",
   "inf_delete_help": "Deletes an infraction. This can not be undone!",
   "roles_help": "Prints a list of all roles in the server, possible modes are alphabetic or hierarchy (default)",
@@ -131,5 +131,13 @@
   "mod_nickname_help": "Base command for nickname.",
   "mod_nickname_add_help": "Adds or edits a user's nickname.",
   "mod_nickname_remove_help": "Removes the user's nickname.",
-  "configure_domain_list_help": "Configure domains to allow or block"
+  "configure_domain_list_help": "Configure domains to allow or block",
+  "about_apexstats": "Get stats from a player in Apex Legends.",
+  "munmute_help": "Unmute multiple users at the same time",
+  "configure_domain_list_add": "Add a domain to the domain list",
+  "configure_domain_list_remove": "Remove a domain from the domain list",
+  "configure_domain_list_mode": "Set if the domains on the list should be censored or only those domains should be allowed",
+  "configure_role_list_add": "Adds a role to the configuration list",
+  "configure_role_list_remove": "Removes a role from the configuration list",
+  "configure_role_list_mode": "Sets if the list is a a list of allowed or disallowed roles to manage"
 }
