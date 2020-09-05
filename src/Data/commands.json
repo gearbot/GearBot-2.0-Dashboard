@@ -442,6 +442,13 @@
             "example": "!munban [targets]... [reason]",
             "subcommands": {}
         },
+        "munmute": {
+            "aliases": [],
+            "commandlevel": 2,
+            "description": "munmute_help",
+            "example": "!munmute [targets]... [reason]",
+            "subcommands": {}
+        },
         "mute": {
             "aliases": [],
             "commandlevel": 2,
@@ -736,6 +743,41 @@
                             "subcommands": {}
                         }
                     }
+                },
+                "dm_on_ban": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_ban_help",
+                    "example": "!configure dm_on_ban <value>",
+                    "subcommands": {}
+                },
+                "dm_on_kick": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_kick_help",
+                    "example": "!configure dm_on_kick <value>",
+                    "subcommands": {}
+                },
+                "dm_on_mute": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_mute_help",
+                    "example": "!configure dm_on_mute <value>",
+                    "subcommands": {}
+                },
+                "dm_on_tempban": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_tempban_help",
+                    "example": "!configure dm_on_tempban <value>",
+                    "subcommands": {}
+                },
+                "dm_on_unmute": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_unmute_help",
+                    "example": "!configure dm_on_unmute <value>",
+                    "subcommands": {}
                 },
                 "dm_on_warn": {
                     "aliases": [],
