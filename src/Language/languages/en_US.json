@@ -139,5 +139,11 @@
   "configure_domain_list_mode": "Set if the domains on the list should be censored or only those domains should be allowed",
   "configure_role_list_add": "Adds a role to the configuration list",
   "configure_role_list_remove": "Removes a role from the configuration list",
-  "configure_role_list_mode": "Sets if the list is a a list of allowed or disallowed roles to manage"
+  "configure_role_list_mode": "Sets if the list is a a list of allowed or disallowed roles to manage",
+  "censor_emoji_only_messages_help": "Enable/disable censoring of messages that only contain emoji",
+  "censor_list_help": "Manage the token censor list",
+  "censortrustedbypass": "Allow trusted users to bypass censoring or not",
+  "custom_commands_channel_list_help": "Manage what channels custom commands can be used in or are blocked from",
+  "custom_commands_mod_bypass_help": "Enable/disable the ability for mods to use custom commands everywhere or not",
+  "full_message_censor_list_help": "Messages to censor if the content matches exactly",,
 }
