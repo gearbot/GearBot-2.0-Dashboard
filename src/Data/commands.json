@@ -783,7 +783,7 @@
                 "custom_commands_mod_bypass": {
                     "aliases": [],
                     "commandlevel": 3,
-                    "description": "custom_commands_mod_bypass",
+                    "description": "custom_commands_mod_bypass_help",
                     "example": "!configure custom_commands_mod_bypass <value>",
                     "subcommands": {}
                 },
