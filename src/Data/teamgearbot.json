@@ -53,7 +53,7 @@
       "username": "Vanished",
       "discriminator": "2555",
       "id": "267025484028706816",
-      "avatar": "0d1ce7ec6e98838714eb36893362f638",
+      "avatar": "4cbe213ef8e119d46d2051fec8023bb9",
       "socials": {
         "github": "vanishedvan",
         "twitter": "vanishedvan"
@@ -63,7 +63,7 @@
       "username": "Tarek",
       "discriminator": "1337",
       "id": "182226567043219456",
-      "avatar": "e7bf659d425687100caa325010eb1025",
+      "avatar": "76934c49697b3ee7dafd20f40f05061e",
       "socials": {
         "github": "Taarek",
         "twitter": "Tarek1337_"
@@ -87,6 +87,16 @@
         "github": "mrkirby153",
         "twitter": "mrkirby153"
       }
+    },
+    "257413019787722752": {
+      "username": "Sem",
+      "discriminator": "1083",
+      "id": "257413019787722752",
+      "avatar": "a_a94720e20a61e3160de4e28f2beb218a",
+      "socials": {
+        "github": "Sem1083",
+        "twitter": "Sem010x"
+      }
     }
   },
   "teams": {
@@ -100,7 +110,8 @@
         "128181551472050176",
         "182226567043219456",
         "298618155281154058",
-        "117791909786812423"
+        "117791909786812423",
+        "257413019787722752"
       ]
     },
     "Website Team": {

@@ -442,6 +442,13 @@
             "example": "!munban [targets]... [reason]",
             "subcommands": {}
         },
+        "munmute": {
+            "aliases": [],
+            "commandlevel": 2,
+            "description": "munmute_help",
+            "example": "!munmute [targets]... [reason]",
+            "subcommands": {}
+        },
         "mute": {
             "aliases": [],
             "commandlevel": 2,
@@ -660,12 +667,19 @@
                         }
                     }
                 },
+                "censor_emoji_only_messages": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "censor_emoji_only_messages_help",
+                    "example": "!configure censor_emoji_only_messages <value>",
+                    "subcommands": {}
+                },
                 "censor_list": {
                     "aliases": [
                         "censorlist"
                     ],
                     "commandlevel": 3,
-                    "description": "",
+                    "description": "censor_list_help",
                     "example": "!configure censor_list",
                     "subcommands": {
                         "add": {
@@ -687,7 +701,7 @@
                 "censortrustedbypass": {
                     "aliases": [],
                     "commandlevel": 3,
-                    "description": "",
+                    "description": "censortrustedbypass_help",
                     "example": "!configure censortrustedbypass <enabled_status>",
                     "subcommands": {}
                 },
@@ -736,6 +750,108 @@
                             "subcommands": {}
                         }
                     }
+                },
+                "custom_commands_channel_list": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "custom_commands_channel_list_help",
+                    "example": "!configure custom_commands_channel_list",
+                    "subcommands": {
+                        "add": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure custom_commands_channel_list add <channel>",
+                            "subcommands": {}
+                        },
+                        "mode": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure custom_commands_channel_list mode <ctx> <mode>",
+                            "subcommands": {}
+                        },
+                        "remove": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure custom_commands_channel_list remove <channel>",
+                            "subcommands": {}
+                        }
+                    }
+                },
+                "custom_commands_mod_bypass": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "custom_commands_mod_bypass_help",
+                    "example": "!configure custom_commands_mod_bypass <value>",
+                    "subcommands": {}
+                },
+                "custom_commands_role_list": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "",
+                    "example": "!configure custom_commands_role_list",
+                    "subcommands": {
+                        "add": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure custom_commands_role_list add <role>",
+                            "subcommands": {}
+                        },
+                        "mode": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure custom_commands_role_list mode <mode>",
+                            "subcommands": {}
+                        },
+                        "remove": {
+                            "aliases": [
+                                "rmv"
+                            ],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure custom_commands_role_list remove <role>",
+                            "subcommands": {}
+                        }
+                    }
+                },
+                "dm_on_ban": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_ban_help",
+                    "example": "!configure dm_on_ban <value>",
+                    "subcommands": {}
+                },
+                "dm_on_kick": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_kick_help",
+                    "example": "!configure dm_on_kick <value>",
+                    "subcommands": {}
+                },
+                "dm_on_mute": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_mute_help",
+                    "example": "!configure dm_on_mute <value>",
+                    "subcommands": {}
+                },
+                "dm_on_tempban": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_tempban_help",
+                    "example": "!configure dm_on_tempban <value>",
+                    "subcommands": {}
+                },
+                "dm_on_unmute": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "dm_on_unmute_help",
+                    "example": "!configure dm_on_unmute <value>",
+                    "subcommands": {}
                 },
                 "dm_on_warn": {
                     "aliases": [],
@@ -793,6 +909,28 @@
                             "commandlevel": 3,
                             "description": "",
                             "example": "!configure features enable <types>",
+                            "subcommands": {}
+                        }
+                    }
+                },
+                "full_message_censor_list": {
+                    "aliases": [],
+                    "commandlevel": 3,
+                    "description": "full_message_censor_list_help",
+                    "example": "!configure full_message_censor_list",
+                    "subcommands": {
+                        "add": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure full_message_censor_list add <message>",
+                            "subcommands": {}
+                        },
+                        "remove": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure full_message_censor_list remove <message>",
                             "subcommands": {}
                         }
                     }
