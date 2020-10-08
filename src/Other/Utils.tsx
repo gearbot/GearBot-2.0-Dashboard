@@ -23,39 +23,34 @@ export function getGuildIcon(
   }.webp?size=${size ?? 128}`;
 }
 
-// TODO: make more readable
 export function formatWithElements(
   elements: { [key: string]: ReactElement },
   str: string
 ) {
-  let to_return: ReactElement[] = [];
-  let matches = str.matchAll(/{([^}]+)}/g);
-  let stringPieces = str
-    .split(/({(?:[^}]+)})/g)
-    .map((s) => s.replace(/({(?:[^}]+)})/g, ""));
-  if (stringPieces[0] === "") delete stringPieces[0];
-  let match_array: string[] = [];
-  let match = matches.next();
-  let done = false;
-  while (!done) {
-    done = match.done!!;
-    if (match.value) match_array.push(match.value[1]);
-    match = matches.next();
-  }
-  if (match_array.length === 0) return [<span>{str}</span>];
-  let other_placeholders = { ...elements };
-  let match_index = 0;
-  stringPieces.forEach((piece, index) => {
-    if (piece !== "") {
-      to_return.push(<span className="text">{stringPieces[index]}</span>);
-      return;
-    }
-    let match = match_array[match_index];
-    to_return.push(elements[match]);
-    delete other_placeholders[match];
-    match_index++;
+  const matches = str.matchAll(/{([^}]+)}/g);
+  const splitString = str.split(/({(?:[^}]+)})/g);
+  const splitStringFiltered = splitString[0]
+    ? splitString
+    : splitString.slice(1);
+  const stringPieces = splitStringFiltered.map((s) =>
+    s.replace(/({(?:[^}]+)})/g, "")
+  );
+  const matchArray = Array.from(
+    matches,
+    ([, /* skip the first element */ group]) => group
+  );
+  if (matchArray.length === 0) return [<span>{str}</span>];
+  const matchIter = matchArray[Symbol.iterator]();
+  return stringPieces.map((piece, index) => {
+    if (piece !== "")
+      return (
+        <span className="text" key={index}>
+          {stringPieces[index]}
+        </span>
+      );
+    const match = matchIter.next().value;
+    return <React.Fragment key={index}>{elements[match]}</React.Fragment>;
   });
-  return to_return;
 }
 
 // If gif is true, this will return a gif link if and only if the avatar also supports being a gif in the first place.
