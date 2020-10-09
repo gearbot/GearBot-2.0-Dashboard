@@ -1,15 +1,26 @@
 /** @format */
 
-import React from "react";
+import React, { lazy, Suspense } from "react";
+import LoadingScreen from "./Components/LoadingScreen";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./scss/main.scss";
-import { NavBar } from "./Components/NavBar";
-import { Footer } from "./Components/Footer";
-import { routes, ChangeThemeContext } from "./Other/Constants";
-import { GearRoute, Theme } from "./Other/Types";
+import { routes as raw_routes, ChangeThemeContext } from "./Other/Constants";
+import { Theme, GearResolvedRoute, GearPromisedRoute } from "./Other/Types";
 import { VERSION } from "./version";
 import { getCurrentTheme, setCurrentTheme } from "./Other/Utils";
 import { ThemeContext } from "./Other/Constants";
+import CrashScreenErrorBoundary from "./Pages/CrashScreenErrorBoundary";
+
+const NavBar = lazy(() => import("./Components/NavBar"));
+const Footer = lazy(() => import("./Components/Footer"));
+
+let routes = raw_routes.map((route) => {
+  return {
+    exact: route.exact,
+    path: route.path,
+    component: () => import(`./Pages/${route.component_file_name}`),
+  } as GearPromisedRoute;
+});
 
 type AppProps = {};
 
@@ -90,8 +101,15 @@ export class App extends React.Component<AppProps, AppState> {
     });
   }
 
-  handleRouteComponent(route: GearRoute, props: { [key: string]: any }) {
-    return <route.component {...props} pageWidth={this.state.width} />;
+  async handleRouteComponent(
+    route: GearResolvedRoute,
+    props: { [key: string]: any }
+  ) {
+    return (
+      <Suspense fallback={LoadingScreen}>
+        <route.Component {...props} pageWidth={this.state.width} />
+      </Suspense>
+    );
   }
 
   render() {
@@ -99,50 +117,64 @@ export class App extends React.Component<AppProps, AppState> {
       <Router>
         <div className={"main theme-" + this.state.theme}>
           <div className="themed">
-            <ThemeContext.Provider value={this.state.theme}>
-              <ChangeThemeContext.Provider
-                value={(theme: Theme) => this.setState({ theme: theme })}
-              >
-                <NavBar
-                  pageWidth={this.state.width}
-                  scroller={this.scrollerRef.current!!}
-                  user={
-                    /**{
-                    username: "JohnyTheCarrot",
-                    discriminator: "0001",
-                    id: "132819036282159104",
-                    avatar: "cd1027e339b0e0a1001fd84cf7e3be13",
-                  }*/ undefined
-                  }
-                />
-                <div className="main-scroller" ref={this.scrollerRef}>
-                  <div className="page">
-                    {routes.map((route: GearRoute, index: number) => {
-                      return (
-                        <Route
-                          exact={route.exact}
-                          path={route.path}
-                          key={"route-" + index}
-                          render={(props: { [key: string]: any }) =>
-                            this.handleRouteComponent(route, props)
-                          }
-                        />
-                      );
-                    })}
-                  </div>
-                  <Footer
-                    pageWidth={this.state.width}
-                    scroller={this.scrollerRef.current!!}
-                    setTheme={(theme: Theme) => {
-                      this.setState({
-                        theme: theme,
-                      });
-                      setCurrentTheme(theme);
-                    }}
-                  />
-                </div>
-              </ChangeThemeContext.Provider>
-            </ThemeContext.Provider>
+            <CrashScreenErrorBoundary>
+              <Suspense fallback={<></>}>
+                <ThemeContext.Provider value={this.state.theme}>
+                  <ChangeThemeContext.Provider
+                    value={(theme: Theme) => this.setState({ theme: theme })}
+                  >
+                    <NavBar
+                      pageWidth={this.state.width}
+                      scroller={this.scrollerRef.current!!}
+                      user={
+                      /**{
+                      username: "JohnyTheCarrot",
+                      discriminator: "0001",
+                      id: "132819036282159104",
+                      avatar: "cd1027e339b0e0a1001fd84cf7e3be13",
+                    }*/ undefined
+                      }
+                    />
+                    <div className="main-scroller" ref={this.scrollerRef}>
+                      <div className="page">
+                        <Suspense fallback={<LoadingScreen />}>
+                          {routes.map(
+                            (route: GearPromisedRoute, index: number) => {
+                              return (
+                                <Route
+                                  exact={route.exact}
+                                  path={route.path}
+                                  key={"route-" + index}
+                                  render={(props: { [key: string]: any }) => {
+                                    let Component = lazy(route.component);
+                                    return (
+                                      <Component
+                                        {...props}
+                                        pageWidth={this.state.width}
+                                      />
+                                    );
+                                  }}
+                                />
+                              );
+                            }
+                          )}
+                        </Suspense>
+                      </div>
+                      <Footer
+                        pageWidth={this.state.width}
+                        scroller={this.scrollerRef.current!!}
+                        setTheme={(theme: Theme) => {
+                          this.setState({
+                            theme: theme,
+                          });
+                          setCurrentTheme(theme);
+                        }}
+                      />
+                    </div>
+                  </ChangeThemeContext.Provider>
+                </ThemeContext.Provider>
+              </Suspense>
+            </CrashScreenErrorBoundary>
           </div>
         </div>
       </Router>

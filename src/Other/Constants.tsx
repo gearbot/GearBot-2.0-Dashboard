@@ -1,14 +1,8 @@
 /** @format */
 
-import { GearRoute, FooterLink, NavBarTab, Theme } from "./Types";
-import Home from "../Pages/Home";
-import Commands from "../Pages/Commands";
-import Development from "../Pages/Development";
-import MeetTheTeam from "../Pages/MeetTheTeam";
-import { Documentation } from "../Pages/Documentation";
+import { GearRawRoute, FooterLink, NavBarTab, Theme } from "./Types";
 import { getString } from "../Language/LanguageHandler";
 import React from "react";
-import PrivacyPolicy from "../Pages/PrivacyPolicy";
 
 export const navBarMobileThreshold = 1100;
 
@@ -52,46 +46,46 @@ export const navBarTabs: NavBarTab[] = [
   },
 ];
 
-export const routes: GearRoute[] = [
+export const routes: GearRawRoute[] = [
   {
     path: "/",
     exact: true,
-    component: Home,
+    component_file_name: "Home",
   },
   {
     path: "/docs/:section/:subsection",
     exact: true,
-    component: Documentation,
+    component_file_name: "Documentation",
   },
   {
     path: "/docs/:section",
     exact: true,
-    component: Documentation,
+    component_file_name: "Documentation",
   },
   {
     path: "/docs",
     exact: true,
-    component: Documentation,
+    component_file_name: "Documentation",
   },
   {
     path: "/commands",
     exact: true,
-    component: Commands,
+    component_file_name: "Commands",
   },
   {
     path: "/team",
     exact: true,
-    component: MeetTheTeam,
+    component_file_name: "MeetTheTeam",
   },
   {
     path: "/__development",
     exact: true,
-    component: Development,
+    component_file_name: "Development",
   },
   {
     path: "/privacy_policy",
     exact: true,
-    component: PrivacyPolicy,
+    component_file_name: "PrivacyPolicy",
   },
 ];
 

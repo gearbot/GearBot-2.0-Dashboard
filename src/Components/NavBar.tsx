@@ -211,7 +211,7 @@ type NavBarProps = {
 
 type NavBarState = {};
 
-export class NavBar extends React.Component<NavBarProps, NavBarState> {
+export default class NavBar extends React.Component<NavBarProps, NavBarState> {
   constructor(props: NavBarProps) {
     super(props);
     this.state = {};

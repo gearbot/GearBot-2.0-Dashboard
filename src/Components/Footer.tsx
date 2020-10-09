@@ -192,7 +192,7 @@ type FooterProps = {
 
 type FooterState = {};
 
-export class Footer extends React.Component<FooterProps, FooterState> {
+export default class Footer extends React.Component<FooterProps, FooterState> {
   constructor(props: FooterProps) {
     super(props);
     this.state = {};
