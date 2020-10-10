@@ -1,0 +1,17 @@
+@import "../themify.scss";
+@import "../themes.scss";
+
+.themed {
+  @include themify($themes) {
+    .loading {
+      color: themed("text-color");
+    }
+  }
+}
+
+.loading-screen {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

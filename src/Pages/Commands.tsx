@@ -122,10 +122,10 @@ export default class Commands extends React.Component<
             value={this.state.search}
             onChange={(value) => {
               if (value.target.value === "dabbit") {
+                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
                 this.setState({
                   search: "Did I get you?",
                 });
-                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
                 return;
               }
               this.setState({

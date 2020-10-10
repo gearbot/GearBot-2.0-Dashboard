@@ -33,10 +33,24 @@ export type NavBarTab = {
   href: string;
 };
 
-export type GearRoute = {
+export type GearRawRoute = {
   exact: boolean;
   path: string;
-  component: typeof React.Component;
+  component_file_name: string;
+};
+
+export type GearPromisedRoute = {
+  exact: boolean;
+  path: string;
+  component: () => Promise<{
+    default: React.ComponentType<any>;
+  }>;
+};
+
+export type GearResolvedRoute = {
+  exact: boolean;
+  path: string;
+  Component: any;
 };
 
 export type FooterLink = {

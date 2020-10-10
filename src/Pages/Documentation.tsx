@@ -15,7 +15,7 @@ type SectionsSelectorState = {};
 export class SectionsSelector extends React.Component<
   SectionsSelectorProps,
   SectionsSelectorState
-> {
+  > {
   constructor(props: SectionsSelectorProps) {
     super(props);
     this.state = {};
@@ -47,7 +47,7 @@ type SubsectionSelectorState = {};
 export class SubsectionSelector extends React.Component<
   SubsectionSelectorProps,
   SubsectionSelectorState
-> {
+  > {
   constructor(props: SubsectionSelectorProps) {
     super(props);
     this.state = {};
@@ -86,10 +86,10 @@ type DocumentationState = {
   markdown?: string;
 };
 
-export class Documentation extends React.Component<
+export default class Documentation extends React.Component<
   DocumentationProps,
   DocumentationState
-> {
+  > {
   constructor(props: DocumentationProps) {
     super(props);
     this.state = {};
@@ -116,61 +116,61 @@ export class Documentation extends React.Component<
     return (
       <div className="page-docs">
         {!this.props.match?.params.section &&
-        !this.props.match?.params.subsection ? (
-          <div className="center">
-            <h1 className="title full-width">{getString("documentation")}</h1>
-            <SectionsSelector paths={paths} />
-          </div>
-        ) : this.props.match.params.subsection ? (
-          this.state.markdown && (
-            <div style={{ maxWidth: "100%" }}>
-              {paths_typed && paths_typed[this.props.match.params.section] ? (
-                paths_typed[this.props.match.params.section].includes(
-                  this.props.match.params.subsection
-                ) ? (
-                  <>
-                    <ReactMarkdown source={this.state.markdown} />
-                    <div style={{ width: "fit-content" }}>
-                      <Link
-                        to={`/docs/${this.props.match.params.section}`}
-                        className="button primary"
-                        style={{ marginBottom: 30 }}
-                      >
-                        <span style={{ margin: "auto" }}>
-                          {getString("back")}
-                        </span>
-                      </Link>
-                    </div>
-                  </>
-                ) : (
-                  <h1>{getString("doc_not_found")}</h1>
-                )
-              ) : (
-                <h1>{getString("doc_section_not_found")}</h1>
-              )}
+          !this.props.match?.params.subsection ? (
+            <div className="center">
+              <h1 className="title full-width">{getString("documentation")}</h1>
+              <SectionsSelector paths={paths} />
             </div>
-          )
-        ) : (
-          <div
-            className="center"
-            style={{ display: "flex", flexDirection: "column" }}
-          >
-            <h1 className="title full-width" style={{ marginTop: 30 }}>
-              {this.props.match.params.section}
-            </h1>
-            <SubsectionSelector
-              paths={paths_typed}
-              selectedSection={this.props.match.params.section}
-            />
-            <Link
-              to={`/docs`}
-              className="button"
-              style={{ margin: "auto", marginBottom: 30 }}
-            >
-              <span style={{ margin: "auto" }}>{getString("back")}</span>
-            </Link>
-          </div>
-        )}
+          ) : this.props.match.params.subsection ? (
+            this.state.markdown && (
+              <div style={{ maxWidth: "100%" }}>
+                {paths_typed && paths_typed[this.props.match.params.section] ? (
+                  paths_typed[this.props.match.params.section].includes(
+                    this.props.match.params.subsection
+                  ) ? (
+                      <>
+                        <ReactMarkdown source={this.state.markdown} />
+                        <div style={{ width: "fit-content" }}>
+                          <Link
+                            to={`/docs/${this.props.match.params.section}`}
+                            className="button primary"
+                            style={{ marginBottom: 30 }}
+                          >
+                            <span style={{ margin: "auto" }}>
+                              {getString("back")}
+                            </span>
+                          </Link>
+                        </div>
+                      </>
+                    ) : (
+                      <h1>{getString("doc_not_found")}</h1>
+                    )
+                ) : (
+                    <h1>{getString("doc_section_not_found")}</h1>
+                  )}
+              </div>
+            )
+          ) : (
+              <div
+                className="center"
+                style={{ display: "flex", flexDirection: "column" }}
+              >
+                <h1 className="title full-width" style={{ marginTop: 30 }}>
+                  {this.props.match.params.section}
+                </h1>
+                <SubsectionSelector
+                  paths={paths_typed}
+                  selectedSection={this.props.match.params.section}
+                />
+                <Link
+                  to={`/docs`}
+                  className="button"
+                  style={{ margin: "auto", marginBottom: 30 }}
+                >
+                  <span style={{ margin: "auto" }}>{getString("back")}</span>
+                </Link>
+              </div>
+            )}
       </div>
     );
   }
