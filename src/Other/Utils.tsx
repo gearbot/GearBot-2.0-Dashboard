@@ -83,6 +83,11 @@ export function getCurrentTheme(): Theme {
   }
   return themeFromStorage;
 }
+
+export function getApiUrl(url: string): string {
+  return (process.env.REACT_APP_API_BASE || "http://localhost:4000/") + url
+}
+
 /**
 export function getThemedSVGPath(theme: Theme, name: string): string {
   return getSVGPath(`themed/${theme}/${name}`);

@@ -10,6 +10,7 @@ import { VERSION } from "./version";
 import { getCurrentTheme, setCurrentTheme } from "./Other/Utils";
 import { ThemeContext } from "./Other/Constants";
 import CrashScreenErrorBoundary from "./Pages/CrashScreenErrorBoundary";
+import {QueryCache, ReactQueryCacheProvider} from "react-query";
 
 const NavBar = lazy(() => import("./Components/NavBar"));
 const Footer = lazy(() => import("./Components/Footer"));
@@ -29,6 +30,7 @@ type AppState = {
   height: number;
   theme: Theme;
 };
+const queryCache = new QueryCache()
 
 export class App extends React.Component<AppProps, AppState> {
   scrollerRef: React.RefObject<HTMLDivElement>;
@@ -114,6 +116,7 @@ export class App extends React.Component<AppProps, AppState> {
 
   render() {
     return (
+        <ReactQueryCacheProvider queryCache={queryCache}>
       <Router>
         <div className={"main theme-" + this.state.theme}>
           <div className="themed">
@@ -178,6 +181,7 @@ export class App extends React.Component<AppProps, AppState> {
           </div>
         </div>
       </Router>
+        </ReactQueryCacheProvider>
     );
   }
 }

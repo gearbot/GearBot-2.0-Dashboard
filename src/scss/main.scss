@@ -1010,6 +1010,8 @@ a.button {
     padding: 13px;
     display: flex;
     place-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
 
     a {
       .social {
