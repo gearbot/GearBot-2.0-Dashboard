@@ -5,7 +5,6 @@ import UserCard from "../Components/UserCard";
 import {useQuery} from "react-query";
 import {getApiUrl} from "../Other/Utils";
 import LoadingScreen from "../Components/LoadingScreen";
-import CrashScreenErrorBoundary from "./CrashScreenErrorBoundary";
 
 type MeetTheTeamProps = {
     pageWidth: number;
@@ -49,7 +48,8 @@ export default function MeetTheTeam() {
     if (isLoading) {
         return (<LoadingScreen/>)
     }
-    console.log(data);
+    if (error)
+        console.log(error)
 
     return (
         <div className="page-meet-the-team">
