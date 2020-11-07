@@ -52,7 +52,7 @@ For censoring text there are 2 options:
 - word based (if the text is found as standalone word)
 
 Both are case insensitive.
-> For tokens use ``censor_list`` instead of` `censor_word_list``
+> For tokens use ``censor_list`` instead of ``censor_word_list``
 
 To add something to the to censored words list:
 

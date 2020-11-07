@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { getString } from "../Language/LanguageHandler";
 import paths from "../Data/paths.json";
+import gfm from 'remark-gfm';
 
 type SectionsSelectorProps = {
   paths?: { [key: string]: string[] };
@@ -129,7 +130,7 @@ export default class Documentation extends React.Component<
                     this.props.match.params.subsection
                   ) ? (
                       <>
-                        <ReactMarkdown source={this.state.markdown} />
+                        <ReactMarkdown plugins={[[gfm]]} source={this.state.markdown} />
                         <div style={{ width: "fit-content" }}>
                           <Link
                             to={`/docs/${this.props.match.params.section}`}
