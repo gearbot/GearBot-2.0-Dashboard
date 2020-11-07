@@ -73,9 +73,9 @@ export default class UserCard extends React.Component<
                 <Twitter className="svg_basic social" />
               </a>
             )}
-            {this.props.user.socials.personalSite && (
+            {this.props.user.socials.website && (
               <a
-                href={this.props.user.socials.personalSite}
+                href={this.props.user.socials.website}
                 target="_blank"
                 rel="noopener noreferrer"
               >

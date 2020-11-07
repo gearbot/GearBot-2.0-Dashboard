@@ -15,7 +15,7 @@ export interface GearTeamMember extends DiscordUser {
   socials: {
     github?: string;
     twitter?: string;
-    personalSite?: string;
+    website?: string | null;
   };
 }
 

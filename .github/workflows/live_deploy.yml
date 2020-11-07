@@ -26,6 +26,7 @@ jobs:
         env:
           CI: true
           REACT_APP_VERSIONCHECK: true
+          REACT_APP_API_BASE: "https://gearbot.rocks/api/"
           GENERATE_SOURCEMAP: false
       - name: deploy to live server
         uses: AEnterprise/rsync-deploy@v1.0
