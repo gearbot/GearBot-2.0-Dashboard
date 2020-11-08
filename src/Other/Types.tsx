@@ -76,3 +76,72 @@ export type LogEntry = {
   duration?: number;
   reason: string;
 };
+
+// either 0 (role) or 1 (member)
+export enum PermissionOverwriteType {
+  ROLE = 0,
+  MEMBER = 1
+};
+
+export type PermissionOverwrite = {
+  id: string; // role or user ID
+  type: PermissionOverwriteType;
+  allow: string;
+  deny: string;
+};
+
+export enum ChannelType {
+  GUILD_TEXT = 0,
+  DM = 1,
+  GUILD_VOICE = 2,
+  GROUP_DM = 3,
+  GUILD_CATEGORY = 4,
+  GUILD_NEWS = 5,
+  GUILD_STORE = 6
+};
+
+export type DiscordMember = {
+  id: string;
+  username: string;
+  discriminator: string;
+  roles: DiscordRole[];
+}
+
+export type GuildEntry = {
+  name: string;
+  id: string;
+  icon?: string | null;
+  banner?: string | null;
+  currentRoles?: DiscordRole[];
+};
+
+export type DiscordRoleRaw = {
+  id: string;
+  name: string;
+  permissions: string;
+  position: number;
+  color: number;
+  hoist: boolean;
+  managed: boolean;
+  mentionable: boolean;
+};
+
+export type DiscordRole = {
+  id: string;
+  name: string;
+  permissions: bigint
+  color: number;
+  position: number;
+};
+
+export type Channel = {
+  id: string;
+  name: string;
+  type: ChannelType;
+  parent_id?: string | null;
+  user_limit?: number;
+  rate_limit_per_user?: number;
+  nsfw?: boolean;
+  position?: number;
+  permission_overwrites?: PermissionOverwrite[];
+};

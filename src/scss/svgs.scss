@@ -50,5 +50,30 @@
     .svg_previous-disabled {
       fill: themed("disabled");
     }
+
+    .svg_alert {
+      path {
+        fill: #FF6868;
+      }
+    }
+
+    .svg_checkmark-alert {
+      .svg_checkmark-alert_circle {
+        fill: themed("accent");
+      }
+      .svg_checkmark-alert_alert {
+        fill: #FF6868;
+      }
+    }
+
+    .svg_permission-checkmark {
+      fill: none;
+      circle {
+        fill: themed("accent");
+      }
+      path {
+        stroke: themed("svg-primary");
+      }
+    }
   }
 }

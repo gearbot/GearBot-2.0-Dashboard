@@ -1,0 +1,56 @@
+@import "themes.scss";
+
+.themed {
+  @include themify($themes) {
+    .primary {
+      background-color: themed("cp-primary");
+    }
+
+    .secondary {
+      background-color: themed("cp-secondary");
+    }
+
+    .tertiary {
+      background-color: themed("cp-tertiary");
+    }
+
+    .basic-primary {
+      background-color: themed("primary");
+    }
+
+    .basic-secondary {
+      background-color: themed("secondary");
+    }
+
+    .basic-tertiary {
+      background-color: themed("tertiary");
+    }
+
+    .logo-fill {
+      fill: themed("accent");
+    }
+
+    .accent {
+      background-color: themed("accent");
+    }
+
+    .text-color {
+      color: themed("text-color");
+    }
+
+    .channel-name {
+      color: themed("cp-channel-text");
+    }
+
+    .channel-list-title {
+      color: themed("cp-guild-name");
+    }
+
+    .channel {
+      &:hover {
+        background-color: themed("cp-quaternary");
+      }
+    }
+
+  }
+}

@@ -6,6 +6,7 @@
 
 import Grid from "../Components/Grid";
 import LogEntryComponent from "../Components/LogEntryComponent";
+import PermissionsPreviewBox from "../Components/PermissionsPreviewBox";
 import React from "react";
 import { LogEntry, DiscordUser, DiscordGuild } from "../Other/Types";
 import Guild from "../Components/Guild";
@@ -14,13 +15,14 @@ import Dropdown from "../Components/Dropdown";
 import { GridRow } from "../Components/GridRow";
 import { UserProfile } from "../Components/UserProfile";
 import { VERSION } from "../version";
+import { allPermissions } from "../Other/PermissionUtils";
 
 const dummyUsers: DiscordUser[] = [
   {
     username: "JohnyTheCarrot",
     discriminator: "0001",
     id: "132819036282159104",
-    avatar: "c48e8f0943f2b056c5830bfd98d3e057",
+    avatar: "ace65d13c76f54972f95030e52bd5b56",
   },
   {
     username: "AEnterprise",
@@ -65,17 +67,19 @@ type DevelopmentProps = {
 type DevelopmentState = {
   dropdown1Value: string;
   dropdown2Value: string;
+  permValue: number;
 };
 
 export default class Development extends React.Component<
   DevelopmentProps,
   DevelopmentState
-> {
+  > {
   constructor(props: DevelopmentProps) {
     super(props);
     this.state = {
       dropdown1Value: "Select",
       dropdown2Value: "Select",
+      permValue: allPermissions()
     };
   }
 
@@ -119,11 +123,21 @@ export default class Development extends React.Component<
             return <LogEntryComponent key={index} logEntry={logEntry} />;
           })}
         </Grid>
-        <div style={{ display: "flex", placeContent: "center", marginTop: 20 }}>
+        <div style={{ display: "flex", placeContent: "center", marginTop: 20, marginBottom: 20 }}>
           <div>
             <UserProfile user={dummyUsers[0]} withDropdown={true} />
           </div>
         </div>
+        <div style={{ display: "flex", width: "100%", marginBottom: 20 }}>
+          <input style={{ margin: "0 auto" }} type="number" value={this.state.permValue} onChange={
+            (e: React.ChangeEvent<HTMLInputElement>) => {
+              this.setState({
+                permValue: +e.target.value
+              })
+            }
+          } />
+        </div>
+        <PermissionsPreviewBox permission_value={this.state.permValue} />
         <div style={{ display: "flex", placeContent: "center" }}>
           <GridRow
             cells={2}

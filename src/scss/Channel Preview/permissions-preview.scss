@@ -1,0 +1,36 @@
+.perm-preview-box {
+  overflow: hidden;
+  border-radius: 9px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.perm-title-center {
+  text-align: center;
+}
+
+.permissions {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.permission {
+  padding: 11px;
+  display: flex;
+  border-radius: 9px;
+  .permission-name {
+    margin: auto 0;  
+    margin-left: 11px;
+  }
+}
+
+.twofa-alert {
+  margin-top: 10px;
+  display: flex;
+  span {
+    margin: auto 0;
+    margin-left: 5px;
+  }
+}
