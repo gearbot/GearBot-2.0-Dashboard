@@ -23,6 +23,13 @@ $themes: (
     "dropdown-closed": #767b85,
     "enabled": #767b85,
     "disabled": #dadada,
+    // channel preview
+    "cp-primary": #DADADA,
+    "cp-secondary": #EAEAEA,
+    "cp-tertiary": #fff,
+    "cp-quaternary": #DADADA,
+    "cp-channel-text": #72767D,
+    "cp-guild-name": #FFFFFF
   ),
   "dark": (
     "accent": #fecb4d,
@@ -46,5 +53,12 @@ $themes: (
     "dropdown-closed": #767b85,
     "enabled": #dadada,
     "disabled": #767b85,
+    // channel preview
+    "cp-primary": #191B1F,
+    "cp-secondary": #2C2F36,
+    "cp-tertiary": #25282E,
+    "cp-quaternary": #393C42,
+    "cp-channel-text": #829297,
+    "cp-guild-name": #fff
   ),
 );

@@ -145,5 +145,27 @@
   "censortrustedbypass_help": "Allow trusted users to bypass censoring or not",
   "custom_commands_channel_list_help": "Manage what channels custom commands can be used in or are blocked from",
   "custom_commands_mod_bypass_help": "Enable/disable the ability for mods to use custom commands everywhere or not",
-  "full_message_censor_list_help": "Messages to censor if the content matches exactly"
+  "full_message_censor_list_help": "Messages to censor if the content matches exactly",
+
+  "CREATE_INSTANT_INVITE": "Create Instant Invite",
+  "MANAGE_CHANNELS": "Manage Channels",
+  "ADD_REACTIONS": "Add Reactions",
+  "STREAM": "Stream",
+  "VIEW_CHANNEL": "Read Messages",
+  "SEND_MESSAGES": "Send Messages",
+  "SEND_TTS_MESSAGES": "Send TTS Messages",
+  "MANAGE_MESSAGES": "Manage Messages",
+  "EMBED_LINKS": "Embed Links",
+  "ATTACH_FILES": "Attach Files",
+  "READ_MESSAGE_HISTORY": "Read Message History",
+  "MENTION_EVERYONE": "Mention @everyone and @here",
+  "USE_EXTERNAL_EMOJIS": "Use External Emojis",
+  "CONNECT": "Connect",
+  "SPEAK": "Speak",
+  "MUTE_MEMBERS": "Mute Members",
+  "DEAFEN_MEMBERS": "Deafen Members",
+  "MOVE_MEMBERS": "Move Members",
+  "USE_VAD": "Use Voice Activity",
+  "MANAGE_ROLES": "Manage Permissions",
+  "MANAGE_WEBHOOKS": "Manage Webhooks"
 }
