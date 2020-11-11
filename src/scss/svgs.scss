@@ -51,9 +51,15 @@
       fill: themed("disabled");
     }
 
+    .svg_cross-circle {
+      path {
+        fill: themed("alert-2");
+      }
+    }
+
     .svg_alert {
       path {
-        fill: #FF6868;
+        fill: themed("alert-2");
       }
     }
 
@@ -62,14 +68,21 @@
         fill: themed("accent");
       }
       .svg_checkmark-alert_alert {
-        fill: #FF6868;
+        fill: themed("alert-2");
       }
     }
 
     .svg_permission-checkmark {
       fill: none;
-      circle {
-        fill: themed("accent");
+      &:not(&.optional) {
+        circle {
+          fill: #39DF7B;
+        }
+      }
+      &.optional {
+        circle {
+          fill: #6880FF;
+        }
       }
       path {
         stroke: themed("svg-primary");

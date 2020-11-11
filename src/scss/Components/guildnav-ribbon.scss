@@ -1,0 +1,47 @@
+$height: 40px;
+
+.guildnav-ribbon {
+  position: absolute;
+  width: 100%;
+  height: $height;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.ribbon-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  * {
+    width: 100%;
+  }
+}
+
+.guildnav-ribbon-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: $height;
+}
+
+.ribbon-buttons {
+  width: fit-content;
+  margin-left: auto;
+}
+
+.ribbon-button {
+  padding: 6px 14px;
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.ribbon-label {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  margin-left: 8px;
+}

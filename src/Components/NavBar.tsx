@@ -17,6 +17,8 @@ import { ReactComponent as GearBot } from "../SVG/gearbot.svg";
 import { ReactComponent as DiscordLogo } from "../SVG/Discord-Logo.svg";
 import { ReactComponent as Cross } from "../SVG/cross.svg";
 
+import ResizeObserver from 'resize-observer-polyfill';
+
 type DesktopNavBarProps = {
   user?: DiscordUser;
   scroller: HTMLDivElement;
@@ -58,7 +60,11 @@ export class DesktopNavBar extends React.Component<
                 to={tab.href}
                 key={"tab-" + index}
                 className="navbar-tab"
-                onClick={() => (this.props.scroller.scrollTop = 0)}
+                onClick={(e) => {
+                  if (window.location.pathname === tab.href)
+                    e.preventDefault();
+                  this.props.scroller.scrollTop = 0;
+                }}
               >
                 <span>{tab.name}</span>
               </Link>
@@ -204,30 +210,45 @@ export class MobileNavBar extends React.Component<
 }
 
 type NavBarProps = {
-  pageWidth: number;
   user?: DiscordUser;
   scroller: HTMLDivElement;
 };
 
-type NavBarState = {};
+type NavBarState = {
+  width: number;
+};
 
 export default class NavBar extends React.Component<NavBarProps, NavBarState> {
+  ref: React.RefObject<any>;
+
   constructor(props: NavBarProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      width: 0
+    };
+    this.ref = React.createRef();
+  }
+
+  componentDidMount() {
+    let observer = new ResizeObserver(
+      (entries) => this.setState({
+        width: entries[0].contentRect.width
+      })
+    );
+    observer.observe(this.ref.current);
   }
 
   render() {
     return (
-      <div className="page-header">
-        {this.props.pageWidth > navBarMobileThreshold ? (
+      <div className="page-header" ref={this.ref}>
+        {this.ref.current !== null && (this.state.width > navBarMobileThreshold ? (
           <DesktopNavBar
             user={this.props.user}
             scroller={this.props.scroller}
           />
         ) : (
           <MobileNavBar scroller={this.props.scroller} />
-        )}
+        ))}
       </div>
     );
   }

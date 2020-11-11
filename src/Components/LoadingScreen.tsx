@@ -1,7 +1,9 @@
 import React from "react";
 import "../scss/pages/loading-screen.scss";
 
-type LoadingScreenProps = {};
+type LoadingScreenProps = {
+  instant?: boolean;
+};
 
 type LoadingScreenState = {
   showLoading: boolean;
@@ -13,7 +15,7 @@ export default class LoadingScreen extends React.Component<
 > {
   constructor(props: LoadingScreenProps) {
     super(props);
-    this.state = { showLoading: false };
+    this.state = { showLoading: this.props.instant === true };
   }
   timeout?: NodeJS.Timeout;
   componentDidMount() {

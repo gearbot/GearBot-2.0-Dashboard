@@ -26,6 +26,21 @@
       background-color: themed("tertiary");
     }
 
+    .guildnav-ribbon {
+      background-color: themed("ribbon-bg");
+    }
+
+    .checkbox {
+      background-color: themed("tertiary");
+      &[data-checked="true"] {
+        background-color: themed("accent");
+      }
+    }
+
+    .ribbon-button {
+      color: themed("button-primary");
+    }
+
     .logo-fill {
       fill: themed("accent");
     }
@@ -37,6 +52,7 @@
     .text-color {
       color: themed("text-color");
     }
+
 
     .channel-name {
       color: themed("cp-channel-text");

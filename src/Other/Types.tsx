@@ -134,7 +134,7 @@ export type DiscordRole = {
   position: number;
 };
 
-export type Channel = {
+export type DiscordChannel = {
   id: string;
   name: string;
   type: ChannelType;
