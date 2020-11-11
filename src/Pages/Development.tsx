@@ -9,7 +9,7 @@ import LogEntryComponent from "../Components/LogEntryComponent";
 import PermissionsPreviewBox from "../Components/PermissionsPreviewBox";
 import React from "react";
 import { LogEntry, DiscordUser, DiscordGuild } from "../Other/Types";
-import Guild from "../Components/Guild";
+import GuildCard from "../Components/GuildCard";
 import Selector from "../Components/Selector";
 import Dropdown from "../Components/Dropdown";
 import { GridRow } from "../Components/GridRow";
@@ -137,7 +137,7 @@ export default class Development extends React.Component<
             }
           } />
         </div>
-        <PermissionsPreviewBox permission_value={this.state.permValue} />
+        <PermissionsPreviewBox permission_value={this.state.permValue} required_perms={[]}/>
         <div style={{ display: "flex", placeContent: "center" }}>
           <GridRow
             cells={2}
@@ -145,36 +145,35 @@ export default class Development extends React.Component<
             style={{ marginTop: 20 }}
             gap={20}
           >
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
+            <GuildCard guild={dummyGuild} />
+            <GuildCard guild={dummyGuild2} />
           </GridRow>
         </div>
-        <Grid gap={20} style={{ marginTop: 20 }}>
-          <Selector title="Title Test" pageWidth={this.props.pageWidth}>
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-          </Selector>
-          <Selector title="Title Test 2" pageWidth={this.props.pageWidth}>
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-            <Guild guild={dummyGuild} />
-            <Guild guild={dummyGuild2} />
-          </Selector>
-        </Grid>
+        <Selector title="Title Test" >
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+        </Selector>
+        <br/>
+        <Selector title="Title Test 2" >
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+          <GuildCard guild={dummyGuild} />
+          <GuildCard guild={dummyGuild2} />
+        </Selector>
       </div>
     );
   }

@@ -1,0 +1,12 @@
+.checkbox {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  svg {
+    margin: auto;
+  }
+}

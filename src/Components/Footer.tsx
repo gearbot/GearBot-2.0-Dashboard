@@ -19,6 +19,8 @@ import { ReactComponent as DiscordLogo } from "../SVG/Discord-Logo.svg";
 import { ReactComponent as Moon } from "../SVG/moon.svg";
 import { ReactComponent as Sun } from "../SVG/sun.svg";
 
+import ResizeObserver from 'resize-observer-polyfill';
+
 type FooterDesktopProps = {
   scroller: HTMLDivElement;
   setTheme: (theme: Theme) => void;
@@ -185,23 +187,38 @@ export class FooterMobile extends React.Component<
 }
 
 type FooterProps = {
-  pageWidth: number;
   scroller: HTMLDivElement;
   setTheme: (theme: Theme) => void;
 };
 
-type FooterState = {};
+type FooterState = {
+  width: number;
+};
 
 export default class Footer extends React.Component<FooterProps, FooterState> {
+  ref: React.RefObject<any>;
+
   constructor(props: FooterProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      width: 0
+    };
+    this.ref = React.createRef();
+  }
+
+  componentDidMount() {
+    let observer = new ResizeObserver(
+      (entries) => this.setState({
+        width: entries[0].contentRect.width
+      })
+    );
+    observer.observe(this.ref.current);
   }
 
   render() {
     return (
-      <div className="footer">
-        {this.props.pageWidth > navBarMobileThreshold ? (
+      <div className="footer" ref={this.ref}>
+        {this.state.width > navBarMobileThreshold ? (
           <FooterDesktop
             scroller={this.props.scroller}
             setTheme={this.props.setTheme}

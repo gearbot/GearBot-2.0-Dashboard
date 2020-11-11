@@ -1,5 +1,5 @@
 import { getString } from "../Language/LanguageHandler";
-import { Channel, DiscordMember, GuildEntry } from "./Types";
+import { DiscordChannel, DiscordMember, GuildEntry } from "./Types";
 
 export enum PERMISSION {
   CREATE_INSTANT_INVITE = 0x00000001,
@@ -36,9 +36,31 @@ export function allPermissions() {
   return value;
 }
 
-export const TWOFA_REQUIRED_PERMS: PERMISSION[] = [
-  PERMISSION.MANAGE_CHANNELS,
-  PERMISSION.MANAGE_MESSAGES,
+export const REQUIRED_PERMS: PERMISSION[] = [
+  PERMISSION.VIEW_CHANNEL,
+  PERMISSION.SEND_MESSAGES,
+  PERMISSION.EMBED_LINKS,
+  PERMISSION.READ_MESSAGE_HISTORY,
+  PERMISSION.ADD_REACTIONS,
+  PERMISSION.USE_EXTERNAL_EMOJIS
+]
+
+export const PERMS_HELP: {
+  explanation: string;
+  required_permission: PERMISSION;
+}[] = [
+  {
+    explanation: "I would like to use the slowmode command.",
+    required_permission: PERMISSION.MANAGE_CHANNELS
+  },
+  {
+    explanation: "I would like to use the censoring system and/or the prune command.",
+    required_permission: PERMISSION.MANAGE_MESSAGES
+  },
+  {
+    explanation: "I would like GearBot to be able to attach files so that long replies or channel archives can be sent.",
+    required_permission: PERMISSION.ATTACH_FILES
+  }
 ]
 
 export function getPermissionName(perm: PERMISSION) {
@@ -80,7 +102,7 @@ export function hasPermissionSimple(value: number, perm: PERMISSION) {
   return (value & perm) === perm;
 }
 
-export function hasPermission(guild: GuildEntry, channel: Channel, member: DiscordMember, perm: PERMISSION) {
+export function hasPermission(guild: GuildEntry, channel: DiscordChannel, member: DiscordMember, perm: PERMISSION) {
   console.log(guild.currentRoles);
   return undefined;
 }

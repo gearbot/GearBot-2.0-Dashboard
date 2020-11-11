@@ -1,0 +1,14 @@
+.permissions {
+  display: inline-grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 10px;
+}
+
+.alert {
+  margin-top: 10px;
+  display: flex;
+  span {
+    margin: auto 0;
+    margin-left: 5px;
+  }
+}

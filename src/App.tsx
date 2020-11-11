@@ -5,7 +5,7 @@ import LoadingScreen from "./Components/LoadingScreen";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./scss/main.scss";
 import { routes as raw_routes, ChangeThemeContext } from "./Other/Constants";
-import { Theme, GearResolvedRoute, GearPromisedRoute } from "./Other/Types";
+import { Theme, GearPromisedRoute } from "./Other/Types";
 import { VERSION } from "./version";
 import { getCurrentTheme, setCurrentTheme } from "./Other/Utils";
 import { ThemeContext } from "./Other/Constants";
@@ -26,23 +26,24 @@ let routes = raw_routes.map((route) => {
 type AppProps = {};
 
 type AppState = {
-  width: number;
-  height: number;
   theme: Theme;
 };
-const queryCache = new QueryCache()
+const queryCache = new QueryCache();
+
+export let shouldDisconnect = true;
+
+export function setShouldDisconnect(b: boolean) {
+  shouldDisconnect = b;
+}
 
 export class App extends React.Component<AppProps, AppState> {
   scrollerRef: React.RefObject<HTMLDivElement>;
   constructor(props: AppProps) {
     super(props);
     this.state = {
-      width: 0,
-      height: 0,
       theme: getCurrentTheme(),
     };
     this.scrollerRef = React.createRef();
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
@@ -75,9 +76,7 @@ export class App extends React.Component<AppProps, AppState> {
         })
       );
     }
-
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
+    this.forceUpdate();
   }
 
   unregister_and(action: Function) {
@@ -92,96 +91,73 @@ export class App extends React.Component<AppProps, AppState> {
     });
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  }
-
-  async handleRouteComponent(
-    route: GearResolvedRoute,
-    props: { [key: string]: any }
-  ) {
-    return (
-      <Suspense fallback={LoadingScreen}>
-        <route.Component {...props} pageWidth={this.state.width} />
-      </Suspense>
-    );
-  }
-
   render() {
     return (
-        <ReactQueryCacheProvider queryCache={queryCache}>
-      <Router>
-        <div className={"main theme-" + this.state.theme}>
-          <div className="themed">
-            <CrashScreenErrorBoundary>
-              <Suspense fallback={<></>}>
-                <ThemeContext.Provider value={this.state.theme}>
-                  <ChangeThemeContext.Provider
-                    value={(theme: Theme) => this.setState({ theme: theme })}
-                  >
-                    <NavBar
-                      pageWidth={this.state.width}
-                      scroller={this.scrollerRef.current!!}
-                      user={
-                      /**{
-                      username: "JohnyTheCarrot",
-                      discriminator: "0001",
-                      id: "132819036282159104",
-                      avatar: "cd1027e339b0e0a1001fd84cf7e3be13",
-                    }*/ undefined
+      <ReactQueryCacheProvider queryCache={queryCache}>
+        <Router>
+          <div className={"main theme-" + this.state.theme}>
+            <div className="themed">
+              <CrashScreenErrorBoundary>
+                <Suspense fallback={<></>}>
+                  <ThemeContext.Provider value={this.state.theme}>
+                    <ChangeThemeContext.Provider
+                      value={
+                        (theme: Theme) => {
+                          setShouldDisconnect(false);
+                          this.setState({ theme: theme });
+                        }
                       }
-                    />
-                    <div className="main-scroller" ref={this.scrollerRef}>
-                      <div className="page">
-                        <Suspense fallback={<LoadingScreen />}>
-                          {routes.map(
-                            (route: GearPromisedRoute, index: number) => {
-                              return (
-                                <Route
-                                  exact={route.exact}
-                                  path={route.path}
-                                  key={"route-" + index}
-                                  render={(props: { [key: string]: any }) => {
-                                    let Component = lazy(route.component);
-                                    return (
-                                      <Component
-                                        {...props}
-                                        pageWidth={this.state.width}
-                                      />
-                                    );
-                                  }}
-                                />
-                              );
-                            }
-                          )}
-                        </Suspense>
-                      </div>
-                      <Footer
-                        pageWidth={this.state.width}
+                    >
+                      <NavBar
                         scroller={this.scrollerRef.current!!}
-                        setTheme={(theme: Theme) => {
-                          this.setState({
-                            theme: theme,
-                          });
-                          setCurrentTheme(theme);
-                        }}
+                        user={
+                        /**{
+                        username: "JohnyTheCarrot",
+                        discriminator: "0001",
+                        id: "132819036282159104",
+                        avatar: "cd1027e339b0e0a1001fd84cf7e3be13",
+                      }*/ undefined
+                        }
                       />
-                    </div>
-                  </ChangeThemeContext.Provider>
-                </ThemeContext.Provider>
-              </Suspense>
-            </CrashScreenErrorBoundary>
+                      <div className="main-scroller" ref={this.scrollerRef}>
+                        <div className="page">
+                          <Suspense fallback={<LoadingScreen />}>
+                            {routes.map(
+                              (route: GearPromisedRoute, index: number) => {
+                                return (
+                                  <Route
+                                    exact={route.exact}
+                                    path={route.path}
+                                    key={"route-" + index}
+                                    render={(props: { [key: string]: any }) => {
+                                      let Component = lazy(route.component);
+                                      return <Component {...props} />;
+                                    }}
+                                  />
+                                );
+                              }
+                            )}
+                          </Suspense>
+                        </div>
+                        <Footer
+                          scroller={this.scrollerRef.current!!}
+                          setTheme={(theme: Theme) => {
+                            setShouldDisconnect(false);
+                            this.setState({
+                              theme: theme,
+                            });
+                            setCurrentTheme(theme);
+                          }}
+                        />
+                      </div>
+                    </ChangeThemeContext.Provider>
+                  </ThemeContext.Provider>
+                </Suspense>
+              </CrashScreenErrorBoundary>
+            </div>
           </div>
-        </div>
-      </Router>
-        </ReactQueryCacheProvider>
+        </Router>
+      </ReactQueryCacheProvider>
     );
   }
 }
