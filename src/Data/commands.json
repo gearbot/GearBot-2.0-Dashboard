@@ -676,7 +676,8 @@
                 },
                 "censor_list": {
                     "aliases": [
-                        "censorlist"
+                        "censorlist",
+                        "cl"
                     ],
                     "commandlevel": 3,
                     "description": "censor_list_help",
@@ -768,7 +769,7 @@
                             "aliases": [],
                             "commandlevel": 3,
                             "description": "",
-                            "example": "!configure custom_commands_channel_list mode <ctx> <mode>",
+                            "example": "!configure custom_commands_channel_list mode <mode>",
                             "subcommands": {}
                         },
                         "remove": {
@@ -909,6 +910,31 @@
                             "commandlevel": 3,
                             "description": "",
                             "example": "!configure features enable <types>",
+                            "subcommands": {}
+                        }
+                    }
+                },
+                "flag_list": {
+                    "aliases": [
+                        "flaglist",
+                        "fl"
+                    ],
+                    "commandlevel": 3,
+                    "description": "flag_list_help",
+                    "example": "!configure flag_list",
+                    "subcommands": {
+                        "add": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure flag_list add <word>",
+                            "subcommands": {}
+                        },
+                        "remove": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure flag_list remove <word>",
                             "subcommands": {}
                         }
                     }
@@ -1227,7 +1253,10 @@
                     }
                 },
                 "word_censor_list": {
-                    "aliases": [],
+                    "aliases": [
+                        "wordcensorlist",
+                        "wcl"
+                    ],
                     "commandlevel": 3,
                     "description": "",
                     "example": "!configure word_censor_list",
@@ -1244,6 +1273,31 @@
                             "commandlevel": 3,
                             "description": "",
                             "example": "!configure word_censor_list remove <word>",
+                            "subcommands": {}
+                        }
+                    }
+                },
+                "word_flag_list": {
+                    "aliases": [
+                        "wordflaglist",
+                        "wfl"
+                    ],
+                    "commandlevel": 3,
+                    "description": "word_flag_list_help",
+                    "example": "!configure word_flag_list",
+                    "subcommands": {
+                        "add": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure word_flag_list add <word>",
+                            "subcommands": {}
+                        },
+                        "remove": {
+                            "aliases": [],
+                            "commandlevel": 3,
+                            "description": "",
+                            "example": "!configure word_flag_list remove <word>",
                             "subcommands": {}
                         }
                     }

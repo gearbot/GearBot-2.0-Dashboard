@@ -24,6 +24,7 @@ This will make it log everything in that channel.
  You can also add keys one by one to and from channels, all the category keys are:
  - CHANNEL_CHANGES
  - CENSORED_MESSAGES
+ - MESSAGE_FLAGS
  - FUTURE_LOGS
  - MESSAGE_LOGS
  - MOD_ACTIONS
