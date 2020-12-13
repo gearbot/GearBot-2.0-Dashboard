@@ -179,5 +179,7 @@
   "MOVE_MEMBERS": "Move Members",
   "USE_VAD": "Use Voice Activity",
   "MANAGE_ROLES": "Manage Permissions",
-  "MANAGE_WEBHOOKS": "Manage Webhooks"
+  "MANAGE_WEBHOOKS": "Manage Webhooks",
+  "word_flag_list_help": "Words to flag to the moderators",
+  "flag_list_help": "Tokens to flag to the moderators"
 }
