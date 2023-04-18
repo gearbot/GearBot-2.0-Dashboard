@@ -70,3 +70,42 @@ You can always get a list of currently censored words by using
 ```
 !configure word_censor_list
 ```
+
+### Link Censor
+
+For censoring links there are 2 options
+
+* Whitelist (Everything on the list is allowed)
+* Blacklist (Everything on the list is blocked)
+
+You can switch between options with the following commands
+
+```
+!configure domain_list mode allowed
+```
+
+Everything on the list is allowed
+
+```
+!configure domain_list mode blocked
+```
+
+Everything on the list is blocked
+
+To add something to the to domain list:
+
+```
+!configure domain_list add <domain>
+```
+
+To remove it from the list again:
+
+```
+!configure domain_list remove <domain>
+```
+
+You can always get a list of currently allowed/blocked domains by using
+
+```
+!configure domain_list
+```
